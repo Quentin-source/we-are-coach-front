@@ -2,10 +2,8 @@
 
 .usermenu{
     text-align: right;
-    
-    z-index: -100;
-    padding-right: 1em;
     margin-left: auto;
+    padding-right: 1em;
     width : fit-content;
     display: flex;
     flex-direction: column; 
@@ -18,7 +16,8 @@
         padding: 0.5em;
     }
     &--close{
-        transform: translateY(-100%);
+        position: absolute;
+        clip: rect(1px, 1px, 1px, 1px);
     }
     
 }
