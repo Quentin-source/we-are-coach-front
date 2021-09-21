@@ -1,11 +1,10 @@
 @use '../../../styles/vars';
 
 .navbar {
-
     height : 70px;
     display: flex;
     justify-content: space-between;
-    background-color: vars.$mainColor;
+    background-color: #FFFF;
     .header-logo{
         width: 100px;
     }

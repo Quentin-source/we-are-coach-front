@@ -14,7 +14,7 @@ const Nav = () => (
                 className="navbar-link"
                 activeClassName="navbar-link--active"
                 to="/"
-            exact
+                exact
             >
                 Acceuil 
             </NavLink>
@@ -27,10 +27,10 @@ const Nav = () => (
                 Entrainement
             </NavLink>
             <NavLink
-            className="navbar-link"
-            activeClassName="navbar-link--active"
-            to="/"
-            exact
+                className="navbar-link"
+                activeClassName="navbar-link--active"
+                to="/"
+                exact
             >
                 Contact
             </NavLink>

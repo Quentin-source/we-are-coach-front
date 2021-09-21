@@ -31,6 +31,10 @@
       "react-app/jest"
     ],
     "rules": {
+      "indent": [
+        "warn",
+        4
+      ],
       "brace-style": [
         "error",
         "stroustrup"
