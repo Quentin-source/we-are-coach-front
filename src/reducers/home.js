@@ -1,6 +1,7 @@
 export const initialState = {
     list: [],
     loading: false,
+    userMenu : false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -12,7 +13,13 @@ const reducer = (state = initialState, action = {}) => {
                 loading: !state.loading,
             }
         );
-   
+    case 'TOGGLE_MENU':
+        return (
+            {
+                ...state,
+                userMenu: !state.userMenu,
+            }
+        );
     default:
         return state;
     }

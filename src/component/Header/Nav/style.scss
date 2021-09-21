@@ -1,17 +1,33 @@
-@use '../../../styles/vars';
+@use 'src/styles/vars';
 
 .navbar {
-    height : 70px;
     display: flex;
     justify-content: space-between;
-    background-color: #FFFF;
+    background-color: white;
+    border : vars.$mainColor 4px solid;
+    padding: 0.5em 1em;
+    z-index: 100;
     .header-logo{
-        width: 100px;
+        width: 80px;
     }
-    &-link{
+    &-linkgroup{
         display: flex;
         justify-content: space-around;
         width : 600px;
-        align-items: center;
+        align-items: flex-start;
+        padding: 1em;
+        }
+    a{
+        color : vars.$mainColor;
+    }
+    button{
+        border : 0;
+        background-color: transparent;
+    }
+    .user-avatar{
+        height : 40px;
+        width: 40px;
+        object-fit: cover;
+        border-radius: 50%;
         }
 }

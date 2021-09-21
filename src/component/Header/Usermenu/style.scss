@@ -1,15 +1,25 @@
+@use 'src/styles/vars';
+
 .usermenu{
     text-align: right;
-    width : 300px;
-    &-dropdown {
-        display: flex;
-        flex-direction: column;
+    
+    z-index: -100;
+    padding-right: 1em;
+    margin-left: auto;
+    width : fit-content;
+    display: flex;
+    flex-direction: column; 
+    align-self: flex-end;
+    background-color: vars.$mainColor;
+    border-radius: 0 0 10px 10px;
+    transition: 1s;
+    a{
+        color : white;
+        padding: 0.5em;
     }
+    &--close{
+        transform: translateY(-100%);
+    }
+    
 }
 
-.user-avatar{
-    height : 50px;
-    width: 50px;
-    object-fit: cover;
-    border-radius: 50%;
-}
