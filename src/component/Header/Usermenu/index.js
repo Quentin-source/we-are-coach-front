@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import avatar from '../../../logo.svg';
+import avatar from '../../../assets/images/avatar_Maeva.jpg';
 
 const Usermenu = () => (
    <div className="usermenu">

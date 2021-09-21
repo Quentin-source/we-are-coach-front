@@ -1,5 +1,10 @@
+import Training from "../Training";
+
 const Home = () => (
-    "ceci est une page de Home"
+    <div className="test">
+        ceci est une page de Home
+        <Training />    
+    </div>
 );
 
 export default Home;
