@@ -1,0 +1,15 @@
+.usermenu{
+    text-align: right;
+    width : 300px;
+    &-dropdown {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.user-avatar{
+    height : 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
