@@ -6,7 +6,6 @@ import store from './store';
 import App from './component/App';
 
 import './index.css';
-import 'semantic-ui-css/semantic.min.css';
 
 
 // import reportWebVitals from './reportWebVitals';

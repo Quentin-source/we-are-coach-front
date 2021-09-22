@@ -13,8 +13,8 @@ class carousel extends React.Component {
     render() {
         return (
             <CarouselProvider
-                naturalSlideWidth={10}
-                naturalSlideHeight={10}
+                naturalSlideWidth={1000}
+                naturalSlideHeight={1000}
                 totalSlides={3}
                 isPlaying={true}
                 interval={3000}
