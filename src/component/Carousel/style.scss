@@ -1,0 +1,19 @@
+
+.carousel{
+    height:80vh;
+    width: 90vh;
+    margin: auto;
+    &-button{
+        border : 0;
+        background-color: transparent;
+        position: absolute;
+        z-index: 5;
+        top : 50%;
+        &-left{
+            left : 0;
+        };
+        &-right{
+            right : 0;
+        };
+    }
+}

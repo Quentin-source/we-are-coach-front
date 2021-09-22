@@ -1,0 +1,33 @@
+.carousel{
+    height:80vh;
+    width: 90vh;
+    margin: auto;
+    &-button{
+        border : 0;
+        background-color: transparent;
+        position: absolute;
+        z-index: 5;
+        top : 50%;
+        &-left{
+            left : 0;
+        };
+        &-right{
+            right : 0;
+        };
+    }
+}
+
+.carousel-image{
+    width : 80vh;
+    margin: auto;
+    object-fit: cover;
+    height: 40vh;
+}
+.slick-arrow.slick-prev{
+left :10px;
+z-index: 2;
+}
+.slick-arrow.slick-next{
+    right :10px;
+    z-index: 2;
+}

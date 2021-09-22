@@ -4,7 +4,7 @@ import React from 'react';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
  
-class carousel extends React.Component {
+class Category extends React.Component {
     render() {
         return (
             <CarouselProvider
@@ -24,4 +24,4 @@ class carousel extends React.Component {
     }
 }
 
-export default carousel;
+export default Category;

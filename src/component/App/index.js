@@ -3,12 +3,13 @@ import { Route, Switch } from 'react-router-dom';
 import Home from '../Home';
 import Header from '../Header';
 import Footer from '../Footer';
-import Carousel from '../Category';
 
 import Usermenu from '../Header/Usermenu';
 import Navdrop from '../Header/Navdrop';
 
 import './style.scss';
+import Category from '../Category';
+import Carousel2 from '../Carousel2';
 
 const App = () => {
     return (
@@ -18,7 +19,10 @@ const App = () => {
             <Navdrop />
             <Switch>
                 <Route path="/Entrainements" exact>
-                    <Carousel />
+                    <Category />
+                </Route>
+                <Route path="/Contacts" exact>
+                    <Carousel2 />
                 </Route>
                 <Route>
                     <Home />
