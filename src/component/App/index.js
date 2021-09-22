@@ -1,17 +1,25 @@
+import { Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import './style.scss';
 import Home from '../Home';
 import Header from '../Header';
 import Footer from '../Footer';
-import { Route } from 'react-router-dom';
+
+import Usermenu from '../Usermenu';
+
+import './style.scss';
 
 const App = () => {
+    const menuState = useSelector((state)=> state.home.userMenu)
     return (
-        <div className="App">
+        <div className="app">
             <Header />
-            <Route>
-                <Home />
-            </Route>
+            <div className={menuState ? 'content-drop content-drop--open' : 'content-drop'}>
+                <Usermenu />
+                <Route>
+                    <Home />
+                </Route>
+            </div>
             <Footer />
         </div>
     );    

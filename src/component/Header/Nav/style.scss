@@ -1,6 +1,8 @@
 @use 'src/styles/vars';
 
 .navbar {
+    position :relative;
+    max-width: 1000px;
     display: flex;
     justify-content: space-between;
     background-color: white;
@@ -19,6 +21,10 @@
         }
     a{
         color : vars.$mainColor;
+        &:hover{
+            color : vars.$mainColor;
+            text-decoration: underline;
+        }
     }
     button{
         border : 0;

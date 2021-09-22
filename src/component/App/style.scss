@@ -1,0 +1,15 @@
+.app{
+    background-color:#6F6F6F;
+    width :800px !important;
+}
+
+.content-drop{
+    position: relative;
+    top :-135px;
+    transition: transform 0.5s;
+
+
+    &--open{
+        transform : translateY(135px);
+    }
+}

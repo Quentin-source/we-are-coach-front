@@ -10,14 +10,14 @@
     align-self: flex-end;
     background-color: vars.$mainColor;
     border-radius: 0 0 10px 10px;
-    transition: 1s;
+    margin-bottom: 2em;
     a{
         color : white;
         padding: 0.5em;
-    }
-    &--close{
-        position: absolute;
-        clip: rect(1px, 1px, 1px, 1px);
+        &:hover{
+            color : white;
+            text-decoration: underline;
+        }
     }
     
 }
