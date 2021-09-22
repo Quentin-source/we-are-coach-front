@@ -11,7 +11,7 @@ const Carousel = () => {
                 naturalSlideHeight={100}
                 totalSlides={5}
             >
-                <ButtonBack className="carousel-button carousel-button-left" children={<Icon fitted name='angle left' inverted size="huge" />}/>
+                <ButtonBack className="carousel-button carousel-button-left" children={<Icon fitted name='angle left' inverted size="large" />}/>
                 <Slider className="carousel">
                     
                     <Slide index={0}><Image className="carousel-image" src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img01.jpg" alt="fans de sprot" isBgImage={true}/>Titre</Slide>
@@ -21,7 +21,7 @@ const Carousel = () => {
                     <Slide index={4}><Image className="carousel-image" src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img05.jpg" alt="fans de sprot" isBgImage={true}/>Titre</Slide>
                     
                 </Slider>
-                <ButtonNext className="carousel-button carousel-button-right" children={<Icon fitted name='angle right' inverted size="huge" />}/>
+                <ButtonNext className="carousel-button carousel-button-right" children={<Icon fitted name='angle right' inverted size="large" />}/>
             </CarouselProvider>
             
         </>

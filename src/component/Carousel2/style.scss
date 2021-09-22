@@ -1,23 +1,5 @@
-.carousel{
-    height:80vh;
-    width: 90vh;
-    margin: auto;
-    &-button{
-        border : 0;
-        background-color: transparent;
-        position: absolute;
-        z-index: 5;
-        top : 50%;
-        &-left{
-            left : 0;
-        };
-        &-right{
-            right : 0;
-        };
-    }
-}
 
-.carousel-image{
+.carousel2-image{
     width : 80vh;
     margin: auto;
     object-fit: cover;

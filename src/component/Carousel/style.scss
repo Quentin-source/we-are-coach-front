@@ -1,19 +1,21 @@
 
 .carousel{
-    height:80vh;
-    width: 90vh;
     margin: auto;
+    height: 50vh;
+    width: 65vh;
+    position: relative;
     &-button{
         border : 0;
         background-color: transparent;
         position: absolute;
         z-index: 5;
-        top : 50%;
         &-left{
-            left : 0;
+            left : -50px;
+            transform: translateY(280%);
         };
         &-right{
-            right : 0;
-        };
+            right : -50px;
+            transform: translateY(-350%);
+        }
     }
 }
