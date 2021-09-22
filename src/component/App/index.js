@@ -1,9 +1,10 @@
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import Home from '../Home';
 import Header from '../Header';
 import Footer from '../Footer';
+import Carousel from '../Category';
 
 import Usermenu from '../Usermenu';
 
@@ -16,9 +17,14 @@ const App = () => {
             <Header />
             <div className={menuState ? 'content-drop content-drop--open' : 'content-drop'}>
                 <Usermenu />
-                <Route>
-                    <Home />
-                </Route>
+                <Switch>
+                    <Route path="/Entrainements" exact>
+                        <Carousel />
+                    </Route>
+                    <Route>
+                        <Home />
+                    </Route>
+                </Switch>
             </div>
             <Footer />
         </div>
