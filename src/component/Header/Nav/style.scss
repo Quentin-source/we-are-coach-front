@@ -66,27 +66,3 @@
         }
 }
 
-@media (max-width: 450px) {
-    
-    .navbar-linkgroup {
-      display : none;
-    }
-
-    .usermenu{
-        width: 100% ! important;
-        a{
-            text-align: center;
-        }
-    }
-    
-    
-  }
-
-  @media (min-width: 450px) {
-    
-   .navbar-drop-button{
-       
-       display : none;
-   }
-    
-  }
