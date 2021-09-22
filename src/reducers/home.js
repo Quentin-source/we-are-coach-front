@@ -19,6 +19,7 @@ const reducer = (state = initialState, action = {}) => {
             {
                 ...state,
                 userMenu: !state.userMenu,
+                dropMenu: false,
             }
         );
     case 'TOGGLE_DROP':
@@ -26,6 +27,7 @@ const reducer = (state = initialState, action = {}) => {
             {
                 ...state,
                 dropMenu: !state.dropMenu,
+                userMenu: false,
             }
         );
     default:

@@ -6,17 +6,23 @@ import Header from '../Header';
 import Footer from '../Footer';
 import Carousel from '../Category';
 
-import Usermenu from '../Usermenu';
+import Usermenu from '../Header/Usermenu';
+import Navdrop from '../Header/Navdrop';
 
 import './style.scss';
 
 const App = () => {
     const menuState = useSelector((state)=> state.home.userMenu)
+    const navDropState = useSelector((state)=> state.home.dropMenu)
+
     return (
         <div className="app">
             <Header />
-            <div className={menuState ? 'content-drop content-drop--open' : 'content-drop'}>
-                <Usermenu />
+            <div className={menuState || navDropState ? 'content-drop content-drop--open' : 'content-drop'}>
+                <div className="dropMenus">
+                    <Navdrop />
+                    <Usermenu />
+                </div>    
                 <Switch>
                     <Route path="/Entrainements" exact>
                         <Carousel />

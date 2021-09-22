@@ -12,3 +12,9 @@
         transform : translateY(135px);
     }
 }
+
+.dropMenus{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
