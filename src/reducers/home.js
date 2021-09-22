@@ -2,6 +2,7 @@ export const initialState = {
     list: [],
     loading: false,
     userMenu : false,
+    dropMenu : false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -18,6 +19,13 @@ const reducer = (state = initialState, action = {}) => {
             {
                 ...state,
                 userMenu: !state.userMenu,
+            }
+        );
+    case 'TOGGLE_DROP':
+        return (
+            {
+                ...state,
+                dropMenu: !state.dropMenu,
             }
         );
     default:

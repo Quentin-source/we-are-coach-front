@@ -11,10 +11,31 @@
     z-index: 100;
     .navbar-drop-button{
         background-color: vars.$mainColor;
-        border-radius: 50%;
         height : 40px;
         width: 40px;
         object-fit: cover;
+        border-radius: 50%;
+        &-bar{
+            width : 20px;
+            height : 3px;
+            background-color : white;
+            border-radius : 2em;
+            position : relative;
+            margin : auto;
+            transition : 0.3s;
+        }
+        .Up{top:-10%;}
+        .Center{top:0%;}
+        .Down{top:10%;}
+        .changeUp{
+            transform : translateY(220%) rotate(135deg);
+        }
+        .changeCenter{
+            width : 0%
+        }
+        .changeDown{
+            transform : translateY(-220%) rotate(-135deg);
+        }    
     }
     .header-logo{
         width: 80px;
@@ -52,7 +73,10 @@
     }
 
     .usermenu{
-        width: 100vw;
+        width: 100% ! important;
+        a{
+            text-align: center;
+        }
     }
     
     

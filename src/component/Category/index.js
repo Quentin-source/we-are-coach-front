@@ -8,8 +8,8 @@ class carousel extends React.Component {
     render() {
         return (
             <CarouselProvider
-                naturalSlideWidth={100}
-                naturalSlideHeight={125}
+                naturalSlideWidth={10}
+                naturalSlideHeight={10}
                 totalSlides={3}
             >
                 <Slider>
