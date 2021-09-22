@@ -2,13 +2,20 @@
 
 .navbar {
     position :relative;
-    max-width: 1000px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: white;
     border : vars.$mainColor 4px solid;
-    padding: 0.5em 1em;
+    padding: 1em 1em;
     z-index: 100;
+    .navbar-drop-button{
+        background-color: vars.$mainColor;
+        border-radius: 50%;
+        height : 40px;
+        width: 40px;
+        object-fit: cover;
+    }
     .header-logo{
         width: 80px;
     }
@@ -37,3 +44,25 @@
         border-radius: 50%;
         }
 }
+
+@media (max-width: 450px) {
+    
+    .navbar-linkgroup {
+      display : none;
+    }
+
+    .usermenu{
+        width: 100vw;
+    }
+    
+    
+  }
+
+  @media (min-width: 450px) {
+    
+   .navbar-drop-button{
+       
+       display : none;
+   }
+    
+  }

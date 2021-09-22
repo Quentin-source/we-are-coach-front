@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 
+import { Icon } from "semantic-ui-react";
+
 import logo from '../../../assets/images/Logo.jpg';
 import avatar from '../../../assets/images/avatar_Maeva.jpg';
 import './style.scss';
@@ -12,6 +14,7 @@ const Nav = () => {
     const handleClickAvatar = () => (dispatch({type : 'TOGGLE_MENU'})); 
     return(
         <div className="navbar">
+            <button className="navbar-drop-button" type="button" onClick={handleClickAvatar}><Icon name='bars' size="large" fitted/></button>
             <Link to="/"> <img src={logo} className="header-logo" alt="Logo We are coach" /></Link>
             <div className="navbar-linkgroup">
                 <NavLink
