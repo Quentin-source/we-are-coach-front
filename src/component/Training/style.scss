@@ -5,10 +5,10 @@
     margin-bottom: 2em;    
 }
 
-.content-header {
-    background-image: url('../../assets/images/avatar_Maeva.jpg') !important;
-    background-repeat: no-repeat !important;
-    background-size: 100% 100px !important; 
+div.content.content-header {
+    img{
+        width:100%;
+    }    
 }
 
 .content-meta {
@@ -26,9 +26,8 @@
     color: vars.$trainningName !important;
 }
 
-.card {
-    width: auto !important;
-
+.ui.card {
+    width: 1000px;
 }
 
 .card-group {

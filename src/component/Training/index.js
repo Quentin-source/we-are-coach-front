@@ -2,6 +2,7 @@
 import avatar from '../../assets/images/avatar_Maeva.jpg';
 import { Icon,Card, Image } from 'semantic-ui-react'
 import './style.scss';
+import run from '../../assets/images/run.jpg'
 
 const Training = () => {
     return (
@@ -12,7 +13,8 @@ const Training = () => {
                     <Card.Header 
                         className= "header-category" 
                         textAlign= "center">
-                            Categorie
+                        <img src={run}  alt="Peole running" />
+                        Categorie
                     </Card.Header>
                 </Card.Content>
                 <Card.Content className= "content-meta">
