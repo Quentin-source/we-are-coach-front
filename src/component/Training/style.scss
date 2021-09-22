@@ -1,0 +1,43 @@
+
+@use 'src/styles/vars';
+
+.header-category {
+    margin-bottom: 2em;    
+}
+
+.content-header {
+    background-image: url('../../assets/images/avatar_Maeva.jpg') !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100px !important; 
+}
+
+.content-meta {
+    background-color: vars.$mainColor !important;
+    font-weight: bold;
+}
+
+.content-extra {
+    display: flex;
+    justify-content: space-between;
+}
+
+.meta {
+    font-weight: bold;
+    color: vars.$trainningName !important;
+}
+
+.card {
+    width: auto !important;
+
+}
+
+.card-group {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    margin: 10em;
+}
+
+.content-extra__content-extra-a{
+    margin-right: 60em;
+}

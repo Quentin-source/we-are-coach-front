@@ -1,21 +1,22 @@
-
 import avatar from '../../assets/images/avatar_Maeva.jpg';
 import { Icon,Card, Image } from 'semantic-ui-react'
 import './style.scss';
 
-const Training = () => {
+const HomeTraining = () => {
     return (
-        <div className= "card-group">
-            <Card className= "card">
+        <Card.Group className= "card-group">
+            <Card>
             
                 <Card.Content className= "content-header">
-                    <Card.Header 
-                        className= "header-category" 
-                        textAlign= "center">
-                            Categorie
+                    <Card.Header className= "header-category" textAlign= "center">Categorie
+                        <Image
+                            floated='right'
+                            size= 'mini'
+                            src={avatar}
+                        />
                     </Card.Header>
                 </Card.Content>
-                <Card.Content className= "content-meta">
+                <Card.Content>
                     <Card.Meta className= "meta">
                         <span className='sportName'>Nom de l'entrainement</span>
                     </Card.Meta>
@@ -24,7 +25,7 @@ const Training = () => {
                     </Card.Description>
                 </Card.Content>
                 <Card.Content extra className="content-extra">
-                    <a className= "content-extra__content-extra-a">
+                    <a>
                         <Icon name='user' />
                             difficulté
                     </a>
@@ -32,16 +33,18 @@ const Training = () => {
                 </Card.Content>
             </Card>
 
-            <Card className= "card">
+            <Card>
             
                 <Card.Content className= "content-header">
-                    <Card.Header 
-                        className= "header-category" 
-                        textAlign= "center">
-                            Categorie
+                    <Card.Header className= "header-category" textAlign= "center">Categorie
+                        <Image
+                            floated='right'
+                            size= 'mini'
+                            src={avatar}
+                        />
                     </Card.Header>
                 </Card.Content>
-                <Card.Content className= "content-meta">
+                <Card.Content>
                     <Card.Meta className= "meta">
                         <span className='sportName'>Nom de l'entrainement</span>
                     </Card.Meta>
@@ -50,23 +53,25 @@ const Training = () => {
                     </Card.Description>
                 </Card.Content>
                 <Card.Content extra className="content-extra">
-                    <a className= "content-extra__content-extra-a">
+                    <a>
                         <Icon name='user' />
                             difficulté
                     </a>
                     <a>publié le</a>
                 </Card.Content>
             </Card>
-            <Card className= "card">
+            <Card>
             
                 <Card.Content className= "content-header">
-                    <Card.Header 
-                        className= "header-category" 
-                        textAlign= "center">
-                            Categorie
+                    <Card.Header className= "header-category" textAlign= "center">Categorie
+                        <Image
+                            floated='right'
+                            size= 'mini'
+                            src={avatar}
+                        />
                     </Card.Header>
                 </Card.Content>
-                <Card.Content className= "content-meta">
+                <Card.Content>
                     <Card.Meta className= "meta">
                         <span className='sportName'>Nom de l'entrainement</span>
                     </Card.Meta>
@@ -75,15 +80,15 @@ const Training = () => {
                     </Card.Description>
                 </Card.Content>
                 <Card.Content extra className="content-extra">
-                    <a className= "content-extra__content-extra-a">
+                    <a>
                         <Icon name='user' />
                             difficulté
                     </a>
                     <a>publié le</a>
                 </Card.Content>
             </Card>
-        </div>
+        </Card.Group>
     );
 };
 
-export default Training;
+export default HomeTraining;
