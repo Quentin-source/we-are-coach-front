@@ -1,29 +1,16 @@
 .app{
-    background-color:#6F6F6F;
-}
-
-.content-drop{
-    position: relative;
-    top :-135px;
-    transition: transform 0.5s;
-
-
-    &--open{
-        transform : translateY(135px);
-    }
-}
-
-.dropMenus{
-    display:flex;
-    justify-content: space-between;
-    align-items: flex-start;
-
+    background-color:#d8d8d8;
+    max-width: 1920px;
 }
 
 @media (max-width: 450px) {
     
     .navbar-linkgroup {
       display : none;
+    }
+    .dropmenu{
+        width : 100vw;
+        text-align: center; 
     }
   }
 

@@ -1,29 +1,10 @@
 @use 'src/styles/vars';
 
-.navdrop{
+.dropmenu-nav{
     text-align: left;
-    padding-right: 1em;
-    width : fit-content;
-    display: flex;
-    flex-direction: column; 
-    align-self: flex-start;
-    justify-content: flex-start;
-    background-color: vars.$mainColor;
-    border-radius: 0 0 10px 10px;
-    margin-bottom: 2em;
-    position: relative;
-    left : -110vw;
-    transition: 0.2s;
-    a{
-        color : white;
-        padding: 0.5em;
-        &:hover{
-            color : white;
-            text-decoration: underline;
-        }
-    }
-    &--active{
-        left: 0px;
+    left : 0;   
+    &--hidden{
+        transform: translate(-100%, -100%);
     }
 }
 

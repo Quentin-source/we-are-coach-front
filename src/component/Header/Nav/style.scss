@@ -1,13 +1,14 @@
 @use 'src/styles/vars';
 
 .navbar {
-    position :relative;
+    position: relative;
+    z-index: 2;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: white;
     border : vars.$mainColor 4px solid;
-    padding: 1em 1em;
+    padding: 1em;
     z-index: 100;
     .navbar-drop-button{
         background-color: vars.$mainColor;

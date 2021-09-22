@@ -1,0 +1,21 @@
+@use 'src/styles/vars';
+
+.dropmenu{
+    padding : 0.5em;
+    width : fit-content;
+    display: flex;
+    flex-direction: column; 
+    background-color: vars.$mainColor;
+    border-radius: 0 0 10px 10px;
+    z-index : 1;
+    position: absolute;
+    transition: transform 0.2s;
+    a{
+        color : white;
+        padding: 0.5em;
+        &:hover{
+            color : white;
+            text-decoration: underline;
+        }
+    }
+}

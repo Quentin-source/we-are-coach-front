@@ -6,7 +6,7 @@ import './style.scss';
 const Navdrop = () => {
     const navDropState = useSelector((state)=> state.home.dropMenu)
     return (
-        <div className={navDropState ? 'navdrop navdrop--active' : 'navdrop'} >
+        <div className={!navDropState ? 'dropmenu dropmenu-nav dropmenu-nav--hidden' : 'dropmenu dropmenu-nav'} >
             <Link> Acceuil</Link>
             <Link> Entrainement</Link>
             <Link> Constact</Link>

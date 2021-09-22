@@ -6,7 +6,7 @@ import './style.scss';
 const Usermenu = () => {
     const menuState = useSelector((state)=> state.home.userMenu)
     return (
-        <div className={!menuState ? 'usermenu' : 'usermenu usermenu--active'}>
+        <div className={!menuState ? 'dropmenu dropmenu-user dropmenu-user--hidden' : 'dropmenu dropmenu-user'}>
             <Link> Mon profil</Link>
             <Link> Mes entrainements</Link>
             <Link> Mes favoris</Link>
