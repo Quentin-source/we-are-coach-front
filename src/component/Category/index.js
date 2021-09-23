@@ -9,7 +9,7 @@ import musculation from '../../assets/images/musculation.jpg';
 import surf from '../../assets/images/surf.jpg';
 import './style.scss';
  
-class carousel extends React.Component {
+class Category extends React.Component {
     render() {
         return (
             <CarouselProvider
@@ -83,4 +83,4 @@ class carousel extends React.Component {
     }
 }
 
-export default carousel;
+export default Category;
