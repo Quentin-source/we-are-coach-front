@@ -5,6 +5,7 @@ import Home from '../Home';
 import Header from '../Header';
 import Footer from '../Footer';
 import Carousel from '../Category';
+import HomeTraining from '../HomeTraining';
 
 import Usermenu from '../Usermenu';
 
@@ -23,6 +24,7 @@ const App = () => {
                     </Route>
                     <Route>
                         <Home />
+                        <HomeTraining />
                     </Route>
                 </Switch>
             </div>
