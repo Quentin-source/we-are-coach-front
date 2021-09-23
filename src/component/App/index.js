@@ -23,7 +23,7 @@ const App = () => {
                     <Category />
                 </Route>
                 <Route path="/Contacts" exact>
-                    <Carousel />
+                    {/* <Carousel /> */}
                     <Carousel2 />
                 </Route>
                 <Route>

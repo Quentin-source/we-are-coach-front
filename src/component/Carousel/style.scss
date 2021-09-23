@@ -1,14 +1,18 @@
 
 .carousel{
     margin: auto;
-    height: 50vh;
-    width: 65vh;
+    height: 80vh;
+    width: 100vw;
     position: relative;
+    &-image{
+        width : 90vw;
+        margin: auto;
+    }
     &-button{
         border : 0;
         background-color: transparent;
-        position: absolute;
-        z-index: 5;
+        // position: fixed;
+        z-index: 1000;
         &-left{
             left : -50px;
             transform: translateY(280%);

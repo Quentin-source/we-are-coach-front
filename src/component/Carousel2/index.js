@@ -17,7 +17,7 @@ const Carousel2 = () => {
         <Slider {...settings}>        
             
             <div index={0}><img className="carousel2-image" src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img01.jpg" alt="fans de sprot" />
-            
+                <div class="ui floating message carousel2-message">Way to go!</div>
             </div>
             <div index={1}><img className="carousel2-image" src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img02.jpg" alt="fans de sprot" />Titre</div>
             <div index={2}><img className="carousel2-image" src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img03.jpg" alt="fans de sprot" />Titre</div>
