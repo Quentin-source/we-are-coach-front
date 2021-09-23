@@ -1,5 +1,15 @@
 .categories{
 
-    margin : 1em auto;
+    margin : auto;
+    margin-top: 2em;
+    margin-bottom: -2em;
     width : 80vw;
+    max-width: 1800px;
+    
 }
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+}
+

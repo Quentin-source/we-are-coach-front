@@ -1,6 +1,22 @@
 .app{
-    background-color:#d8d8d8;
     max-width: 1920px;
+    min-height: 100vh;
+    margin: auto;
+    background-color: white;
+    position : relative;
+    top : 85px;
+    
+    &-header{
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        max-width: 1920px;
+        z-index: 2;
+    }
+}
+
+.main-content{
+    
 }
 
 @media (max-width: 450px) {

@@ -1,0 +1,23 @@
+@use 'src/styles/vars';
+
+.footer{
+
+    background-color: white;
+    text-align: right;
+    width: 100vw;
+    max-width: 1920px;
+    position:fixed;
+    bottom: 0;
+    border : vars.$mainColor 4px solid;
+    padding: 1em;
+    z-index: 5;
+    a{
+        color : vars.$mainColor;
+        padding:  2em;
+        height: fit-content;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}

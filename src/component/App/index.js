@@ -13,9 +13,11 @@ import Categories from '../Categories';
 const App = () => {
     return (
         <div className="app">
-            <Header />
-            <Usermenu />
-            <Navdrop />
+            <div className="app-header">
+                <Header />
+                <Usermenu />
+                <Navdrop />
+            </div>
             <Switch>
                 <Route path="/Entrainements" exact>
                     <Categories />  
