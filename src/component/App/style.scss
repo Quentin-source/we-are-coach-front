@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .app{
     max-width: 1920px;
     min-height: 100vh;
@@ -15,9 +17,20 @@
     }
 }
 
-.main-content{
-    
-}
+
+body::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: vars.$mainColor;        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: white;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid vars.$mainColor; ;  /* creates padding around scroll thumb */
+  }
 
 @media (max-width: 450px) {
     

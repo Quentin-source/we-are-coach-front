@@ -2,9 +2,25 @@
 
 .dropmenu-user{
     text-align: right;
-    right : 0;   
+    right : 0;
     &--hidden{
         transform: translate(0%, -100%);
+    }
+    button{
+        background-color: white;
+        font-weight: normal;
+    }
+    .navbar-connect-button{
+        width: fit-content;
+        text-align: right;
+        align-self: flex-end;
+        border-radius: 10px;
+        margin-top: 0.5em;
+
+        &:hover{
+            background-color: white;
+            text-decoration: underline;
+        }
     }
 }
 

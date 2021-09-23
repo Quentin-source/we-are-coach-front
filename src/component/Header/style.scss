@@ -1,8 +1,9 @@
 @use 'src/styles/vars';
 
 .dropmenu{
-    padding : 0.5em;
+    padding : 1em;
     width : fit-content;
+    min-width: 200px;  
     display: flex;
     flex-direction: column; 
     background-color: vars.$mainColor;

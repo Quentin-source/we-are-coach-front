@@ -7,6 +7,8 @@ import Connectpop from "../../Connection/Connectpop";
 
 import logo from '../../../assets/images/Logo.jpg';
 import avatar from '../../../assets/images/avatar_Maeva.jpg';
+
+
 import './style.scss';
 
 const Nav = () => {

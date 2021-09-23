@@ -9,7 +9,6 @@ import Navdrop from '../Header/Navdrop';
 
 import './style.scss';
 import Categories from '../Categories';
-import Connectpop from '../Connection/Connectpop';
 
 
 

@@ -9,6 +9,17 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
     switch (action.type) {
+    case 'CONNECTION':
+        return (
+            {
+                ...state,
+                connected: !state.connected,
+                connectPop : false,
+                dropMenu : false,
+                userMenu : false,
+            }
+        );
+
     case 'OPEN_CONNECTPOP':
         return (
             {

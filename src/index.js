@@ -24,6 +24,7 @@ const mainThemeMUI = createTheme({
             light: '#ffbba7',
             dark: '#b27765',
         },
+        mode:'dark',
     },
 });
 

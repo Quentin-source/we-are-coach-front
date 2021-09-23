@@ -16,7 +16,12 @@ const Connectpop = () =>  {
     };
 
     const handleClose = () => {
-        dispatch({type: 'CLOSE_CONNECTPOP'})
+        dispatch({type: 'CLOSE_CONNECTPOP'});
+    };
+
+    const handleConnection = () => {
+        dispatch({type: 'CONNECTION'});
+        
     };
 
     const connectPopState = useSelector ((state) => (state.home.connectPop));
@@ -24,7 +29,7 @@ const Connectpop = () =>  {
 
     return (
         <div>
-            <Button color="primary" variant="outlined" onClick={handleClickOpen}>
+            <Button color="primary" variant="outlined" onClick={handleClickOpen} className='navbar-connect-button'>
             Connection
             </Button>
             <Dialog color="primary" open={connectPopState} onClose={handleClose}>
@@ -56,7 +61,7 @@ const Connectpop = () =>  {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Annuler</Button>
-                    <Button onClick={handleClose}>Connection</Button>
+                    <Button onClick={handleConnection}>Connection</Button>
                 </DialogActions>
             </Dialog>
         </div>
