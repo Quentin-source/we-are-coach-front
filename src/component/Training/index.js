@@ -1,6 +1,8 @@
 
 import avatar from '../../assets/images/avatar_Maeva.jpg';
 import { Icon,Card, Image } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css';
+
 
 const Training = () => {
     return (
