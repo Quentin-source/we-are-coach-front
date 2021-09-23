@@ -3,19 +3,23 @@
     width : 100vw;
     margin: auto;
     object-fit: cover;
-    height: 40vh;
+    height: 50vh;
 }
 .slick-arrow.slick-prev{
 left :10px;
 z-index: 2;
+
 }
+
 .slick-arrow.slick-next{
 right :10px;
 z-index: 2;
+
 }
 
 div.message.carousel2-message{
     position: absolute;
     top:50%;
     left:50%;
+    z-index: 10;
 }
