@@ -9,7 +9,6 @@ import Navdrop from '../Header/Navdrop';
 
 import './style.scss';
 import Category from '../Category';
-import Carousel2 from '../Carousel2';
 import Carousel from '../Carousel';
 
 const App = () => {
@@ -23,8 +22,7 @@ const App = () => {
                     <Category />
                 </Route>
                 <Route path="/Contacts" exact>
-                    {/* <Carousel /> */}
-                    <Carousel2 />
+                    <Carousel />
                 </Route>
                 <Route>
                     <Home />

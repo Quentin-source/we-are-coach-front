@@ -1,32 +1,28 @@
-import { CarouselProvider, Slider, Slide, Image, ButtonBack, ButtonNext } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
-import { Icon } from 'semantic-ui-react';
 import './style.scss';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
-const Carousel = () => {
+const Carousel2 = () => {
+    const settings = {
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplaySpeed: 2000,
+        autoplay: false,
+        variableWidth:false,
+    };
     return (
-        <>
-            <CarouselProvider
-                naturalSlideWidth={125}
-                naturalSlideHeight={100}
-                totalSlides={5}
-            >
-                
-                <Slider className="carousel">
-                    
-                    <Slide index={0}><Image className="carousel-image" src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img01.jpg" alt="fans de sprot" isBgImage={true}/>Titre</Slide>
-                    <Slide index={1}><Image className="carousel-image" src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img02.jpg" alt="fans de sprot" isBgImage={true}/>Titre</Slide>
-                    <Slide index={2}><Image className="carousel-image" src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img03.jpg" alt="fans de sprot" isBgImage={true}/>Titre</Slide>
-                    <Slide index={3}><Image className="carousel-image" src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img04.jpg" alt="fans de sprot" isBgImage={true}/>Titre</Slide>
-                    <Slide index={4}><Image className="carousel-image" src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img05.jpg" alt="fans de sprot" isBgImage={true}/>Titre</Slide>
-                   
-                </Slider>
-                <ButtonBack className="carousel-button carousel-button-left" children={<Icon fitted name='angle left' inverted size="large" />}/>
-                <ButtonNext className="carousel-button carousel-button-right" children={<Icon fitted name='angle right' inverted size="large" />}/>
-            </CarouselProvider>
+        <Slider className="carousel2" {...settings}>        
             
-        </>
+            <div index={0}><img className="carousel2-image" src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img01.jpg" alt="fans de sprot" />Titre</div>
+            <div index={1}><img className="carousel2-image" src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img02.jpg" alt="fans de sprot" />Titre</div>
+            <div index={2}><img className="carousel2-image" src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img03.jpg" alt="fans de sprot" />Titre</div>
+            <div index={3}><img className="carousel2-image" src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img04.jpg" alt="fans de sprot" />Titre</div>
+            <div index={4}><img className="carousel2-image" src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img05.jpg" alt="fans de sprot" />Titre</div>        
+        </Slider>
     );
 }
 
-export default Carousel;
+export default Carousel2;
