@@ -1,7 +1,7 @@
-//carousel 
+//carousel HomePage
 
 import React from 'react';
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import { CarouselProvider, Slider, Slide, DotGroup } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { Image } from 'semantic-ui-react';
 import motocross from '../../assets/images/motocross.jpg';
@@ -23,34 +23,54 @@ class carousel extends React.Component {
             >
                 <div className="slide">
                     <Slider >
+            
                         <Slide index={0}
                         >
-                            <Image src={motocross}/>
+                            <Image src={motocross}
+                                alt="photo"/>
                             <div className="topo">
                                 <h2 className="title">Motocross</h2>
                                 <p className="text">Essayez ce sport, il est incroyable!</p>
+                            </div>
+                            <div className="dot">
+                                <DotGroup 
+                                    showAsSelectedForCurrentSlideOnly={false}
+                                />
                             </div>
                         </Slide>
                         
                         
                         <Slide index={1}>
-                            <Image src={musculation}/>
+                            <Image src={musculation}
+                                alt="photo2"/>
                             <div className="topo">
                                 <h2 className="title">Musculation</h2>
                                 <p className="text">Essayez ce sport, il est incroyable!</p>
                             </div>
+                            <div className="dot">
+                                <DotGroup 
+                                    showAsSelectedForCurrentSlideOnly={false}
+                                />
+                            </div>
                         </Slide>
                         <Slide index={2}>
-                            <Image src={surf}/>
+                            <div className="surf">
+                                <Image src={surf}
+                                    alt="photo3"/>
+                            </div>
                             <div className="topo">
                                 <h2 className="title">Surf</h2>
                                 <p className="text">Essayez ce sport, il est incroyable!</p>
                             </div>
+                            <div className="dot">
+                                <DotGroup 
+                                    showAsSelectedForCurrentSlideOnly={false}
+                                />
+                            </div>
                         </Slide>
                     </Slider>
                 </div>
-                <ButtonBack>Back</ButtonBack>
-                <ButtonNext>Next</ButtonNext>
+               
             </CarouselProvider>
         );
 
