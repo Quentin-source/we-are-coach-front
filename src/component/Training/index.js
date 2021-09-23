@@ -2,11 +2,12 @@
 import avatar from '../../assets/images/avatar_Maeva.jpg';
 import { Icon,Card, Image } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
+import './style.scss'
 
 
 const Training = () => {
     return (
-        <Card.Group>
+        <Card.Group className="training-cards">
             <Card>
                 <Card.Content>
                     <Image
