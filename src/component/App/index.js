@@ -8,8 +8,7 @@ import Usermenu from '../Header/Usermenu';
 import Navdrop from '../Header/Navdrop';
 
 import './style.scss';
-import Category from '../Category';
-import Carousel from '../Carousel';
+import Categories from '../Categories';
 
 const App = () => {
     return (
@@ -19,10 +18,9 @@ const App = () => {
             <Navdrop />
             <Switch>
                 <Route path="/Entrainements" exact>
-                    <Category />
+                    <Categories />  
                 </Route>
                 <Route path="/Contacts" exact>
-                    <Carousel />
                 </Route>
                 <Route>
                     <Home />

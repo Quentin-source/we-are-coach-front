@@ -8,7 +8,6 @@ const Training = () => {
     return (
         <Card.Group>
             <Card>
-            
                 <Card.Content>
                     <Image
                         floated='right'
