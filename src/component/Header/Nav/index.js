@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 
 import { useDispatch , useSelector} from "react-redux";
 
+import Connectpop from "../../Connection/Connectpop";
+
 import logo from '../../../assets/images/Logo.jpg';
 import avatar from '../../../assets/images/avatar_Maeva.jpg';
 import './style.scss';
@@ -10,6 +12,7 @@ import './style.scss';
 const Nav = () => {
     const dispatch = useDispatch();
     const menuDropState = useSelector((state)=>(state.home.dropMenu));
+    const connectionStatus = useSelector((state) =>(state.home.connected));
     const handleClickAvatar = () => (dispatch({type : 'TOGGLE_MENU'})); 
     const handleClickDropMenu = () => (dispatch({type : 'TOGGLE_DROP'}))
     return(
@@ -46,7 +49,8 @@ const Nav = () => {
                     Contact
                 </NavLink>
             </div>
-            <button type="button" onClick={handleClickAvatar}><img src={avatar} className="user-avatar" alt="Avatar de l'utilisateur" /></button>
+            {connectionStatus && <button type="button" onClick={handleClickAvatar}><img src={avatar} className="user-avatar" alt="Avatar de l'utilisateur" /></button>}
+            {!connectionStatus && <Connectpop />}
         </div>
     );
 }

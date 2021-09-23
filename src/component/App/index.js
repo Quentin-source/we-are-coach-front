@@ -9,8 +9,13 @@ import Navdrop from '../Header/Navdrop';
 
 import './style.scss';
 import Categories from '../Categories';
+import Connectpop from '../Connection/Connectpop';
+
+
 
 const App = () => {
+
+    
     return (
         <div className="app">
             <div className="app-header">
@@ -23,6 +28,7 @@ const App = () => {
                     <Categories />  
                 </Route>
                 <Route path="/Contacts" exact>
+                   
                 </Route>
                 <Route>
                     <Home />
