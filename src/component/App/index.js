@@ -8,7 +8,7 @@ import Usermenu from '../Header/Usermenu';
 import Navdrop from '../Header/Navdrop';
 
 import './style.scss';
-import Categories from '../Categories';
+import Training from '../Trainings';
 
 
 
@@ -24,7 +24,8 @@ const App = () => {
             </div>
             <Switch>
                 <Route path="/Entrainements" exact>
-                    <Categories />  
+                    <Training />    
+                     
                 </Route>
                 <Route path="/Contacts" exact>
                    

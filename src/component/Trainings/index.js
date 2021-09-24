@@ -4,11 +4,11 @@ import tennis from '../../assets/images/tennis.jpg'
 
 import './style.scss';
 
-import CardTrainning from './trainning';
+import CardTrainning from './training';
 
 
 
-const Training = () => {
+const Trainings = () => {
     return (
         <div className= 'trainnings'>
             <CardTrainning image= {run}/>
@@ -18,4 +18,4 @@ const Training = () => {
     );
 };
 
-export default Training;
+export default Trainings;
