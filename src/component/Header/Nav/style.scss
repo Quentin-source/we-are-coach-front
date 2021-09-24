@@ -49,6 +49,7 @@
         padding: 1em;
         }
     a{
+        text-decoration: none;
         color : vars.$mainColor;
         &:hover{
             color : vars.$mainColor;
