@@ -21,7 +21,7 @@ const Categories = () => {
             <div index={0}>
                 <img 
                     className="category-image" 
-                    src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img01.jpg" 
+                    src="http://localhost/Project/projet-workout-plan-front/src/assets/images/img01.jpg" 
                     alt="fans de sprot" 
                 />
                 <CategoryCard title="La Nage" text="tropb bien ce sport il faut le test!!"/>
@@ -29,7 +29,7 @@ const Categories = () => {
             <div index={1}>
                 <img 
                     className="category-image" 
-                    src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img02.jpg" 
+                    src="http://localhost/Project/projet-workout-plan-front/src/assets/images/img02.jpg" 
                     alt="fans de sprot" 
                 />
                 <CategoryCard title="La Sport 2" text="tropb bien ce sport il faut le test!!"/>
@@ -37,7 +37,7 @@ const Categories = () => {
             <div index={2}>
                 <img 
                     className="category-image" 
-                    src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img03.jpg" 
+                    src="http://localhost/Project/projet-workout-plan-front/src/assets/images/img03.jpg" 
                     alt="fans de sprot" 
                 />
                 <CategoryCard title="Le Sport 3" text="tropb bien ce sport il faut le test!!"/>
