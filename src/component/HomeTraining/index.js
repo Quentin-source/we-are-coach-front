@@ -1,94 +1,93 @@
-import avatar from '../../assets/images/avatar_Maeva.jpg';
-import { Icon,Card, Image } from 'semantic-ui-react'
+//test HomePage Training
+import React from 'react';
+import {List, ListItem, Divider, ListItemText, ListItemAvatar, Avatar, Typography, Container } from '@mui/material';
+import boxe from '../../assets/images/boxe.jpg';
+import velo from '../../assets/images/velo.jpg';
+import photo from '../../assets/images/pexels-photo.jpg';
 import './style.scss';
+
 
 const HomeTraining = () => {
     return (
-        <Card.Group className= "card-group">
-            <Card>
+        <Container fixed
             
-                <Card.Content className= "content-header">
-                    <Card.Header className= "header-category" textAlign= "center">Categorie
-                        <Image
-                            floated='right'
-                            size= 'mini'
-                            src={avatar}
-                        />
-                    </Card.Header>
-                </Card.Content>
-                <Card.Content>
-                    <Card.Meta className= "meta">
-                        <span className='sportName'>Nom de l'entrainement</span>
-                    </Card.Meta>
-                    <Card.Description>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo quod non dolores iure veniam doloremque unde quam minus, dolorum at voluptatum corporis tenetur assumenda vero aliquid laudantium similique blanditiis sed.
-                    </Card.Description>
-                </Card.Content>
-                <Card.Content extra className="content-extra">
-                    <a>
-                        <Icon name='user' />
-                            difficulté
-                    </a>
-                    <a>publié le</a>
-                </Card.Content>
-            </Card>
-
-            <Card>
-            
-                <Card.Content className= "content-header">
-                    <Card.Header className= "header-category" textAlign= "center">Categorie
-                        <Image
-                            floated='right'
-                            size= 'mini'
-                            src={avatar}
-                        />
-                    </Card.Header>
-                </Card.Content>
-                <Card.Content>
-                    <Card.Meta className= "meta">
-                        <span className='sportName'>Nom de l'entrainement</span>
-                    </Card.Meta>
-                    <Card.Description>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo quod non dolores iure veniam doloremque unde quam minus, dolorum at voluptatum corporis tenetur assumenda vero aliquid laudantium similique blanditiis sed.
-                    </Card.Description>
-                </Card.Content>
-                <Card.Content extra className="content-extra">
-                    <a>
-                        <Icon name='user' />
-                            difficulté
-                    </a>
-                    <a>publié le</a>
-                </Card.Content>
-            </Card>
-            <Card>
-            
-                <Card.Content className= "content-header">
-                    <Card.Header className= "header-category" textAlign= "center">Categorie
-                        <Image
-                            floated='right'
-                            size= 'mini'
-                            src={avatar}
-                        />
-                    </Card.Header>
-                </Card.Content>
-                <Card.Content>
-                    <Card.Meta className= "meta">
-                        <span className='sportName'>Nom de l'entrainement</span>
-                    </Card.Meta>
-                    <Card.Description>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo quod non dolores iure veniam doloremque unde quam minus, dolorum at voluptatum corporis tenetur assumenda vero aliquid laudantium similique blanditiis sed.
-                    </Card.Description>
-                </Card.Content>
-                <Card.Content extra className="content-extra">
-                    <a>
-                        <Icon name='user' />
-                            difficulté
-                    </a>
-                    <a>publié le</a>
-                </Card.Content>
-            </Card>
-        </Card.Group>
+        >
+            <div className="container">
+                <List sx={{ width: 1000, height: 550, bgcolor: 'background.paper' }}>
+                    <div className="incontainer">
+                        <ListItem  sx={{ textalign: "center" }} alignItems="flex-start">
+                            <ListItemAvatar>
+                                <Avatar  sx={{ width: 150, height: 150 }} alt="boxeur" src={boxe} />
+                            </ListItemAvatar>
+                            <ListItemText
+                                primary="Top 1 des entraînements"
+                                secondary={
+                                    <React.Fragment>
+                                        <Typography 
+                                            sx={{ display: 'inline', fontSize: 24, fontWeight: 'medium'}}
+                                            component="span"
+                                            variant="body2"
+                                            color="text.primary"
+                                        >
+                                            Jean Tend
+                                        </Typography>
+                                        <div className="text">{"— Boxe, krav-maga c'est partis, pour gagner des muscles!"}
+                                        </div>
+                                    </React.Fragment>
+                                }
+                            />
+                        </ListItem>
+                        <Divider variant="inset" component="li" />
+                        <ListItem alignItems="flex-start">
+                            <ListItemAvatar>
+                                <Avatar sx={{ width: 150, height: 150 }} alt="cycliste" src={velo} />
+                            </ListItemAvatar>
+                            <ListItemText
+                                sx={{ display: 'inline', fontSize: 24, fontWeight: 'medium' }}
+                                primary="Top 2 des entraînements"
+                                secondary={
+                                    <React.Fragment>
+                                        <Typography
+                                            sx={{ display: 'inline', fontSize: 24, fontWeight: 'medium', marginleft: 90 }}
+                                            component="span"
+                                            variant="body2"
+                                            color="text.primary"
+                                        >
+                                        Alex Xandry
+                                        </Typography>
+                                        <div className="text">{" — Faire du vélo, c'est bon pour le coeur, suivez ma routine!"}</div>
+                                    </React.Fragment>
+                                }
+                            />
+                        </ListItem>
+                        <Divider variant="inset" component="li" />
+                        <ListItem alignItems="flex-start">
+                            <ListItemAvatar>
+                                <Avatar sx={{ width: 150, height: 150 }} alt="muscu" src={photo} />
+                            </ListItemAvatar>
+                            <ListItemText
+                                sx={{ display: 'inline', fontSize: 24, fontWeight: 'medium' }}
+                                primary="Top 3 des entraînements"
+                                secondary={
+                                    <React.Fragment>
+                                        <Typography
+                                            sx={{ display: 'inline', fontSize: 24, fontWeight: 'medium' }}
+                                            component="span"
+                                            variant="body2"
+                                            color="text.primary"
+                                        >
+                                        Sandie Kilos
+                                        </Typography>
+                                        <div className="text">{' — Mon entraînement va vous faire perdre vos kilos en trop.'}</div>
+                                    </React.Fragment>
+                                }
+                            />
+                        </ListItem>
+                    </div>
+                </List>
+            </div>
+        </Container> 
     );
-};
+}
 
 export default HomeTraining;
