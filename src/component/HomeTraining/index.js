@@ -13,7 +13,7 @@ const HomeTraining = () => {
             
         >
             <div className="container">
-                <List sx={{ width: 2000, height: 550, bgcolor: 'background.paper' }}>
+                <List sx={{ width: 1000, height: 550, bgcolor: 'background.paper' }}>
                     <div className="incontainer">
                         <ListItem  sx={{ textalign: "center" }} alignItems="flex-start">
                             <ListItemAvatar>
