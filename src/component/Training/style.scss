@@ -1,14 +1,16 @@
 @use 'src/styles/vars';
 
-@media (min-width: 1000px) {
-    .trainnings {
+   .trainnings {
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
     }
-}
+
 
 .trainning-card {
-    margin: 3em;
+    margin: 2em;
+    margin-top : -3em;
+    width : 350px;
 }
 
 .description-card {

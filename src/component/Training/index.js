@@ -12,7 +12,6 @@ const Training = () => {
             <CardTrainning />
             <CardTrainning />
             <CardTrainning />
-            <CardTrainning />
         </div>
     );
 };
