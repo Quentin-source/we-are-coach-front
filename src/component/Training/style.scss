@@ -1,44 +1,37 @@
-
 @use 'src/styles/vars';
 
-.card {
-   width: 800px !important;
-   font-weight: bold;
-   font-size: large; 
-
+@media (min-width: 1000px) {
+    .trainnings {
+        display: flex;
+        justify-content: center;
+    }
 }
 
-.card-content {
-   position: absolute;
-   top: 60px; left: 10px; 
+.trainning-card {
+    margin: 3em;
 }
 
-.card-header {
-    padding-bottom: 2em !important;
+.description-card {
+    height: 51px;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    padding: 0% !important;
 }
 
-.content-extra {
+.footer-card {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding: 5px !important;
+    border-top: black solid 1px;
 }
 
-.trainningName {
-    color: vars.$trainningName;
-    margin-bottom: 2em !important;
+p {
+    height: 50px;
 }
 
-.card-description {
-    margin-top: 2em !important;
-    background-color: rgba(255, 255, 255, .5);
-    padding: 10px;
-    color: black !important;
-}
-
-.card-image {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.trainnings {
-    padding-left: 10px;
+@media (max-width: 450px) {
+    .trainnings {
+        display: flex;
+        flex-direction: column;
+    }
 }
