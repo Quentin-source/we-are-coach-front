@@ -1,26 +1,18 @@
-@media (min-width: 1000px) {
+
+.trainings-home {
    
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    position: relative;
-    margin-top: 100px;
-    padding: 70px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+    height: fit-content;
 }
 
-.text {
+
+.training-home-text {
     text-align: justify;
-    margin-left: 80px;
-    font-size: 20px;
+    margin-left: 5vw;
+    font-size: 1em;
 }
 
-@media (max-width: 450px) {
-    .container {
-        display: flex;
-        flex-direction: column;
-    }
+.training-home-title .MuiListItemText-primary{
+    font-size: 0.8em;
 }
 

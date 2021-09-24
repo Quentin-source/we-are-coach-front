@@ -8,12 +8,14 @@
     max-width: 1920px;
     position:fixed;
     bottom: 0;
+   
     border : vars.$mainColor 4px solid;
-    padding: 0.3em;
+    padding: 0.3em 0em;
     z-index: 5;
     a{
         color : vars.$mainColor;
-        padding:  2em;
+        padding:  0.5em;
+        padding-right : 1em;
         height: fit-content;
         text-decoration: none;
 

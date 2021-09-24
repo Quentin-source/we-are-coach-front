@@ -8,7 +8,8 @@ import App from './component/App';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import './index.css';
+import './styles/_reset.css'
+import './index.scss';
 
 // import reportWebVitals from './reportWebVitals';
 
@@ -16,15 +17,14 @@ const mainThemeMUI = createTheme({
     palette: {
         primary: {
             main: '#ffb74d',
-            dark: '#b28035',
-            light: '#ffc570',
         },
         secondary: {
             main: '#ffab91',
-            light: '#ffbba7',
-            dark: '#b27765',
         },
-        mode:'dark',
+        maeva:{
+            main: '#ffffff',
+        },
+        mode: 'light',
     },
 });
 
