@@ -4,8 +4,15 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 import CategoryCard from './CategoryCard';
+import { useDispatch } from 'react-redux';
 
 const Categories = () => {
+
+    const dispatch = useDispatch();
+
+    const handleCompleteLoading = () => (dispatch({type:'TOGGLE_LOADING'}));
+
+
     const settings = {
         infinite: true,
         speed: 300,
@@ -16,7 +23,7 @@ const Categories = () => {
         arrows : true,
     };
     return (
-        <Slider className="categories" {...settings}>        
+        <Slider className="categories" {...settings} onInit={handleCompleteLoading}>        
             
             <div index={0}>
                 <img 
