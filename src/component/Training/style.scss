@@ -1,3 +1,37 @@
-.training-cards{
-    justify-content: center;
+@use 'src/styles/vars';
+
+@media (min-width: 1000px) {
+    .trainnings {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.trainning-card {
+    margin: 3em;
+}
+
+.description-card {
+    height: 51px;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    padding: 0% !important;
+}
+
+.footer-card {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px !important;
+    border-top: black solid 1px;
+}
+
+p {
+    height: 50px;
+}
+
+@media (max-width: 450px) {
+    .trainnings {
+        display: flex;
+        flex-direction: column;
+    }
 }

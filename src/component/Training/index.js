@@ -1,87 +1,19 @@
 
-import avatar from '../../assets/images/avatar_Maeva.jpg';
-import { Icon,Card, Image } from 'semantic-ui-react'
-import 'semantic-ui-css/semantic.min.css';
-import './style.scss'
+
+import './style.scss';
+
+import CardTrainning from './trainning';
+
 
 
 const Training = () => {
     return (
-        <Card.Group className="training-cards">
-            <Card>
-                <Card.Content>
-                    <Image
-                        floated='right'
-                        size='mini'
-                        src={avatar}
-                    />
-                    <Card.Header textAlign= "center">Categorie</Card.Header>
-                    <Card.Meta>
-                        <span className='sportName'>Nom de l'entrainement</span>
-                    </Card.Meta>
-                    <Card.Description>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo quod non dolores iure veniam doloremque unde quam minus, dolorum at voluptatum corporis tenetur assumenda vero aliquid laudantium similique blanditiis sed.
-                    </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                            difficulté
-                    </a>
-                    <a>publié le</a>
-                </Card.Content>
-            </Card>
-
-            <Card>
-        
-                <Card.Content>
-                    <Image
-                        floated='right'
-                        size='mini'
-                        src={avatar}
-                    />
-                    <Card.Header textAlign= "center">Categorie</Card.Header>
-                    <Card.Meta>
-                        <span className='sportName'>Nom de l'entrainement</span>
-                    </Card.Meta>
-                    <Card.Description>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo quod non dolores iure veniam doloremque unde quam minus, dolorum at voluptatum corporis tenetur assumenda vero aliquid laudantium similique blanditiis sed.
-                    </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                        difficulté
-                    </a>
-                    <a>publié le</a>
-                </Card.Content>
-            </Card>
-
-            <Card>
-                
-                <Card.Content>
-                    <Image
-                        floated='right'
-                        size='mini'
-                        src={avatar}
-                    />
-                    <Card.Header textAlign= "center">Categorie</Card.Header>
-                    <Card.Meta>
-                        <span className='sportName'>Nom de l'entrainement</span>
-                    </Card.Meta>
-                    <Card.Description>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo quod non dolores iure veniam doloremque unde quam minus, dolorum at voluptatum corporis tenetur assumenda vero aliquid laudantium similique blanditiis sed.
-                    </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                        difficulté
-                    </a>
-                    <a>publié le</a>
-                </Card.Content>
-            </Card>
-        </Card.Group>
+        <div className= 'trainnings'>
+            <CardTrainning />
+            <CardTrainning />
+            <CardTrainning />
+            <CardTrainning />
+        </div>
     );
 };
 
