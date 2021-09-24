@@ -4,7 +4,7 @@ import tennis from '../../assets/images/tennis.jpg'
 
 import './style.scss';
 
-import CardTrainning from './training';
+import CardTrainning from './Training/';
 
 
 
