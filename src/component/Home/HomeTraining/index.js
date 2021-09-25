@@ -10,8 +10,8 @@ const HomeTraining = () => {
             <List >
                 <div className="trainings-home-container">
                     <ListItem  className="training-home" alignItems="flex-start">
-                        <ListItemAvatar>
-                            <Avatar  className="training-home-avatar" alt="boxeur" src={"http://localhost/apo/projet-workout-plan-front/src/assets/images/boxe.jpg"} />
+                        <ListItemAvatar className="training-home-avatar" >
+                            <Avatar  alt="boxeur" src={"http://localhost/apo/projet-workout-plan-front/src/assets/images/boxe.jpg"} />
                         </ListItemAvatar>
                         <ListItemText
                             className="training-home-title"
@@ -19,7 +19,7 @@ const HomeTraining = () => {
                             secondary={
                                 <>
                                     <Typography 
-                                        className="traing-home-name"
+                                        className="training-home-name"
                                         component="span"
                                         variant="subtitle2"
                                         color="text.primary"
@@ -35,8 +35,8 @@ const HomeTraining = () => {
                     </ListItem>
                     <Divider variant="inset" component="li" />
                     <ListItem  className="training-home" alignItems="flex-start">
-                        <ListItemAvatar>
-                            <Avatar  className="training-home-avatar" alt="boxeur" src={"http://localhost/apo/projet-workout-plan-front/src/assets/images/velo.jpg"} />
+                        <ListItemAvatar className="training-home-avatar">
+                            <Avatar alt="boxeur" src={"http://localhost/apo/projet-workout-plan-front/src/assets/images/velo.jpg"} />
                         </ListItemAvatar>
                         <ListItemText
                             className="training-home-title"
@@ -44,7 +44,7 @@ const HomeTraining = () => {
                             secondary={
                                 <>
                                     <Typography 
-                                        className="traing-home-name"
+                                        className="training-home-name"
                                         component="span"
                                         variant="subtitle2"
                                         color="text.primary"
@@ -62,8 +62,8 @@ const HomeTraining = () => {
                     <Divider variant="inset" component="li" />
 
                     <ListItem  className="training-home" alignItems="flex-start">
-                        <ListItemAvatar sx={{ width : 60, height: 60 }} className="training-home-avatar">
-                            <Avatar   alt="photo" src={"http://localhost/apo/projet-workout-plan-front/src/assets/images/pexels-photo.jpg"} />
+                        <ListItemAvatar className="training-home-avatar" >
+                            <Avatar alt="photo" src={"http://localhost/apo/projet-workout-plan-front/src/assets/images/pexels-photo.jpg"} />
                         </ListItemAvatar>
                         <ListItemText
                             className="training-home-title"
@@ -71,7 +71,7 @@ const HomeTraining = () => {
                             secondary={
                                 <>
                                     <Typography 
-                                        className="traing-home-name"
+                                        className="training-home-name"
                                         component="span"
                                         variant="subtitle2"
                                         color="text.primary"

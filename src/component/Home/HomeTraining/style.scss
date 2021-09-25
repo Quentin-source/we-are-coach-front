@@ -5,6 +5,14 @@
     height: fit-content;
 }
 
+.training-home-title{
+    margin-left: 1em;
+}
+
+span.training-home-name{
+    font-size: 1.2em;
+}
+
 
 .training-home-text {
     text-align: justify;
@@ -13,6 +21,19 @@
 }
 
 .training-home-title .MuiListItemText-primary{
-    font-size: 0.8em;
+    font-size: 0.7em;
 }
 
+.training-home-avatar div{
+    width: 80px;
+    height: 80px;
+}
+
+@media (max-width : 450px) {
+    
+    .training-home-avatar div{
+        width: 60px;
+        height: 60px;
+    }
+    
+}
