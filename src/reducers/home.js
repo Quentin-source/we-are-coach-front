@@ -34,11 +34,18 @@ const reducer = (state = initialState, action = {}) => {
                 connectPop: false,
             }
         );
-    case 'TOGGLE_LOADING':
+    case 'LOADING_ON':
         return (
             {
                 ...state,
-                loading: !state.loading,
+                loading: true,
+            }
+        );
+    case 'LOADING_OFF':
+        return (
+            {
+                ...state,
+                loading: false,
             }
         );
     case 'TOGGLE_MENU':

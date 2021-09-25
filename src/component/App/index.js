@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import Loader from '../Loading';
 import Home from '../Home';
@@ -15,17 +15,15 @@ import Trainings from '../Trainings';
 import './style.scss';
 
 
-
 const App = () => {
-    // const dispatch = useDispatch();
-
-    const loadingStatus = useSelector((state)=>(state.home.loading));
-    
-    // useEffect(() => (dispatch({type: 'TOGGLE_LOADING'})), []);
+    const dispatch = useDispatch();
+    dispatch({type:'LOADING_ON'});
+    setTimeout(() => (dispatch({type:'LOADING_OFF'})),3000);
+   
 
     return (
         <div className="app">
-            {loadingStatus && <Loader />}    
+            <Loader />    
             <div className="app-header">
                 <Header />
                 <Usermenu />

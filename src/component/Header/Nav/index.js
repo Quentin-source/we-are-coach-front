@@ -5,7 +5,7 @@ import { useDispatch , useSelector} from "react-redux";
 
 import Connectpop from '../Connection/Connectpop';
 
-import logo from '../../../assets/images/Logo.jpg';
+import logo from '../../../assets/images/svg/we are coach long basket.svg';
 import avatar from '../../../assets/images/avatar_Maeva.jpg';
 
 

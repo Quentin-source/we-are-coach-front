@@ -1,9 +1,34 @@
 .loader.loader-main{
     position : fixed;
-    background-color: black;
-    width : 120vw;
-    height : 120vh;
-    top : -60px;
+    // background-color: black;
+    width : 100vw;
+    height : 100vh;
+    top : 0;
     left: 0;
+    background-color: black;
     z-index: 10;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    &--true{
+        left: 0;
+        opacity: 100;
+    }
+    &--false{
+       opacity: 0;
+       left: 120vw;
+       
+    }
+}
+
+.loader-main-logo{
+//    height : 80vh;
+   width : 50vw;
+   filter: invert(100%);
+   margin-bottom: 4em;
+
 }

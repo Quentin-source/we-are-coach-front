@@ -4,34 +4,29 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 import CategoryCard from './CategoryCard';
-import { useDispatch } from 'react-redux';
 
 const Categories = () => {
 
-    const dispatch = useDispatch();
-
-    const handleCompleteLoading = () => (dispatch({type:'TOGGLE_LOADING'}));
-
-
     const settings = {
         infinite: true,
-        speed: 300,
+        speed: 800,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 3000,
         autoplay: true,
         arrows : true,
+        lazyLoad : true,
     };
     return (
-        <Slider className="categories" {...settings} onInit={handleCompleteLoading}>        
+        <Slider className="categories" {...settings}>    
             
             <div index={0}>
                 <img 
                     className="category-image" 
                     src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img01.jpg" 
-                    alt="fans de sprot" 
+                    alt="fans de sport" 
                 />
-                <CategoryCard title="La Nage" text="tropb bien ce sport il faut le test!!"/>
+                <CategoryCard title="La Nage" text="trop bien ce sport il faut le test!!"/>
             </div>
             <div index={1}>
                 <img 
@@ -39,7 +34,7 @@ const Categories = () => {
                     src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img02.jpg" 
                     alt="fans de sprot" 
                 />
-                <CategoryCard title="La Sport 2" text="tropb bien ce sport il faut le test!!"/>
+                <CategoryCard title="La Sport 2" text="trop bien ce sport il faut le test!!"/>
             </div>
             <div index={2}>
                 <img 
@@ -47,7 +42,7 @@ const Categories = () => {
                     src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img03.jpg" 
                     alt="fans de sprot" 
                 />
-                <CategoryCard title="Le Sport 3" text="tropb bien ce sport il faut le test!!"/>
+                <CategoryCard title="Le Sport 3" text="trop bien ce sport il faut le test!!"/>
             </div>           
         </Slider>
     );
