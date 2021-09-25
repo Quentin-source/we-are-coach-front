@@ -19,7 +19,7 @@ const Usermenu = () => {
             <Link> Mon profil</Link>
             <Link> Mes entrainements</Link>
             <Link> Mes favoris</Link>
-            <Button color="primary" variant="outlined" onClick={handleDeconnection} className="navbar-connect-button"> Deconnection </Button>
+            <Button color="primary" variant="outlined" onClick={handleDeconnection} className="navbar-deconnect-button"> Deconnection </Button>
         </div>
     );
 } 
