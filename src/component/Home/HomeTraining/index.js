@@ -1,8 +1,6 @@
 //test HomePage Training
 import {List, ListItem, Divider, ListItemText, ListItemAvatar, Avatar, Typography, Container } from '@mui/material';
-import boxe from '../../assets/images/boxe.jpg';
-import velo from '../../assets/images/velo.jpg';
-import photo from '../../assets/images/pexels-photo.jpg';
+
 import './style.scss';
 
 
@@ -13,7 +11,7 @@ const HomeTraining = () => {
                 <div className="trainings-home-container">
                     <ListItem  className="training-home" alignItems="flex-start">
                         <ListItemAvatar>
-                            <Avatar  className="training-home-avatar" alt="boxeur" src={boxe} />
+                            <Avatar  className="training-home-avatar" alt="boxeur" src={"http://localhost/apo/projet-workout-plan-front/src/assets/images/boxe.jpg"} />
                         </ListItemAvatar>
                         <ListItemText
                             className="training-home-title"
@@ -38,7 +36,7 @@ const HomeTraining = () => {
                     <Divider variant="inset" component="li" />
                     <ListItem  className="training-home" alignItems="flex-start">
                         <ListItemAvatar>
-                            <Avatar  className="training-home-avatar" alt="boxeur" src={velo} />
+                            <Avatar  className="training-home-avatar" alt="boxeur" src={"http://localhost/apo/projet-workout-plan-front/src/assets/images/velo.jpg"} />
                         </ListItemAvatar>
                         <ListItemText
                             className="training-home-title"
@@ -65,7 +63,7 @@ const HomeTraining = () => {
 
                     <ListItem  className="training-home" alignItems="flex-start">
                         <ListItemAvatar sx={{ width : 60, height: 60 }} className="training-home-avatar">
-                            <Avatar   alt="boxeur" src={photo} />
+                            <Avatar   alt="photo" src={"http://localhost/apo/projet-workout-plan-front/src/assets/images/pexels-photo.jpg"} />
                         </ListItemAvatar>
                         <ListItemText
                             className="training-home-title"

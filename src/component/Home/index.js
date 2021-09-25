@@ -1,5 +1,5 @@
-import Categories from "../Categories";
-import HomeTraining from "../HomeTraining";
+import Categories from "./Categories";
+import HomeTraining from "./HomeTraining";
 
 import './style.scss'
 
