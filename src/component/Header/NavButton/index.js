@@ -1,11 +1,14 @@
 import './style.scss';
 
 
-const NavButton = ({SvgContent, className, handleClick}) => {
+const NavButton = ({content, className, handleClick}) => {
 
     return(
-        <button className={className} type="button" onClick={handleClick}>
-            {SvgContent}
+        <button 
+            className={className}
+            type="button"
+            onClick={handleClick}>
+            {content}
         </button>
     );
 

@@ -32,8 +32,8 @@ const Connectpop = () =>  {
     return (
         <div>
             <NavButton 
-                className={!connectPopState ? 'navbar-button navbar-button-avatar ': 'navbar-button navbar-button-avatar navbar-button--open'} 
-                SvgContent={<LockOpen />} 
+                className={!connectPopState ? 'navbar-button': 'navbar-button navbar-button--open'} 
+                content={<LockOpen />} 
                 handleClick= {handleClickOpen}           
             />
             <Dialog color="primary" open={connectPopState} onClose={handleClose}>

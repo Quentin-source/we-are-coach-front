@@ -16,7 +16,11 @@
     }
 
     .navbar-button-avatar{
-        margin-right : 1em;
+        margin-right : 2em;
+        img {
+            width: 40px;
+            height: 40px;
+        }
     }
 
     
@@ -29,7 +33,7 @@
     &-linkgroup {
         display: flex;
         justify-content: space-around;
-        width: 600px;
+        max-width: 600px;
         align-items: flex-start;
         padding: 1em;
         flex-grow: 1;

@@ -25,7 +25,7 @@ const Nav = () => {
         <div className="navbar">
             <NavButton 
                 className={!menuDropState ? 'navbar-button navbar-button-navdrop': 'navbar-button navbar-button-navdrop navbar-button--open'} 
-                SvgContent={!menuDropState? <Menu /> : <Close /> } 
+                content={!menuDropState? <Menu /> : <Close /> } 
                 handleClick= {handleClickDropMenu}            
             />
             <Link to="/"> <img src={logo} className="header-logo" alt="Logo We are coach" /></Link>
@@ -55,20 +55,23 @@ const Nav = () => {
                     Contact
                 </NavLink>
             </div>
-            {connectionStatus && <button 
-                className ={!userMenuState ? 'navbar-button' : 'navbar-button navbar-button--open'}
-                type="button" onClick={handleClickAvatar}
-            >
-                <img
-                    src={avatar} 
-                    className={!userMenuState ? 'user-avatar' : 'user-avatar user-avatar--open'}
-                    alt="Avatar de l'utilisateur" />
-            </button>}
+            {connectionStatus && 
+            <NavButton 
+                className={!userMenuState ? 'navbar-button navbar-button-avatar ': 'navbar-button navbar-button-avatar navbar-button--open'} 
+                content= {
+                    <img
+                        src={avatar} 
+                        className={!userMenuState ? 'user-avatar' : 'user-avatar user-avatar--open'}
+                        alt="Avatar de l'utilisateur" 
+                    />
+                }
+                handleClick={handleClickAvatar}
+            />}
             {!connectionStatus && 
             <div className="navbar-buttongroup-unconnect">
                 <NavButton 
                     className={!menuDropState ? 'navbar-button ': 'navbar-button navbar-button--open'} 
-                    SvgContent={<AssignmentIndOutlined />}            
+                    content={<AssignmentIndOutlined />}            
                 />
                 <Connectpop />
             </div>}
