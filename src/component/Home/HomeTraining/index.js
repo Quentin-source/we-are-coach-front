@@ -26,9 +26,9 @@ const HomeTraining = () => {
                                     >
                                         Jean Tend
                                     </Typography>
-                                    <div className="training-home-text">
+                                    <span className="training-home-text">
                                         Boxe, krav-maga c'est partis, pour gagner des muscles!
-                                    </div>
+                                    </span>
                                 </>
                             }
                         />
@@ -51,9 +51,9 @@ const HomeTraining = () => {
                                     >
                                         Alex Xandry
                                     </Typography>
-                                    <div className="training-home-text"> 
+                                    <span className="training-home-text"> 
                                         Faire du vélo, c'est bon pour le coeur, suivez ma routine!
-                                    </div>
+                                    </span>
                                 </>
                             }
                         />
@@ -78,9 +78,9 @@ const HomeTraining = () => {
                                     >
                                         Alex Xandry
                                     </Typography>
-                                    <div className="training-home-text"> 
+                                    <span className="training-home-text"> 
                                         Mon entraînement va vous faire perdre vos kilos en trop.
-                                    </div>
+                                    </span>
                                 </>
                             }
                         />

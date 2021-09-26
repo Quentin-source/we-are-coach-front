@@ -1,0 +1,27 @@
+@use 'src/styles/vars';
+
+@keyframes buttonHover {
+
+    0% {
+        width: 0;
+        height: 0;
+        border-color: vars.$mainColor transparent transparent transparent;
+    }
+
+    40% {
+        width: 100%;
+        height: 0%;
+        border-color: vars.$mainColor transparent transparent transparent;
+    }
+
+    80% {
+        border-radius: 0%;
+    }
+
+    100% {
+        width: 100%;
+        height: 100%;
+        border-color: vars.$mainColor vars.$mainColor transparent transparent;
+        border-radius: 50%;
+    }
+}

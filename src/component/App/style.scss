@@ -1,5 +1,10 @@
 @use 'src/styles/vars';
 
+button{
+    background-color: transparent;
+    border:0;
+}
+
 .app{
     max-width: 1920px;
     min-height: 100vh;
@@ -7,16 +12,15 @@
     margin: auto;
     background-color: white;
     position : relative;
-
     top : 60px;
-    
     &-header{
         position: fixed;
         top: 0;
         width: 100vw;
         max-width: 1920px;
-        z-index: 2;
+        z-index: 3;
     }
+    
 }
 
 
@@ -43,12 +47,17 @@ body::-webkit-scrollbar {
         width : 100vw;
         text-align: center; 
     }
+    .navbar .header-logo{
+        width: 120px
+    }       
+   
   }
 
   @media (min-width: 450px) {
-   .navbar-drop-button{
+   .navbar-button-navdrop{
        display : none;
    }  
+   
   }
   
   a{

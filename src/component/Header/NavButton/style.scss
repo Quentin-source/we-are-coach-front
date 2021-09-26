@@ -1,0 +1,60 @@
+@use 'src/styles/vars';
+@use 'src/styles/motion';
+
+
+button.navbar-button {
+    position: relative;
+    background-color: vars.$mainColor;
+    height: 40px;
+    width: 40px;
+    padding: 0px;
+    margin : 0em 0.5em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s;
+    transition-timing-function: cubic-bezier(.46, .38, .25, .69);
+    z-index: 0;
+    border:0;
+
+    svg {
+        fill: white;
+        width:40px;
+    }
+
+    &:hover {
+        svg {
+            fill: vars.$mainColor;
+        }
+
+        background-color: white;
+    }
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        border: 1px solid transparent;
+        z-index: 1;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        transform: rotate(180deg);
+        bottom: 0px;
+        right: 0px;
+        border: 1px solid transparent;
+        z-index: 1;
+    }
+    &:hover::after {
+        animation: forwards 0.5s buttonHover;
+    }
+
+    &:hover::before {
+        animation: forwards 0.5s buttonHover;
+    }
+    &--open {
+        transform: rotate(360deg);
+    }
+}

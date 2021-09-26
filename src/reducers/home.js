@@ -1,6 +1,6 @@
 export const initialState = {
     list: [],
-    loading: true,
+    loading: false,
     userMenu : false,
     dropMenu : false,
     connectPop : false,

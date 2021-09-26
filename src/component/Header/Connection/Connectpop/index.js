@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '@mui/material/Button';
+import NavButton from '../../NavButton'
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { LockOpen } from '@material-ui/icons';
 
 const Connectpop = () =>  {
     const dispatch = useDispatch();
@@ -29,9 +31,11 @@ const Connectpop = () =>  {
 
     return (
         <div>
-            <Button color="primary" variant="outlined" onClick={handleClickOpen} className='navbar-connect-button'>
-            Connection
-            </Button>
+            <NavButton 
+                className={!connectPopState ? 'navbar-button navbar-button-avatar ': 'navbar-button navbar-button-avatar navbar-button--open'} 
+                SvgContent={<LockOpen />} 
+                handleClick= {handleClickOpen}           
+            />
             <Dialog color="primary" open={connectPopState} onClose={handleClose}>
                 <DialogTitle>Connection</DialogTitle>
                 <DialogContent>

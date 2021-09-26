@@ -3,7 +3,10 @@ import { NavLink } from "react-router-dom";
 
 import { useDispatch , useSelector} from "react-redux";
 
+import { Menu, Close, AssignmentIndOutlined} from "@material-ui/icons";
+
 import Connectpop from '../Connection/Connectpop';
+import NavButton from "../NavButton";
 
 import logo from '../../../assets/images/svg/we are coach long basket.svg';
 import avatar from '../../../assets/images/avatar_Maeva.jpg';
@@ -15,15 +18,16 @@ const Nav = () => {
     const dispatch = useDispatch();
     const menuDropState = useSelector((state)=>(state.home.dropMenu));
     const connectionStatus = useSelector((state) =>(state.home.connected));
+    const userMenuState = useSelector((state) => (state.home.userMenu))
     const handleClickAvatar = () => (dispatch({type : 'TOGGLE_MENU'})); 
     const handleClickDropMenu = () => (dispatch({type : 'TOGGLE_DROP'}))
     return(
         <div className="navbar">
-            <button className="navbar-drop-button" type="button" onClick={handleClickDropMenu}>
-                <div className={menuDropState ? 'navbar-drop-button-bar Up' : 'navbar-drop-button-bar changeUp Up'}></div>
-                <div className={menuDropState ? 'navbar-drop-button-bar Center' : 'navbar-drop-button-bar changeCenter Center'}></div>
-                <div className={menuDropState ? 'navbar-drop-button-bar Down' : 'navbar-drop-button-bar changeDown Down'}></div>        
-            </button>
+            <NavButton 
+                className={!menuDropState ? 'navbar-button navbar-button-navdrop': 'navbar-button navbar-button-navdrop navbar-button--open'} 
+                SvgContent={!menuDropState? <Menu /> : <Close /> } 
+                handleClick= {handleClickDropMenu}            
+            />
             <Link to="/"> <img src={logo} className="header-logo" alt="Logo We are coach" /></Link>
             <div className="navbar-linkgroup">
                 <NavLink
@@ -51,8 +55,23 @@ const Nav = () => {
                     Contact
                 </NavLink>
             </div>
-            {connectionStatus && <button type="button" onClick={handleClickAvatar}><img src={avatar} className="user-avatar" alt="Avatar de l'utilisateur" /></button>}
-            {!connectionStatus && <Connectpop />}
+            {connectionStatus && <button 
+                className ={!userMenuState ? 'navbar-button' : 'navbar-button navbar-button--open'}
+                type="button" onClick={handleClickAvatar}
+            >
+                <img
+                    src={avatar} 
+                    className={!userMenuState ? 'user-avatar' : 'user-avatar user-avatar--open'}
+                    alt="Avatar de l'utilisateur" />
+            </button>}
+            {!connectionStatus && 
+            <div className="navbar-buttongroup-unconnect">
+                <NavButton 
+                    className={!menuDropState ? 'navbar-button ': 'navbar-button navbar-button--open'} 
+                    SvgContent={<AssignmentIndOutlined />}            
+                />
+                <Connectpop />
+            </div>}
         </div>
     );
 }
