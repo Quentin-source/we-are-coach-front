@@ -6,7 +6,7 @@ export const initialState = {
 
 };
 
-const reducer = (state = initialState, action = {}) => {
+const userReducer = (state = initialState, action = {}) => {
     switch (action.type) {
     case 'UPDATE_USER_PASSWORD':
         return (
@@ -51,4 +51,4 @@ const reducer = (state = initialState, action = {}) => {
     }
 };
 
-export default reducer;
+export default userReducer;

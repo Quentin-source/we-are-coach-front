@@ -18,8 +18,7 @@ import './style.scss';
 const App = () => {
     const dispatch = useDispatch();
     dispatch({type:'LOADING_ON'});
-    setTimeout(() => (dispatch({type:'LOADING_OFF'})),3000);
-   
+    dispatch({type:'API_LOG'});   
 
     return (
         <div className="app">

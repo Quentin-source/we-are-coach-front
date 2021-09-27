@@ -1,12 +1,14 @@
 export const initialState = {
-    list: [],
+    apiLogin: 'test@test.com',
+    apiPassword: 'demo',
+    apiToken : '',
     loading: false,
     userMenu : false,
     dropMenu : false,
     connectPop : false,
 };
 
-const reducer = (state = initialState, action = {}) => {
+const homeReducer = (state = initialState, action = {}) => {
     switch (action.type) {
     case 'CONNECTION':
         return (
@@ -74,9 +76,16 @@ const reducer = (state = initialState, action = {}) => {
                 userMenu: false,
             }
         );
+    case 'API_CONNECTION':
+        return (
+            {
+                ...state,
+                apiToken : action.token,
+            }
+        );
     default:
         return state;
     }
 };
 
-export default reducer;
+export default homeReducer;
