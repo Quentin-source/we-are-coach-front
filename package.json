@@ -1,6 +1,5 @@
 {
   "name": "projet-workout-plan-front",
-  "homepage": "http://localhost/apo/projet-workout-plan-front",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
