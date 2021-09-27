@@ -7,6 +7,7 @@ import Filters from './Filters'
 import './style.scss';
 
 import CardTrainning from './Training/';
+import SearchBar from './SearchBar';
 
 
 
@@ -14,6 +15,7 @@ const Trainings = () => {
     return (
         <main className="main-content main-content-trainings">
             <Filters />
+            <SearchBar />
             <div className= 'trainnings'>
                 <CardTrainning image= {run}/>
                 <CardTrainning image= {pool}/>
