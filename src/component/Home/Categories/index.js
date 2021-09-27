@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 import CategoryCard from './CategoryCard';
+import { useSelector } from 'react-redux';
 
 const Categories = () => {
 
@@ -17,33 +18,23 @@ const Categories = () => {
         arrows : true,
         lazyLoad : true,
     };
+
+    const categoriesList = useSelector((state)=>(state.cat.list));
+       
     return (
         <Slider className="categories" {...settings}>    
             
-            <div index={0}>
-                <img 
-                    className="category-image" 
-                    src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img01.jpg" 
-                    alt="fans de sport" 
-                />
-                <CategoryCard title="La Nage" text="trop bien ce sport il faut le test!!"/>
-            </div>
-            <div index={1}>
-                <img 
-                    className="category-image" 
-                    src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img02.jpg" 
-                    alt="fans de sprot" 
-                />
-                <CategoryCard title="La Sport 2" text="trop bien ce sport il faut le test!!"/>
-            </div>
-            <div index={2}>
-                <img 
-                    className="category-image" 
-                    src="http://localhost/apo/projet-workout-plan-front/src/assets/images/img03.jpg" 
-                    alt="fans de sprot" 
-                />
-                <CategoryCard title="Le Sport 3" text="trop bien ce sport il faut le test!!"/>
-            </div>           
+            {categoriesList.map((category)=> (
+                <div index={(category.id)-1}>
+                    <img 
+                        className="category-image" 
+                        src={category.picture} 
+                        alt={category.name} 
+                    />
+                    <CategoryCard title={category.name} text={category.description}/>
+                </div>
+            ))}    
+            
         </Slider>
     );
 }

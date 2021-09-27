@@ -1,6 +1,3 @@
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-
 import Categories from "./Categories";
 import HomeTraining from "./HomeTraining";
 

@@ -11,28 +11,39 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             username: state.home.apiLogin,
             password: state.home.apiPassword,
         })
-            .then((response) => {
+            .then((tokenResponse) => {
                 console.log('token API récupéré');
-                const token = response.data.token;
+                const token = tokenResponse.data.token;
+                //mise du token dans le state
                 store.dispatch({
                     type : 'API_CONNECTION',
                     token : token
                 });
+                //configuration axios avec le token dans le header
                 api.defaults.headers.common.Authorization = `bearer ${token}`;
+                //récupération des données de catégories depuis le back
                 api.get('/home/category')
-                    .then((response) => {
-                        console.log('reponse home Page', response.data);
+                    .then((categoriesResponse) => {
+                        console.log('reponse home Page categories', categoriesResponse.data);
                         store.dispatch({
                             type: 'FETCH_CAT',
-                            list: response.data,
-                        })
-                        store.dispatch({type: 'LOADING_OFF'});
+                            list: categoriesResponse.data,
+                        });                      
+                    }).then(()=>{
+                        api.get('/home/workout')
+                            .then((topTrainingsResponse)=> {
+                                console.log('reponse home page 3 entrainements', topTrainingsResponse.data);
+                                store.dispatch({
+                                    type: 'FETCH_BEST_TRAININGS',
+                                    best: topTrainingsResponse.data,
+                                });
+                                store.dispatch({type: 'LOADING_OFF'});
+                            })
                     })
                     .catch((error) => {
                         console.error(error);
                         alert('Problème communication serveur');
                     });
-
             })
             .catch((error) => {
                 console.error('pb identification api', error);
