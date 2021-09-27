@@ -1,8 +1,10 @@
 import axios from 'axios';
 const ajaxMiddleware = (store) => (next) => (action) => {
     //You can create a new instance of axios with a custom config
+    console.log(process.env);
+    
     const api = axios.create({
-        baseURL: 'http://ec2-54-235-14-192.compute-1.amazonaws.com/api/',
+        baseURL: process.env.REACT_APP_API_URL,
     });
 
     if (action.type === 'API_LOG') {

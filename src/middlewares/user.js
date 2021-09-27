@@ -3,7 +3,7 @@ import axios from 'axios';
 const userMiddleWare = (store) => (next) => (action) => {
     
     const api = axios.create({
-        baseURL: 'http://ec2-54-235-14-192.compute-1.amazonaws.com/api',
+        baseURL: `${process.env.REACT_APP_API_URL}`,
     });
 
     const getUserInformation = (response) => {

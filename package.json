@@ -1,5 +1,6 @@
 {
   "name": "projet-workout-plan-front",
+  "homepage": "http://localhost/apo/projet-workout-plan-front",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,13 +9,15 @@
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/styled-engine": "^5.0.0-alpha.11",
-    "@mui/material": "^5.0.1",
     "@mui/icons-material": "^5.0.1",
+    "@mui/material": "^5.0.1",
     "@mui/styled-engine-sc": "^5.0.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.4",
+    "dot": "^1.1.3",
+    "env": "^0.0.2",
     "material-design-icons": "^3.0.1",
     "prop-types": "^15.7.2",
     "pure-react-carousel": "^1.27.6",
