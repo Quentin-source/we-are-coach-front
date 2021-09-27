@@ -1,19 +1,19 @@
-import run from '../../assets/images/run.jpg'
-import pool from '../../assets/images/pool.jpg'
-import tennis from '../../assets/images/tennis.jpg'
+
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
 
-const CardTrainning = () => {
+
+
+const CardTrainning = ({image}) => {
     return (
         <Card className= "trainning-card" sx={{ maxWidth: 345 }}>
             <CardMedia
                 component="img"
                 height="140"
-                image={pool}
+                image={image}
                 alt="green iguana"
             />
             <CardContent>

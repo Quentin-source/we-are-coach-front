@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import { useDispatch , useSelector} from "react-redux";
 
-import Connectpop from "../../Connection/Connectpop";
+import Connectpop from '../Connection/Connectpop';
 
 import logo from '../../../assets/images/Logo.jpg';
 import avatar from '../../../assets/images/avatar_Maeva.jpg';

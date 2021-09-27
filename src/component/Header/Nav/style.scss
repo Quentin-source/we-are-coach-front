@@ -11,8 +11,9 @@
     z-index: 5;
     .navbar-drop-button{
         background-color: vars.$mainColor;
-        height : 40px;
-        width: 40px;
+        height : 35px;
+        width: 35px;
+        margin-left: 1em;
         object-fit: cover;
         border-radius: 50%;
         &-bar{
@@ -26,15 +27,15 @@
         }
         .Up{top:-10%;}
         .Center{top:0%;}
-        .Down{top:10%;}
+        .Down{top:8%;}
         .changeUp{
-            transform : translateY(220%) rotate(135deg);
+            transform : translateY(200%) rotate(135deg);
         }
         .changeCenter{
             width : 0%
         }
         .changeDown{
-            transform : translateY(-220%) rotate(-135deg);
+            transform : translateY(-200%) rotate(-135deg);
         }    
     }
     .header-logo{
@@ -49,6 +50,7 @@
         padding: 1em;
         }
     a{
+        text-decoration: none;
         color : vars.$mainColor;
         &:hover{
             color : vars.$mainColor;

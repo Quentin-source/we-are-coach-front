@@ -1,0 +1,42 @@
+@use 'src/styles/vars';
+
+.trainnings {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+div.MuiCard-root.trainning-card {
+    margin: 1em ;
+    max-width: 300px;
+    -webkit-box-shadow: -4px 4px 10px -1px rgba(0,0,0,0.7); 
+    box-shadow: -4px 4px 10px -1px rgba(0,0,0,0.7);
+}
+
+div.MuiCardContent-root.description-card {
+    height: 60px;    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0;
+
+}
+
+div.MuiCardContent-root.footer-card {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 3px;
+    border-top: black solid 1px;
+}
+
+
+@media (max-width: 450px) {
+    .trainnings {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
