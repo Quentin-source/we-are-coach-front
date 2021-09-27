@@ -9,7 +9,7 @@ import Connectpop from '../Connection/Connectpop';
 import NavButton from "../NavButton";
 
 import logo from '../../../assets/images/svg/we are coach long basket.svg';
-import avatar from '../../../assets/images/avatar_Maeva.jpg';
+// import avatar from '../../../assets/images/avatar_Maeva.jpg';
 
 
 import './style.scss';
@@ -18,7 +18,8 @@ const Nav = () => {
     const dispatch = useDispatch();
     const menuDropState = useSelector((state)=>(state.home.dropMenu));
     const connectionStatus = useSelector((state) =>(state.home.connected));
-    const userMenuState = useSelector((state) => (state.home.userMenu))
+    const userMenuState = useSelector((state) => (state.home.userMenu));
+    const avatar = useSelector((state) => (state.user.userLogged.picture));
     const handleClickAvatar = () => (dispatch({type : 'TOGGLE_MENU'})); 
     const handleClickDropMenu = () => (dispatch({type : 'TOGGLE_DROP'}))
     return(

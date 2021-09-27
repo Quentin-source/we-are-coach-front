@@ -1,9 +1,8 @@
 export const initialState = {
     inputEmail: '',
     inputPassword: '',
-    userAvatar: '',
-    userPseudo: '',
     userToken: '',
+    userLogged: {},
 
 };
 
@@ -24,7 +23,28 @@ const reducer = (state = initialState, action = {}) => {
                 inputEmail : action.value,
             }
         );
+    
+    case 'CONNECTION':
+        return (
+            {
+                ...state,
+                userLogged : action.userLogged,
+                userToken : action.userToken,
+                inputEmail: '',
+                inputPassword: '',
+            }
+        );
 
+    case 'LOGOUT':
+        return (
+            {
+                ...state,
+                userLogged : {},
+                userToken : '',
+                inputEmail: '',
+                inputPassword: '',
+            }
+        );
     
     default:
         return state;

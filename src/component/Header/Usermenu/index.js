@@ -10,7 +10,7 @@ const Usermenu = () => {
     const dispatch = useDispatch();
 
     const handleDeconnection = () => {
-        dispatch({type : 'CONNECTION'});
+        dispatch({type : 'LOGOUT'});
     };
 
     const menuState = useSelector((state)=> state.home.userMenu)

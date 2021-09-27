@@ -4,7 +4,6 @@ export const initialState = {
     userMenu : false,
     dropMenu : false,
     connectPop : false,
-    connected : false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -13,7 +12,18 @@ const reducer = (state = initialState, action = {}) => {
         return (
             {
                 ...state,
-                connected: !state.connected,
+                connected: true,
+                connectPop : false,
+                dropMenu : false,
+                userMenu : false,
+            }
+        );
+    
+    case 'LOGOUT':
+        return (
+            {
+                ...state,
+                connected: false,
                 connectPop : false,
                 dropMenu : false,
                 userMenu : false,
