@@ -3,7 +3,7 @@ import axios from 'axios';
 const userMiddleWare = (store) => (next) => (action) => {
     
     const api = axios.create({
-        baseURL: 'http://guillaume-marie.vpnuser.lan:8080/api',
+        baseURL: 'http://ec2-54-235-14-192.compute-1.amazonaws.com/api',
     });
 
     const getUserInformation = (response) => {

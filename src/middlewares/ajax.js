@@ -2,7 +2,7 @@ import axios from 'axios';
 const ajaxMiddleware = (store) => (next) => (action) => {
     //You can create a new instance of axios with a custom config
     const api = axios.create({
-        baseURL: 'http://guillaume-marie.vpnuser.lan:8080/api/',
+        baseURL: 'http://ec2-54-235-14-192.compute-1.amazonaws.com/api/',
     });
 
     if (action.type === 'API_LOG') {
