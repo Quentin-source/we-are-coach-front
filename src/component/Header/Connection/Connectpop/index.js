@@ -22,12 +22,27 @@ const Connectpop = () =>  {
     };
 
     const handleConnection = () => {
-        dispatch({type: 'CONNECTION'});
+        dispatch({type: 'LOGIN'});
         
     };
 
-    const connectPopState = useSelector ((state) => (state.home.connectPop));
+    const handleChangeUserEmail = (event) => {
+        dispatch({
+            type: 'UPDATE_USER_EMAIL',
+            value: event.target.value
+        });
+    }
 
+    const handleChangeUserPassword = (event) => {
+        dispatch({
+            type: 'UPDATE_USER_PASSWORD',
+            value: event.target.value
+        });
+    }
+
+    const connectPopState = useSelector ((state) => (state.home.connectPop));
+    const userEmailContent = useSelector((state) => (state.user.userEmail));
+    const userPasswordContent = useSelector((state)=>(state.user.userPassword));
 
     return (
         <div>
@@ -52,6 +67,8 @@ const Connectpop = () =>  {
                         fullWidth
                         variant="standard"
                         sx={{borderColor:'grey'}}
+                        value={userEmailContent}
+                        onChange={handleChangeUserEmail}
                     />
                     <TextField
                         color="primary"
@@ -61,6 +78,8 @@ const Connectpop = () =>  {
                         type="password"
                         fullWidth
                         variant="standard"
+                        value={userPasswordContent}
+                        onChange={handleChangeUserPassword}
                     />
                 </DialogContent>
                 <DialogActions>
