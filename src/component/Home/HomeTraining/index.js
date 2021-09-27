@@ -8,6 +8,7 @@ import './style.scss';
 const HomeTraining = () => {
 
     const topTrainings = useSelector((state)=>(state.training.best));
+    let number = 1;
     return (
         <Container className="trainings-home" fixed>
             <List >
@@ -20,7 +21,7 @@ const HomeTraining = () => {
                                 </ListItemAvatar>
                                 <ListItemText
                                     className="training-home-title"
-                                    primary={training.name}
+                                    primary={`Top entrainement numéro ${number++}`}
                                     secondary={
                                         <>
                                             <Typography 
@@ -29,7 +30,7 @@ const HomeTraining = () => {
                                                 variant="subtitle2"
                                                 color="text.primary"
                                             >
-                                            Maeva O'clock
+                                                {training.name}
                                             </Typography>
                                             <span className="training-home-text">
                                                 {training.description}
@@ -41,11 +42,6 @@ const HomeTraining = () => {
                             <Divider variant="inset" component="li" />
                         </>
                     ))}
-
-                
-                    
-                    
-
                 </div>
             </List>
         </Container> 
