@@ -17,7 +17,7 @@ const HomeTraining = () => {
                         <>
                             <ListItem  className="training-home" alignItems="flex-start">
                                 <ListItemAvatar className="training-home-avatar" >
-                                    <Avatar  alt="avatar auteur" src={"http://localhost/apo/projet-workout-plan-front/src/assets/images/avatar_Maeva.jpg"} />
+                                    <Avatar  alt="avatar auteur" src={training.picture} />
                                 </ListItemAvatar>
                                 <ListItemText
                                     className="training-home-title"
