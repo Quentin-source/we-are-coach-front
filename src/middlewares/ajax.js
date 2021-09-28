@@ -6,9 +6,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
     const api = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     });
+    api.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
     if (action.type === 'API_LOG') {
         const state = store.getState();
+        
         api.post('/login_check', {
             username: state.home.apiLogin,
             password: state.home.apiPassword,
