@@ -1,6 +1,6 @@
-// import { useFormik } from 'formik';
+import { useFormik} from 'formik';
 import * as yup from 'yup';
-import { useFormik } from 'formik';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import NavButton from '../../NavButton'
@@ -11,8 +11,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-// import Checkbox from '@mui/material/Checkbox';
-import { Grid, Avatar, Typography, TextField, Button, FormControlLabel } from '@material-ui/core';
+import { TextField, Button, Grid, Avatar, Typography } from '@mui/material';
 
 
 
@@ -61,6 +60,8 @@ const SignUpPop = () => {
         },
     });
 
+    // console.log(mainThemeMUI);
+
     return (
         <>
             <NavButton 
@@ -86,8 +87,9 @@ const SignUpPop = () => {
                     </Grid>
     
                     <form onSubmit={formik.handleSubmit}>
-                        <TextField
+                        <TextField 
                             fullWidth
+                            variant="standard"
                             id="email"
                             name="email"
                             label="Email"
@@ -96,7 +98,8 @@ const SignUpPop = () => {
                             error={formik.touched.email && Boolean(formik.errors.email)}
                             helperText={formik.touched.email && formik.errors.email}
                         />
-                        <TextField
+                        <TextField 
+                            variant="standard"
                             fullWidth
                             id="password"
                             name="password"
@@ -121,3 +124,74 @@ const SignUpPop = () => {
 
 
 export default SignUpPop;
+
+
+// import { Grid, Paper, Avatar, Typography, TextField, Button, FormControlLabel } from '@material-ui/core';
+// import Checkbox from '@mui/material/Checkbox';
+// import * as Yup from 'yup';
+
+// import './style.scss';
+
+
+
+// const SignUp = () => {
+//     const paperStyle={padding:'30px 20px', width:300, margin:'20px auto'}
+//     const headerStyle={margin:0}
+//     const initialValues={
+//         Nom:'',
+//         Prénom:'',
+//         Âge:'',
+//         Email:'',
+//         Ville:'',
+//         MotDepasse:'',
+//         ConfirmeMotDePasse:'',
+//         TermsEtConditons: false
+//     }
+//     const validationSchema=Yup.object().shape({
+//         NomPrenom: Yup.string().min(5, "C'est trop court!").required('Required'),
+//         Âge: Yup.string().min(17, "Trop jeune pour t'inscrire!").max(80, "Trop vieux pour t'inscrire!").required('Required'),
+//         Email: Yup.string().email('Entre un mail valide').required('Required'),
+
+//     })
+//     const onSubmit=(values,props)=>{
+//         console.log(values)
+//     }
+
+//     return (
+//         <Grid>
+//             <Paper elevation={20} style={paperStyle} >
+//                 <Grid align='center'>
+//                     <h2 style={headerStyle}>S'inscrire</h2>
+//                     <Typography variant='caption' gutterBottom>Créer votre compte</Typography>
+                    
+//                     <Avatar alt="Nom Prénom"
+//                         src="/static/images/avatar/1.jpg"
+//                         sx={{ width: 60, height: 60 }}>
+                    
+//                     </Avatar>
+//                 </Grid>
+//                 <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+//                     {(props)=>(
+//                         <Form>
+//                             <Field as={TextField} fullWidth name='Nom Prénom' label='Nom Prénom' placeholder='Entre ton Nom et Prénom' helperText={<ErrorMessage name='NomPrenom' />} />
+//                             <Field as={TextField} fullWidth name='Âge' label='Votre Âge' placeholder='Entre ton âge'
+//                                 helperText={<ErrorMessage name='Âge' />}/>
+//                             <Field as={TextField} fullWidth name='Email' label='Votre Email' placeholder='Entre ton adresse mail'
+//                                 helperText={<ErrorMessage name='Email' />}  />
+//                             <Field as={TextField} fullWidth name='Ville' label='Votre Ville' />
+//                             <Field as={TextField} fullWidth name='MotDePasse' label='Mot de Passe' />
+//                             <Field as={TextField} fullWidth name='ConfirmeMotDePasse' label='Confirmer Mot de Passe' />
+                    
+//                             <FormControlLabel control={<Field as={Checkbox} defaultChecked />} name='TermsEtConditions' label="J'accepte les termes et conditions d'utilisation" />
+//                             <Button type="submit" variant="outlined" color="primary">S'Inscrire</Button>
+    
+//                         </Form>
+//                     )}
+//                 </Formik>
+//             </Paper>
+//         </Grid>
+//     )
+// }
+
+// export default SignUp;
+
