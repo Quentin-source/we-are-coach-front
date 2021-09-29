@@ -2,7 +2,10 @@
 
 export const initialState = {
     searchValue: "",
-    filterValue: "",
+    filterLevelValue: "",
+    filterCatValue: "",
+    filterSportValue: "",
+    filterNoteValue: "",
     page: 1,
     pageCount: 1,
     pageSize: 1,
