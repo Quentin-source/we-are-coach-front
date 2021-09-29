@@ -3,6 +3,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import CustomNote from '../../Materials/CustomNote';
+
 
 import '../style.scss';
 
@@ -41,7 +43,7 @@ const CardTrainning = ({image}) => {
                     difficulté
                 </Typography>
                 <Typography gutterBottom variant="h10" component="div">
-                    Note
+                    <CustomNote note={3} />
                 </Typography>
                 <Typography gutterBottom variant="h10" component="div">
                     Date

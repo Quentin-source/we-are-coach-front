@@ -8,7 +8,7 @@ export const initialState = {
     currentPage: 1,
     pageCount: 1,
     pageSize: 1,
-    diplayedTrainings : [{},{},{},{},{},{}]
+    diplayedTrainings : [{},{},{}]
 
 };
 
