@@ -5,7 +5,7 @@ export const initialState = {
     filterCatValue: "",
     filterSportValue: "",
     filterNoteValue: "",
-    page: 1,
+    page: 4,
     pageCount: 1,
     pageSize: 1,
     diplayedTrainings : [{},{},{},{},{},{}]
