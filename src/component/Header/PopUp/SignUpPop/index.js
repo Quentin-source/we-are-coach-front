@@ -1,3 +1,6 @@
+// import { useFormik } from 'formik';
+import * as yup from 'yup';
+import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 
 import NavButton from '../../NavButton'
@@ -8,21 +11,28 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import Checkbox from '@mui/material/Checkbox';
+// import Checkbox from '@mui/material/Checkbox';
 import { Grid, Avatar, Typography, TextField, Button, FormControlLabel } from '@material-ui/core';
 
-import { Formik, Form, ErrorMessage, useFormik } from 'formik';
-
-import * as Yup from 'yup';
-
-import './style.scss';
 
 
 import { AssignmentIndOutlined } from '@material-ui/icons';
 
-import './style.scss'
 
-const SignUppop = () =>  {
+
+const validationSchema = yup.object({
+    email: yup
+        .string('Enter your email')
+        .email('Enter a valid email')
+        .required('Email is required'),
+    password: yup
+        .string('Enter your password')
+        .min(8, 'Password should be of minimum 8 characters length')
+        .required('Password is required'),
+});
+
+const SignUpPop = () => {
+
     const dispatch = useDispatch();
 
     const handleClickOpen = () => {
@@ -33,43 +43,26 @@ const SignUppop = () =>  {
         dispatch({type: 'CLOSE_SIGNPOP'});
     };
 
-    const handleConnection = () => {
-        dispatch({type: 'LOGIN'});
+    // const handleConnection = () => {
+    //     dispatch({type: 'SIGNIN'});
         
-    };
+    // };
 
-    const signUpPopState = useSelector((state) => (state.home.signUpPop));    
+    const signUpPopState = useSelector((state) => (state.home.signUpPop));
 
-
-    const initialValues= {
-            Nom:'',
-            Prénom:'',
-            Âge:'',
-            Email:'',
-            Ville:'',
-            MotDepasse:'',
-            ConfirmeMotDePasse:'',
-            TermsEtConditons: false
+    const formik = useFormik({
+        initialValues: {
+            email: 'foobar@example.com',
+            password: 'foobar',
         },
-        onSubmit: values => {
+        validationSchema: validationSchema,
+        onSubmit: (values) => {
             alert(JSON.stringify(values, null, 2));
         },
     });
 
-    const validationSchema=Yup.object().shape({
-        NomPrenom: Yup.string().min(5, "C'est trop court!").required('Required'),
-        Âge: Yup.string().min(17, "Trop jeune pour t'inscrire!").max(80, "Trop vieux pour t'inscrire!").required('Required'),
-        Email: Yup.string().email('Entre un mail valide').required('Required'),
-
-    });
-
-    const headerStyle={margin:0};
-
-    
-
-
     return (
-        <div>
+        <>
             <NavButton 
                 className={!signUpPopState ? 'navbar-button': 'navbar-button navbar-button--open'} 
                 content={<AssignmentIndOutlined />} 
@@ -79,10 +72,10 @@ const SignUppop = () =>  {
                 <DialogTitle>Inscription</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                Veuillez renseigner les informations suivantes...
+                        Veuillez renseigner les informations suivantes...
                     </DialogContentText>
                     <Grid align='center'>
-                        <h2 style={headerStyle}>S'inscrire</h2>
+                        <h2>S'inscrire</h2>
                         <Typography variant='caption' gutterBottom>Créer votre compte</Typography>
                         
                         <Avatar alt="Nom Prénom"
@@ -91,36 +84,40 @@ const SignUppop = () =>  {
                         
                         </Avatar>
                     </Grid>
-                    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-                        {(props)=>(
-                            <Form>
-                                <TextField  fullWidth name='Nom Prénom' label='Nom Prénom' placeholder='Entre ton Nom et Prénom' helperText={<ErrorMessage name='NomPrenom' />} />
-                                <TextField  fullWidth name='Âge' label='Votre Âge' placeholder='Entre ton âge'
-                                    helperText={<ErrorMessage name='Âge' />}/>
-                                <TextField  fullWidth name='Email' label='Votre Email' placeholder='Entre ton adresse mail'
-                                    helperText={<ErrorMessage name='Email' />}  />
-                                <TextField  fullWidth name='Ville' label='Votre Ville' />
-                                <TextField  fullWidth name='MotDePasse' label='Mot de Passe' />
-                                <TextField  fullWidth name='ConfirmeMotDePasse' label='Confirmer Mot de Passe' />
-                        
-                                <FormControlLabel control={<TextField as={Checkbox} defaultChecked />} name='TermsEtConditions' label="J'accepte les termes et conditions d'utilisation" />
-                                <Button type="submit" variant="outlined" color="primary">S'Inscrire</Button>
-        
-                            </Form>
-                        )}
-                    </Formik>
+    
+                    <form onSubmit={formik.handleSubmit}>
+                        <TextField
+                            fullWidth
+                            id="email"
+                            name="email"
+                            label="Email"
+                            value={formik.values.email}
+                            onChange={formik.handleChange}
+                            error={formik.touched.email && Boolean(formik.errors.email)}
+                            helperText={formik.touched.email && formik.errors.email}
+                        />
+                        <TextField
+                            fullWidth
+                            id="password"
+                            name="password"
+                            label="Password"
+                            type="password"
+                            value={formik.values.password}
+                            onChange={formik.handleChange}
+                            error={formik.touched.password && Boolean(formik.errors.password)}
+                            helperText={formik.touched.password && formik.errors.password}
+                        />
+                        <DialogActions>
+                            <Button onClick={handleClose}>Annuler</Button>
+                            <Button color="primary" type="submit">Envoyer</Button>
+                        </DialogActions>
+                    </form>
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>Annuler</Button>
-                    <Button onClick={handleConnection}>Connection</Button>
-                </DialogActions>
+                   
             </Dialog>
-        </div>
+        </>
     );
-}
-
-export default SignUppop;
+};
 
 
-
-
+export default SignUpPop;
