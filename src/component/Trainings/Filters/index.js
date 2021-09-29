@@ -38,11 +38,10 @@ const Filters = () => {
 
     return (
         <div className="tainings-filters">
-            <Filter filterKey="filterLevelValue" label="Niveau" optionsArray={levelList} />
             <Filter filterKey="filterCatValue" label="Catégorie" optionsArray={categoriesList} />
             <Filter filterKey="filterSportValue" label="Sport" optionsArray={sportsList} />
+            <Filter filterKey="filterLevelValue" label="Niveau" optionsArray={levelList} />  
             <Filter filterKey="filterNoteValue"label="Note" optionsArray={NoteList} />
-
         </div>
     );
 }
