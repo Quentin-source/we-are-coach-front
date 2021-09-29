@@ -1,5 +1,7 @@
 import './style.scss';
+
 import TextField from '@mui/material/TextField';
+
 import { useSelector, useDispatch } from 'react-redux';
 
 const SearchBar = () => {
@@ -14,9 +16,21 @@ const SearchBar = () => {
         })        
     };
     return (
-        <TextField value={searchValue} onChange={handleChange} id="outlined-search"  variant="standard" label="Search field" type="search" /> 
+        <TextField 
+            className="trainings-header-searchbar"
+            // startAdornment={
+            //     <InputAdornment position="start">
+            //       <AccountCircle />
+            //     </InputAdornment>
+            //     }
+            value={searchValue}
+            onChange={handleChange}
+            id="outlined-search"
+            variant="standard"
+            label="Search field"
+            type="search" 
+        /> 
     )      
 }
-
 
 export default SearchBar;
