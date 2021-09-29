@@ -7,7 +7,7 @@ import Header from '../Header';
 import Footer from '../Footer';
 
 import Usermenu from '../Header/Usermenu';
-import Navdrop from '../Header/Navdrop';
+import Navdrop from '../Header/NavDrop';
 
 import './style.scss';
 import Trainings from '../Trainings';
