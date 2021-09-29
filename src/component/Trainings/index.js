@@ -23,7 +23,7 @@ const Trainings = () => {
         Résultats de la recherche
                 </Typography>           
             </div>
-            <div className= 'trainnings'>
+            <div className= 'trainings'>
                 {displayedTrainingsArray.map((training) =>  (<CardTrainning image= {run}/>))}
                 {/* <CardTrainning image= {run}/>
                 <CardTrainning image= {pool}/>
@@ -37,10 +37,9 @@ const Trainings = () => {
                 <CardTrainning image= {run}/>
                 <CardTrainning image= {pool}/>
                 <CardTrainning image= {tennis}/> */}
-                <div>
-                    <Pagination />  
-                </div>
             </div>
+            <Pagination />  
+    
         </main>
     );
 };

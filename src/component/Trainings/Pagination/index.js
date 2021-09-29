@@ -14,7 +14,7 @@ const Paginations = () => {
 
     return (
         <Stack spacing={2}>
-            <Pagination count={5} page={currentPage} onChange={handleChange}/>
+            <Pagination className="trainings-pagination" count={5} page={currentPage} onChange={handleChange}/>
         </Stack>
     )
 }

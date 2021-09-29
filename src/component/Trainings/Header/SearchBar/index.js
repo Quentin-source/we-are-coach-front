@@ -1,33 +1,35 @@
-import './style.scss';
-
-import TextField from '@mui/material/TextField';
-
 import { useSelector, useDispatch } from 'react-redux';
 
+
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import './style.scss';
+import SearchIcon from '@mui/icons-material/Search';
+
+
 const SearchBar = () => {
-    const searchValue = useSelector((state) => (state.trainings.searchValue));
-    console.log(searchValue);
+    const inputSearch = useSelector((state) => (state.trainings.inputSearch));
     const dispatch = useDispatch();
 
     const handleChange = (event) => {
         dispatch({
-            type: 'SEARCH_VALUE',
-            newSearch: event.target.value,
+            type: 'MODIFY_INPUT',
+            value: event.target.value,
         })        
     };
     return (
         <TextField 
             className="trainings-header-searchbar"
-            // startAdornment={
-            //     <InputAdornment position="start">
-            //       <AccountCircle />
-            //     </InputAdornment>
-            //     }
-            value={searchValue}
+            InputProps={{
+                startAdornment: (
+                    <InputAdornment position="start">
+                        <SearchIcon />
+                    </InputAdornment>
+                ),
+            }}
+            value={inputSearch}
             onChange={handleChange}
             id="outlined-search"
-            variant="standard"
-            label="Search field"
             type="search" 
         /> 
     )      

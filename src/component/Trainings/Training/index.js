@@ -9,7 +9,7 @@ import '../style.scss';
 
 const CardTrainning = ({image}) => {
     return (
-        <Card className= "trainning-card" sx={{ maxWidth: 345 }}>
+        <Card className= "training-card" sx={{ maxWidth: 345 }}>
             <CardMedia
                 component="img"
                 height="140"
@@ -17,7 +17,7 @@ const CardTrainning = ({image}) => {
                 alt="green iguana"
             />
             <CardContent>
-                <Typography gutterBottom variant="h10" component="div">
+                <Typography className="training-card-category" gutterBottom variant="h10" component="div">
                 Catégorie
                 </Typography>
                 <Typography gutterBottom variant="h9" component="div">

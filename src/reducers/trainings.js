@@ -1,6 +1,6 @@
 
 export const initialState = {
-    searchValue: "",
+    inputSearch: "",
     filterLevelValue: "",
     filterCatValue: "",
     filterSportValue: "",
@@ -23,6 +23,15 @@ const reducer = (state = initialState, action = {}) => {
                 [action.filterKey]: action.value,
             }
         );
+
+    case 'MODIFY_INPUT':
+        return (
+            {
+                ...state,
+                inputSearch: action.value,
+            }
+        );
+
 
     case 'CHANGE_PAGE':
         return (
