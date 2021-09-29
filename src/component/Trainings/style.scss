@@ -5,7 +5,7 @@
     justify-content: center;
     flex-wrap: wrap;
     max-width: 1200px;
-    margin: auto;
+    margin-bottom: 10em;
 }
 
 
@@ -37,5 +37,7 @@ div.MuiCardContent-root.footer-card {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        height: 757px;
     }
+
 }
