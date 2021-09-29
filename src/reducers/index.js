@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import homeReducer from './home';
-import searchTrainingReducer from './Training';
+import trainingsReducer from './trainings';
 
 const rootReducer = combineReducers({
     home: homeReducer,
-    Training: searchTrainingReducer
+    trainings: trainingsReducer,
 });
 
 export default rootReducer;

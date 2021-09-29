@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import { useSelector, useDispatch } from 'react-redux';
 
 const SearchBar = () => {
-    const searchValue = useSelector((state) => (state.Training.searchValue));
+    const searchValue = useSelector((state) => (state.trainings.searchValue));
     console.log(searchValue);
     const dispatch = useDispatch();
 

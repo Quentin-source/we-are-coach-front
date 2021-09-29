@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Paginations = () => {
-    const changePage = useSelector ((state) => state.Training.page);
+    const changePage = useSelector ((state) => state.trainings.page);
     const dispatch = useDispatch
     const handleChange = (event) => {
         dispatch({

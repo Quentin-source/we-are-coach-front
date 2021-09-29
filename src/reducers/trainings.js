@@ -10,6 +10,15 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
     switch (action.type) {
+    case 'MODIFY_FILTER':
+        return (
+            {
+                ...state,
+                [action.filterKey]: action.value,
+            }
+        );
+
+
     case 'SEARCH_VALUE':
         return (
             {
