@@ -19,9 +19,9 @@ const Trainings = () => {
 
     return (
         <main className="main-content main-content-trainings">
-            <div>
-                <Filters />
+            <div className="trainings-header">
                 <SearchBar />
+                <Filters />
             </div>
             <div>           
                 <Typography variant="h6" gutterBottom component="div">

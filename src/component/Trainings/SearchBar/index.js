@@ -15,16 +15,7 @@ const SearchBar = () => {
         })        
     };
     return (
-        <Box
-            component="form"
-            sx={{
-                '& > :not(style)': { m: 1, width: '25ch' },
-            }}
-            noValidate
-            autoComplete="off"
-        >
-            <TextField value={searchValue} onChange={handleChange} id="outlined-search" label="Search field" type="search" />
-        </Box>  
+        <TextField value={searchValue} onChange={handleChange} id="outlined-search"  variant="standard" label="Search field" type="search" /> 
     )      
 }
 

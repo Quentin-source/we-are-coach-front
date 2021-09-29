@@ -1,8 +1,9 @@
 @use 'src/styles/vars';
 
-.tainings-filters{
+div.tainings-filters{
 
     display: flex;
+    width: 600px;
     margin : 2em 4em;
     justify-content: space-around;
     padding: 1em;
