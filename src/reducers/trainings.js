@@ -1,5 +1,4 @@
 
-
 export const initialState = {
     searchValue: "",
     filterLevelValue: "",
@@ -9,9 +8,11 @@ export const initialState = {
     page: 1,
     pageCount: 1,
     pageSize: 1,
-    diplayedTrainings : [{},{},{},{},{},{},{},{},{},{}]
+    diplayedTrainings : [{},{},{},{},{},{}]
 
 };
+
+
 
 const reducer = (state = initialState, action = {}) => {
     switch (action.type) {
