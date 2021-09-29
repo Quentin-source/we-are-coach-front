@@ -5,7 +5,7 @@ export const initialState = {
     filterCatValue: "",
     filterSportValue: "",
     filterNoteValue: "",
-    currentPage: 4,
+    currentPage: 1,
     pageCount: 1,
     pageSize: 1,
     diplayedTrainings : [{},{},{},{},{},{}]
@@ -24,31 +24,13 @@ const reducer = (state = initialState, action = {}) => {
             }
         );
 
-
-    case 'SEARCH_VALUE':
-        return (
-            {
-                ...state,
-                searchValue: action.newSearch, 
-            }
-        );
-
-    case 'FILTER_VALUE':
-        return (
-            {
-                ...state,
-                filterValue: action.newFilter
-            }
-        );
-
     case 'CHANGE_PAGE':
         return (
             {
                 ...state,
-                newPage: action.newPage
+                currentPage: action.value
             }
-        )
-
+        );
     default:
         return state;
     }

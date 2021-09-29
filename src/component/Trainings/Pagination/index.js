@@ -4,9 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Paginations = () => {
     const currentPage = useSelector ((state) => state.trainings.currentPage);
-    // const dispatch = useDispatch
+    const dispatch = useDispatch();
     const handleChange = (event, value) => {
-        console.log(event, value);
+        dispatch(({
+            type: 'CHANGE_PAGE',
+            value: value,
+        }));   
     };
 
     return (
