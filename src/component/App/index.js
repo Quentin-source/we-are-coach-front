@@ -14,6 +14,8 @@ import Trainings from '../Trainings';
 
 import './style.scss';
 
+import CreateTraining from '../CreateTrainings';
+
 
 const App = () => {
     const dispatch = useDispatch();
@@ -37,6 +39,9 @@ const App = () => {
                 </Route>
                 <Route path="/Contacts" exact>
                 
+                </Route>
+                <Route path="/CreerEntrainement" exact>
+                    <CreateTraining />
                 </Route>
                 <Route>
                     <Home />

@@ -57,6 +57,14 @@ const Nav = () => {
                 >
                     Contact
                 </NavLink>
+                <NavLink
+                    className="navbar-linkgroup-link"
+                    activeClassName="navbar-linkgroup-link--active"
+                    to="/CreerEntrainement"
+                    exact
+                >
+                    Créer un entrainement
+                </NavLink>
             </div>
             {connectionStatus && 
             <NavButton 
