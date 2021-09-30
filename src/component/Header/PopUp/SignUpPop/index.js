@@ -5,13 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import NavButton from '../../NavButton/index';
 
+//import React from 'react';
+
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import { TextField, Button, Grid, Avatar, Typography, FormControlLabel, Checkbox } from '@mui/material';
+import { TextField, Button, Grid, Avatar, Typography, FormControlLabel, Checkbox, FormControl, InputLabel, Select, MenuItem, ListItemText, OutlinedInput } from '@mui/material';
 
 
 
@@ -20,34 +22,58 @@ import { AssignmentIndOutlined } from '@material-ui/icons';
 import './style.scss';
 
 
+const names = [
+    'Badminton',
+    'FootBall',
+    'Rugby',
+    'Randonnée',
+    'Tennis',
+    'Surf',
+    'Natation',
+    'Basket Ball',
+    'Vélo',
+    'Karaté',
+];
+
+
 
 const validationSchema = yup.object({
-    name: yup
-        .string('Entre ton nom')
-        .min(2, 'Tape ton nom')
-        .required('Nom requis'),
-    firstname: yup
-        .string('Entre ton prénom')
-        .min(2, 'Tape ton prénom')
-        .required('Prénom requis'),
+    firstName: yup
+        .string('Prénom invalide')
+        .min(2, 'Prénom invalide')
+        .required('Requis'),
+    lastName: yup
+        .string('Nom invalide')
+        .min(2,'Nom invalide')
+        .required('Requis'),
     email: yup
-        .string('Entre ton email')
-        .email('Entre un email valide')
-        .required('Un email est requis'),
+        .string('Email invalide')
+        .email('Email invalide')
+        .required('Requis'),
     age: yup
-        .string('Entre ton âge')
-        .required('Age requis'),
+        .number('Age invalide')
+        .min(7, 'Désolé tu es trop jeune')
+        .max(77,'Désolé vous êtes trop vieux')
+        .required('Requis'),
     city: yup
-        .string('Entre ta ville')
-        .required('Localisation requis'),
+        .string('Ville invalide')
+        .min(2, 'Ville invalide')
+        .required('Requis'),
     password: yup
-        .string('Entre ton mot de passe')
-        .min(8, 'Ton mot de passe doit être supérieur à 8 caractères')
-        .required('Un mot de passe est requis'),
+        .string('Mot de passe')
+        .min(8, '8 caractères min')
+        .required('Requis'),
     confirmPassword: yup
         .string('Confirme ton mot de passe')
-        .min(8, 'Ton mot de passe doit être supérieur à 8 caractères')
-        .required('Un mot de passe est requis'),
+        .required('Confirme ton mot de passe').oneOf([yup.ref('password')],'Les mots de passe ne concordent pas'),
+    sports: yup
+        .array()
+        .max(3, '3 sports maximum')
+        .min(1,'1 sport minimun')
+        .required('Un sport préféré est requis'),
+    CGU: yup
+        .boolean()
+        .oneOf([true],'Veuillez valider les CGU'),
 });
 
 const SignUpPop = () => {
@@ -55,6 +81,7 @@ const SignUpPop = () => {
     const dispatch = useDispatch();
 
     const handleClickOpen = () => {
+        formik.resetForm({});
         dispatch({type : 'OPEN_SIGNPOP'});
     };
 
@@ -62,20 +89,22 @@ const SignUpPop = () => {
         dispatch({type: 'CLOSE_SIGNPOP'});
     };
 
-    // const handleConnection = () => {
-    //     dispatch({type: 'SIGNIN'});
-        
-    // };
-
     const signUpPopState = useSelector((state) => (state.home.signUpPop));
 
     const formik = useFormik({
         initialValues: {
-            email: 'foobar@example.com',
-            password: 'foobar',
-            confirmPassword: 'foobar',
+            email: "",
+            password: "",
+            confirmPassword: "",
+            firstName: "",
+            lastName: "",
+            age: "",
+            city: "",
+            sports: [],
+            CGU: false,
+            
         },
-        validationSchema: validationSchema,
+        validationSchema,
         onSubmit: (values) => {
             console.log(JSON.stringify(values, null, 2));
         },
@@ -109,28 +138,34 @@ const SignUpPop = () => {
     
                     <form onSubmit={formik.handleSubmit}>
                         <TextField 
+                            className="navbar-signpop-input"
                             fullWidth
+                            autoFocus
                             variant="standard"
-                            id="name"
-                            name="name"
-                            label="Nom"
-                            value={formik.values.name}
-                            onChange={formik.handleChange}
-                            error={formik.touched.name && Boolean(formik.errors.name)}
-                            helperText={formik.touched.name && formik.errors.name}
-                        />
-                        <TextField 
-                            fullWidth
-                            variant="standard"
-                            id="firstname"
-                            name="firstname"
+                            id="firstName"
+                            name="firstName"
                             label="Prénom"
-                            value={formik.values.firstname}
+                            value={formik.values.firstName}
                             onChange={formik.handleChange}
-                            error={formik.touched.firstname && Boolean(formik.errors.firstname)}
-                            helperText={formik.touched.firstname && formik.errors.firstname}
+                            onBlur={formik.handleBlur}
+                            error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+                            helperText={formik.touched.firstName && formik.errors.firstName}
                         />
                         <TextField 
+                            className="navbar-signpop-input"
+                            fullWidth
+                            variant="standard"
+                            id="lastName"
+                            name="lastName"
+                            label="Nom"
+                            value={formik.values.lastName}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+                            helperText={formik.touched.lastName && formik.errors.lastName}
+                        />
+                        <TextField 
+                            className="navbar-signpop-input"
                             fullWidth
                             variant="standard"
                             id="age"
@@ -138,10 +173,12 @@ const SignUpPop = () => {
                             label="Age"
                             value={formik.values.age}
                             onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                             error={formik.touched.age && Boolean(formik.errors.age)}
                             helperText={formik.touched.age && formik.errors.age}
                         />
                         <TextField 
+                            className="navbar-signpop-input"
                             fullWidth
                             variant="standard"
                             id="city"
@@ -149,10 +186,12 @@ const SignUpPop = () => {
                             label="Ville"
                             value={formik.values.city}
                             onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                             error={formik.touched.city && Boolean(formik.errors.city)}
                             helperText={formik.touched.city && formik.errors.city}
                         />
                         <TextField 
+                            className="navbar-signpop-input"
                             fullWidth
                             variant="standard"
                             id="email"
@@ -160,10 +199,12 @@ const SignUpPop = () => {
                             label="Email"
                             value={formik.values.email}
                             onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                             error={formik.touched.email && Boolean(formik.errors.email)}
                             helperText={formik.touched.email && formik.errors.email}
                         />
                         <TextField 
+                            className="navbar-signpop-input"
                             variant="standard"
                             fullWidth
                             id="password"
@@ -172,38 +213,71 @@ const SignUpPop = () => {
                             type="password"
                             value={formik.values.password}
                             onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                             error={formik.touched.password && Boolean(formik.errors.password)}
                             helperText={formik.touched.password && formik.errors.password}
                         />
                         <TextField 
+                            className="navbar-signpop-input"
                             variant="standard"
                             fullWidth
                             id="confirmPassword"
                             name="confirmPassword"
                             label="Confirmation du Mot de Passe"
-                            type="confirmPassword"
+                            type="password"
                             value={formik.values.confirmPassword}
                             onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                             error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
                             helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
                         />
-                        <TextField
-                            id="outlined-multiline-static"
-                            label="Sports Pratiqués"
-                            multiline
-                            rows={4}
-                            defaultValue="Ecris tes sports"
-                        />
+                            
+                        <InputLabel className="navbar-signpop-select" id="sports">Sports préférés</InputLabel>
+                        <Select
+                            className="navbar-signpop-select"
+                            labelId="sports"
+                            fullWidth
+                            name="sports"
+                            multiple
+                            value={formik.values.sports}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            error={formik.touched.sports && Boolean(formik.errors.sports)}
+                            helperText={formik.touched.sports && formik.errors.sports}
+                            renderValue={(selected) => selected.join(', ')}
+                        >
+                            {names.map((name) => (
+                                <MenuItem
+                                    name="sports"
+                                    key={name}
+                                    value={name}
+                                    className="navbar-signpop-select-item"
+                                >
+                                    <Checkbox checked={formik.values.sports.indexOf(name) > -1} />
+                                    <ListItemText primary={name} />
+                                </MenuItem>
+                            ))}
+                        </Select>
+                      
                         <FormControlLabel 
-                            control={<Checkbox defaultChecked />} 
+                            className="navbar-signpop-select-item"
+                            control={<Checkbox
+                                name='CGU'
+                                checked={formik.values.CGU}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                            />}
                             name='TermsEtConditions' 
                             label="J'accepte les termes et conditions d'utilisation"
+                            error={formik.touched.CGU && Boolean(formik.errors.CGU)}
+                            helperText={formik.touched.CGU && formik.errors.CGU}
                             type="checkbox"
                         />
                         <DialogActions>
                             <Button onClick={handleClose}>Annuler</Button>
-                            <Button color="primary" type="submit">Créer votre compte</Button>
-                            <Button color="primary" type="submit">J'ai déjà un compte</Button>
+                            <Button color="primary" >Connexion</Button>
+                            <Button color="primary" type="submit" variant="contained">Inscription</Button>
+                            
                         </DialogActions>
                     </form>
                 </DialogContent>
@@ -213,7 +287,5 @@ const SignUpPop = () => {
     );
 };
 
-
 export default SignUpPop;
 
-// 

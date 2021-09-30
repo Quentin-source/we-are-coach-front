@@ -1,6 +1,5 @@
 import run from '../../assets/images/run.jpg'
-import pool from '../../assets/images/pool.jpg'
-import tennis from '../../assets/images/tennis.jpg'
+
 import Typography from '@mui/material/Typography';
 
 import './style.scss';

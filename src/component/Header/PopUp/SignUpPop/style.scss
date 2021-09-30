@@ -1,12 +1,21 @@
-.navbar-signpop-container-width{
+// .navbar-signpop-container-width{
 
-    display : flex;
+//     display : flex;
 
-}
+// }
 
+
+// div.navbar-signpop-input{
+//     margin: 0.5em;
+//     box-sizing :border-box;
+   
+// }
 
 div.navbar-signpop-input{
-    margin: 0.5em;
-    box-sizing :border-box;
-   
+    margin: 0.2em;
+    padding: 0.2em;
+}
+
+label.navbar-signpop-select{
+    margin: 1em;
 }
