@@ -19,13 +19,13 @@ const Categories = () => {
         lazyLoad : true,
     };
 
-    const categoriesList = useSelector((state)=>(state.home.cat));
+    const categoriesList = useSelector((state)=>(state.home.categories));
        
     return (
         <Slider className="categories" {...settings}>    
             
             {categoriesList.map((category)=> (
-                <div index={(category.id)-1}>
+                <div key={category.id} index={(category.id)-1}>
                     <img 
                         className="category-image" 
                         src={category.picture} 

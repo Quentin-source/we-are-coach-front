@@ -8,7 +8,7 @@ export const initialState = {
     pageCount: 1,
     pageSize: 1,
     diplayedTrainings : [{},{},{}],
-    best : [],
+    
 
 };
 
@@ -40,16 +40,7 @@ const reducer = (state = initialState, action = {}) => {
                 currentPage: action.value
             }
         );
-
-    case 'FETCH_BEST_TRAININGS':
-        return (
-            {
-                ...state,
-                best: action.best,  
-            }
-        );
-        
-
+    
     default:
         return state;
     }

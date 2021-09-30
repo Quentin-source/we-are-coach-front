@@ -22,7 +22,7 @@ const Connectpop = () =>  {
     };
 
     const handleConnection = () => {
-        dispatch({type: 'LOGIN'});
+        dispatch({type: 'ASK_LOGIN'});
         
     };
 

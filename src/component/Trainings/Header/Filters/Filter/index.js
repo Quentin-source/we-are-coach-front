@@ -10,12 +10,10 @@ import { useSelector, useDispatch } from 'react-redux';
 // filterNoteValue: "",
 
 
-const Filter = ({filterKey, label, optionsArray}) => {
+const Filter = ({filterKey, label, optionsObject, optionsArray}) => {
     const filterValue = useSelector((state) => state.trainings[filterKey]);
-    console.log(filterValue);
     const dispatch = useDispatch();
     const handleChange = (event) => {
-        console.log(event.target.value);
         dispatch({
             type: 'MODIFY_FILTER',
             value: event.target.value,
@@ -32,13 +30,20 @@ const Filter = ({filterKey, label, optionsArray}) => {
                     value={filterValue}
                     onChange={handleChange}
                     label={label}
-                    multiple={true}
+                    // multiple={true}
                     variant="standard"
                 >
                     <MenuItem value="">
                         <em>None</em>
                     </MenuItem>
-                    {optionsArray.map((option)=>(<MenuItem value={option}>{option}</MenuItem>))}
+                    {optionsArray !== undefined && optionsArray
+                        .map((option)=>(
+                            <MenuItem key={option} value={option}>{option}</MenuItem>
+                        ))}
+                    {optionsObject !== undefined && optionsObject
+                        .map((option)=>(
+                            <MenuItem key={option.name} value={option.name}>{option.name}</MenuItem>
+                        ))}
                 </Select>
             </FormControl>
         </div>

@@ -23,7 +23,7 @@ const Trainings = () => {
                 </Typography>           
             </div>
             <div className= 'trainings'>
-                {displayedTrainingsArray.map((training) =>  (<CardTrainning image= {run}/>))}
+                {displayedTrainingsArray.map((training, index) =>  (<CardTrainning key={index} image= {run}/>))}
                 {/* <CardTrainning image= {run}/>
                 <CardTrainning image= {pool}/>
                 <CardTrainning image= {tennis}/>

@@ -8,9 +8,7 @@ import logoLoader from '../../assets/images/svg/we are coach long basket.svg'
 
 const Loading = () => {
     const loadingStatus = useSelector((state)=>(state.home.loading));
-    console.log(loadingStatus);
     
-
     return (
         <div className={loadingStatus ? 'loader loader-main loader-main--true' : 'loader loader-main loader-main--false'}>
             

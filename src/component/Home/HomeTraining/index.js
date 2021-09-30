@@ -7,14 +7,14 @@ import './style.scss';
 
 const HomeTraining = () => {
 
-    const topTrainings = useSelector((state)=>(state.trainings.best));
+    const topTrainings = useSelector((state)=>(state.home.bestWorkout));
     let number = 1;
     return (
         <Container className="trainings-home" fixed>
             <List >
                 <div className="trainings-home-container">
                     {topTrainings.map((training)=>(
-                        <>
+                        <div key={training.id}>
                             <ListItem  className="training-home" alignItems="flex-start">
                                 <ListItemAvatar className="training-home-avatar" >
                                     <Avatar  alt="avatar auteur" src={training.picture} />
@@ -40,7 +40,7 @@ const HomeTraining = () => {
                                 />
                             </ListItem>
                             <Divider variant="inset" component="li" />
-                        </>
+                        </div >
                     ))}
                 </div>
             </List>

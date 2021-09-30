@@ -1,8 +1,8 @@
 export const initialState = {
     inputEmail: '',
     inputPassword: '',
-    userToken: '',
-    userLogged: {},
+    pseudo:'',
+    picture:'',
 
 };
 
@@ -28,8 +28,8 @@ const userReducer = (state = initialState, action = {}) => {
         return (
             {
                 ...state,
-                userLogged : action.userLogged,
-                userToken : action.userToken,
+                pseudo : action.userPseudo,
+                picture : action.userPicture,
                 inputEmail: '',
                 inputPassword: '',
             }
@@ -39,8 +39,8 @@ const userReducer = (state = initialState, action = {}) => {
         return (
             {
                 ...state,
-                userLogged : {},
-                userToken : '',
+                pseudo : '',
+                picture:'',
                 inputEmail: '',
                 inputPassword: '',
             }

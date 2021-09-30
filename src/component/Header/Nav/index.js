@@ -21,7 +21,7 @@ const Nav = () => {
     const menuDropState = useSelector((state)=>(state.home.dropMenu));
     const connectionStatus = useSelector((state) =>(state.home.connected));
     const userMenuState = useSelector((state) => (state.home.userMenu));
-    const avatar = useSelector((state) => (state.user.userLogged.picture));
+    const avatar = useSelector((state) => (state.user.picture));
     const handleClickAvatar = () => (dispatch({type : 'TOGGLE_MENU'})); 
     const handleClickDropMenu = () => (dispatch({type : 'TOGGLE_DROP'}))
     return(

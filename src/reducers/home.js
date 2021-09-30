@@ -7,7 +7,8 @@ export const initialState = {
     dropMenu : false,
     connectPop : false,
     signUpPop : false,
-    cat: [],
+    categories: [],
+    bestWorkout : [],
     
 };
 
@@ -101,11 +102,12 @@ const homeReducer = (state = initialState, action = {}) => {
                 apiToken : action.token,
             }
         );
-    case 'FETCH_CAT':
+    case 'FETCH_HOME':
         return (
             {
                 ...state,
-                cat: action.cat,  
+                categories: action.cat,
+                bestWorkout: action.top,  
             }
         );
     

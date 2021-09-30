@@ -13,7 +13,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import { TextField, Button, Grid, Avatar, Typography, FormControlLabel, Checkbox, FormControl, InputLabel, Select, MenuItem, ListItemText, OutlinedInput } from '@mui/material';
+import { TextField, Button, Grid, Avatar, Typography, FormControlLabel, Checkbox, InputLabel, Select, MenuItem, ListItemText } from '@mui/material';
 
 
 
@@ -110,7 +110,6 @@ const SignUpPop = () => {
         },
     });
 
-    // console.log(mainThemeMUI);
 
     return (
         <>

@@ -5,83 +5,56 @@ const api = axios.create({
 });
 api.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
+let token = "";
+
 const ajaxMiddleware = (store) => (next) => (action) => {
-    //You can create a new instance of axios with a custom config
-    console.log(process.env);
 
 
-    // const categoryPromise = api.get('/category');
-    // const workoutPromise = api.get('/workouts');
-
-    // Promise.all([categoryPromise, workoutPromise])
-    //     .then((results) => {
-    //         const categories = results[0];
-    //         const workout = results[1];
-
-    //         store.dispatch({
-    //             type: 'FETCH_CAT',
-    //             cat: categories.data,
-    //         }); 
-    //         store.dispatch({
-    //             type: 'FETCH_WORKOUT',
-    //             cat: workout.data,
-    //         }); 
-
-    //         store.dispatch({type: 'LOADING_OFF'});
-    //     })
-
-    // // axios.get('/workouts', { params : { page: 1}})
-
-
-
-    
+    // action récupération des données de la page home
     if (action.type === 'API_LOG') {
-        const state = store.getState();
-        
-        api.post('/login_check', {
-            username: state.home.apiLogin,
-            password: state.home.apiPassword,
-        })
-            .then((tokenResponse) => {
-                console.log('token API récupéré');
-                const token = tokenResponse.data.token;
-                //mise du token dans le state
+        const categoryPromise = api.get('/home/category');
+        const homeWorkoutPromise = api.get('/home/workout');
+
+        Promise.all([categoryPromise,homeWorkoutPromise])
+            .then((response)=> {
+                const [categories, homeWorkout] = response;
                 store.dispatch({
-                    type : 'API_CONNECTION',
-                    token : token
+                    type: 'FETCH_HOME',
+                    cat: categories.data,
+                    top: homeWorkout.data,
                 });
-                //configuration axios avec le token dans le header
-                api.defaults.headers.common.Authorization = `bearer ${token}`;
-                //récupération des données de catégories depuis le back
-                api.get('/home/category')
-                    .then((categoriesResponse) => {
-                        console.log('reponse home Page categories', categoriesResponse.data);
-                        store.dispatch({
-                            type: 'FETCH_CAT',
-                            cat: categoriesResponse.data,
-                        });                      
-                    }).then(()=> {
-                        api.get('/home/workout')
-                            .then((topTrainingsResponse)=> {
-                                console.log('reponse home page 3 entrainements', topTrainingsResponse.data);
-                                store.dispatch({
-                                    type: 'FETCH_BEST_TRAININGS',
-                                    best: topTrainingsResponse.data,
-                                });
-                                store.dispatch({type: 'LOADING_OFF'});
-                            })
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                        alert('Problème communication serveur');
-                    });
+                store.dispatch({type: 'LOADING_OFF'});
             })
             .catch((error) => {
-                console.error('pb identification api', error);
-                alert('Client non reconnu');
+                alert('Problème communication serveur');
             });
-    }
-   
+    };
+
+    // action : connection utilisateur et récupération pseudo image en cas de succes 
+    if (action.type === 'ASK_LOGIN') {
+        const state = store.getState();
+        api.post('/login_check', {
+            username: state.user.inputEmail,
+            password: state.user.inputPassword,
+        })
+            .then((response) => {
+                token = response.data.token;
+                
+                store.dispatch({
+                    type: 'CONNECTION',
+                    userLogged: true,
+                    userPseudo: response.data.data.pseudo,
+                    userPicture: response.data.data.picture,
+                });
+                console.log('Connection réussie');
+                
+            })
+            .catch((error) => {
+                console.error('pb identification', error);
+                alert('Utilisateur non reconnu');
+            });
+    }   
+    
     next(action);
 };
 export default ajaxMiddleware;
