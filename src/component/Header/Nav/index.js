@@ -3,10 +3,12 @@ import { NavLink } from "react-router-dom";
 
 import { useDispatch , useSelector} from "react-redux";
 
-import { Menu, Close, AssignmentIndOutlined} from "@material-ui/icons";
+import { Menu, Close} from "@material-ui/icons";
 
-import Connectpop from '../Connection/Connectpop';
+import Connectpop from '../PopUp/ConnectPop';
+import SignupPop from '../PopUp/SignUpPop'
 import NavButton from "../NavButton";
+
 
 import logo from '../../../assets/images/svg/we are coach long basket.svg';
 // import avatar from '../../../assets/images/avatar_Maeva.jpg';
@@ -70,10 +72,7 @@ const Nav = () => {
             />}
             {!connectionStatus && 
             <div className="navbar-buttongroup-unconnect">
-                <NavButton 
-                    className={!menuDropState ? 'navbar-button ': 'navbar-button navbar-button--open'} 
-                    content={<AssignmentIndOutlined />}            
-                />
+                <SignupPop />
                 <Connectpop />
             </div>}
         </div>

@@ -66,7 +66,6 @@ const Connectpop = () =>  {
                         type="email"
                         fullWidth
                         variant="standard"
-                        sx={{borderColor:'grey'}}
                         value={userEmailContent}
                         onChange={handleChangeUserEmail}
                     />
