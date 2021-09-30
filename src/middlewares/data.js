@@ -18,7 +18,7 @@ let userToken = ""; //localstart
 
 const dataMiddleware = () => (next) => (action) => {
     console.log('init middlewares ok');
-    console.log(JSON.stringify(top));
+    // console.log(JSON.stringify(top));
     next(action);
 };
 
