@@ -1,19 +1,42 @@
 @use 'src/styles/vars';
 
-.trainnings {
+.trainings {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     max-width: 1200px;
-    margin: auto;
+    margin-bottom: 1em;
 }
 
+.main-content-trainings{
+    display: flex;
+    flex-direction: column;
+}
 
-div.MuiCard-root.trainning-card {
+.training-card-category{
+    position: absolute;
+    top:30%;
+    color: white;
+    width:50%;
+    height:10%;
+    padding: 0.5em;
+    background-color: rgba(0, 0, 0, 0.5)
+}
+
+div.MuiCard-root.training-card {
+    border-radius: 0;
     margin: 1em ;
-    max-width: 300px;
-    -webkit-box-shadow: -4px 4px 10px -1px rgba(0,0,0,0.7); 
-    box-shadow: -4px 4px 10px -1px rgba(0,0,0,0.7);
+    width: 300px;
+    box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+    position : relative;
+    transition: transform 0.1s;
+    .custom-note svg{
+        font-size: 12px;
+        color:vars.$mainColor;
+    }
+    &:hover{
+        transform: scale(1.02);
+    }
 }
 
 div.MuiCardContent-root.description-card {
@@ -22,6 +45,7 @@ div.MuiCardContent-root.description-card {
     text-overflow: ellipsis;
     padding: 0;
 
+    
 }
 
 div.MuiCardContent-root.footer-card {
@@ -33,10 +57,18 @@ div.MuiCardContent-root.footer-card {
 
 
 @media (max-width: 450px) {
-    .trainnings {
+    .trainings {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        height: 757px;
     }
+
+}
+
+.trainings-pagination{
+
+    margin-bottom: 3em;
+
 }

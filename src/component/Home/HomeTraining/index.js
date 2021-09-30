@@ -7,7 +7,7 @@ import './style.scss';
 
 const HomeTraining = () => {
 
-    const topTrainings = useSelector((state)=>(state.training.best));
+    const topTrainings = useSelector((state)=>(state.trainings.best));
     let number = 1;
     return (
         <Container className="trainings-home" fixed>

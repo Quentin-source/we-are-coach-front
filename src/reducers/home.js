@@ -6,6 +6,9 @@ export const initialState = {
     userMenu : false,
     dropMenu : false,
     connectPop : false,
+    signUpPop : false,
+    cat: [],
+    
 };
 
 const homeReducer = (state = initialState, action = {}) => {
@@ -27,6 +30,7 @@ const homeReducer = (state = initialState, action = {}) => {
                 ...state,
                 connected: false,
                 connectPop : false,
+                signUpPop : false,
                 dropMenu : false,
                 userMenu : false,
             }
@@ -44,6 +48,20 @@ const homeReducer = (state = initialState, action = {}) => {
             {
                 ...state,
                 connectPop: false,
+            }
+        );
+    case 'OPEN_SIGNPOP':
+        return (
+            {
+                ...state,
+                signUpPop: true,
+            }
+        );
+    case 'CLOSE_SIGNPOP':
+        return (
+            {
+                ...state,
+                signUpPop: false,
             }
         );
     case 'LOADING_ON':
@@ -83,6 +101,14 @@ const homeReducer = (state = initialState, action = {}) => {
                 apiToken : action.token,
             }
         );
+    case 'FETCH_CAT':
+        return (
+            {
+                ...state,
+                cat: action.cat,  
+            }
+        );
+    
     default:
         return state;
     }

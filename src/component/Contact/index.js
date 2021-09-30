@@ -12,7 +12,7 @@ const formContact = () => {
             <CardContent style={{maxWidth:450, margin:"0 auto", padding:"20px 5px"}}>
                 <Card>
                     <Typography gutterBottom variant="h5">Formulaire de Contact</Typography>
-                    <Typography gutterBottom color="textSecondary" variant="body2" component="p">Remplissez le formulaire ci-dessous et notre équipe vous répondra sous 24H</Typography>
+                    <Typography gutterBottom color="textSecondary" variant="body2" component="p">Besoin d'un renseignement ? Remplissez le formulaire ci-dessous et nous vous répondrons dans les meilleurs délais.</Typography>
                     <form>
                         <Grid container spacing={1}>
 
@@ -29,6 +29,16 @@ const formContact = () => {
                                 <TextField 
                                     type="number"
                                     label="Téléphone" placeholder="Entre ton numéro de téléphone" variant="outlined" fullWidth required/>
+                            </Grid>
+                            <Grid xs={12} sm ={18} item>
+                                <TextField
+                                    label="Votre Message"
+                                    placeholder="Description de la demande" 
+                                    variant="outlined" 
+                                    fullWidth required
+                                    multiline
+                                    rows={6}
+                                />
                             </Grid>
                             <Grid xs={12} item>
                                 <Button type="submit" variant="outlined" color="primary" fullWidth> Envoyer</Button>

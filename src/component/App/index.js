@@ -7,17 +7,19 @@ import Header from '../Header';
 import Footer from '../Footer';
 
 import Usermenu from '../Header/Usermenu';
-import Navdrop from '../Header/Navdrop';
+import Navdrop from '../Header/NavDrop';
 
 import './style.scss';
 import Trainings from '../Trainings';
+
+import Contact from '../Contact';
 
 import './style.scss';
 
 
 const App = () => {
     const dispatch = useDispatch();
-    dispatch({type:'LOADING_ON'});
+    // dispatch({type:'LOADING_ON'});
     dispatch({type:'API_LOG'});   
 
     return (
@@ -36,7 +38,7 @@ const App = () => {
                     <Trainings />    
                 </Route>
                 <Route path="/Contacts" exact>
-                
+                    <Contact />
                 </Route>
                 <Route>
                     <Home />
