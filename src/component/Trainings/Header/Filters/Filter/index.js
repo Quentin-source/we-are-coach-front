@@ -32,6 +32,7 @@ const Filter = ({filterKey, label, optionsArray}) => {
                     value={filterValue}
                     onChange={handleChange}
                     label={label}
+                    multiple={true}
                     variant="standard"
                 >
                     <MenuItem value="">

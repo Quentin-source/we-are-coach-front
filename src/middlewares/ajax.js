@@ -1,13 +1,14 @@
 import axios from 'axios';
+
+const api = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+});
+api.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
 const ajaxMiddleware = (store) => (next) => (action) => {
     //You can create a new instance of axios with a custom config
     console.log(process.env);
     
-    const api = axios.create({
-        baseURL: process.env.REACT_APP_API_URL,
-    });
-    api.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-
     if (action.type === 'API_LOG') {
         const state = store.getState();
         
@@ -33,7 +34,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                             type: 'FETCH_CAT',
                             cat: categoriesResponse.data,
                         });                      
-                    }).then(()=>{
+                    }).then(()=> {
                         api.get('/home/workout')
                             .then((topTrainingsResponse)=> {
                                 console.log('reponse home page 3 entrainements', topTrainingsResponse.data);

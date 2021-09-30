@@ -1,9 +1,9 @@
 export const initialState = {
     inputSearch: "",
-    filterLevelValue: "",
-    filterCatValue: "",
-    filterSportValue: "",
-    filterNoteValue: "",
+    filterLevelValue: [],
+    filterCatValue: [],
+    filterSportValue: [],
+    filterNoteValue: [],
     currentPage: 1,
     pageCount: 1,
     pageSize: 1,
