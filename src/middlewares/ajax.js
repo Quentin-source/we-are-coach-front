@@ -8,6 +8,32 @@ api.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 const ajaxMiddleware = (store) => (next) => (action) => {
     //You can create a new instance of axios with a custom config
     console.log(process.env);
+
+
+    // const categoryPromise = api.get('/category');
+    // const workoutPromise = api.get('/workouts');
+
+    // Promise.all([categoryPromise, workoutPromise])
+    //     .then((results) => {
+    //         const categories = results[0];
+    //         const workout = results[1];
+
+    //         store.dispatch({
+    //             type: 'FETCH_CAT',
+    //             cat: categories.data,
+    //         }); 
+    //         store.dispatch({
+    //             type: 'FETCH_WORKOUT',
+    //             cat: workout.data,
+    //         }); 
+
+    //         store.dispatch({type: 'LOADING_OFF'});
+    //     })
+
+    // // axios.get('/workouts', { params : { page: 1}})
+
+
+
     
     if (action.type === 'API_LOG') {
         const state = store.getState();
