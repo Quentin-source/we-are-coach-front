@@ -19,7 +19,7 @@ const Categories = () => {
         lazyLoad : true,
     };
 
-    const categoriesList = useSelector((state)=>(state.cat.list));
+    const categoriesList = useSelector((state)=>(state.home.cat));
        
     return (
         <Slider className="categories" {...settings}>    

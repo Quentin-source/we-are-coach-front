@@ -6,6 +6,7 @@ export const initialState = {
     userMenu : false,
     dropMenu : false,
     connectPop : false,
+    cat: [],
 };
 
 const homeReducer = (state = initialState, action = {}) => {
@@ -83,6 +84,14 @@ const homeReducer = (state = initialState, action = {}) => {
                 apiToken : action.token,
             }
         );
+    case 'FETCH_CAT':
+        return (
+            {
+                ...state,
+                cat: action.cat,  
+            }
+        );
+    
     default:
         return state;
     }

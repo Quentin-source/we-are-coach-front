@@ -31,7 +31,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                         console.log('reponse home Page categories', categoriesResponse.data);
                         store.dispatch({
                             type: 'FETCH_CAT',
-                            list: categoriesResponse.data,
+                            cat: categoriesResponse.data,
                         });                      
                     }).then(()=>{
                         api.get('/home/workout')
