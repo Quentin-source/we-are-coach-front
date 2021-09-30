@@ -5,19 +5,45 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import NavButton from '../../NavButton/index';
 
+//import React from 'react';
+
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import { TextField, Button, Grid, Avatar, Typography, FormControlLabel, Checkbox } from '@mui/material';
+import { TextField, Button, Grid, Avatar, Typography, FormControlLabel, Checkbox, FormControl, InputLabel, Select, MenuItem, ListItemText, OutlinedInput } from '@mui/material';
 
 
 
 import { AssignmentIndOutlined } from '@material-ui/icons';
 
 import './style.scss';
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+    PaperProps: {
+        style: {
+            maxHeight:((ITEM_HEIGHT) * 4.5) + ITEM_PADDING_TOP,
+            width: 250,
+        },
+    },
+};
+
+const names = [
+    'Badminton',
+    'FootBall',
+    'Rugby',
+    'Randonnée',
+    'Tennis',
+    'Surf',
+    'Natation',
+    'Basket Ball',
+    'Vélo',
+    'Karaté',
+];
 
 
 
@@ -62,6 +88,19 @@ const SignUpPop = () => {
         dispatch({type: 'CLOSE_SIGNPOP'});
     };
 
+    //const [personName, setPersonName] = React.useState([]);
+
+    //const handleChange = (event) => {
+    //   const {
+    //        target: { value },
+    //   } = event;
+    //   setPersonName(
+    // On autofill we get a the stringified value.
+    //        typeof value === 'string' ? value.split(',') : value,
+    //   );
+
+    //};
+
     // const handleConnection = () => {
     //     dispatch({type: 'SIGNIN'});
         
@@ -71,9 +110,15 @@ const SignUpPop = () => {
 
     const formik = useFormik({
         initialValues: {
-            email: 'foobar@example.com',
-            password: 'foobar',
-            confirmPassword: 'foobar',
+            email: "foobar@example.com",
+            password: "foufoufou",
+            confirmPassword: "foufoufou",
+            name: "Quentin",
+            firstname: "",
+            age: "",
+            city: "",
+            sports: [],
+            
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
@@ -187,13 +232,27 @@ const SignUpPop = () => {
                             error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
                             helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
                         />
-                        <TextField
-                            id="outlined-multiline-static"
-                            label="Sports Pratiqués"
-                            multiline
-                            rows={4}
-                            defaultValue="Ecris tes sports"
-                        />
+                        <FormControl sx={{ m: 1, width: 300 }}>
+                            <InputLabel id="sports-label">Sports Pratiqués</InputLabel>
+                            <Select
+                                labelId="sports-label"
+                                id="sports"
+                                multiple
+                                value={formik.values.sports}
+                                onChange={formik.handleChange}
+                                input={<OutlinedInput label="Sports" />}
+                                renderValue={(selected) => selected.join(', ')}
+                                MenuProps={MenuProps}
+                            >
+                                {names.map((name) => (
+                                    <MenuItem key={name} value={name}>
+                                        <Checkbox checked={formik.values.sports.indexOf(name) > -1} />
+                                        <ListItemText primary={name} />
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
+                      
                         <FormControlLabel 
                             control={<Checkbox defaultChecked />} 
                             name='TermsEtConditions' 
@@ -202,8 +261,8 @@ const SignUpPop = () => {
                         />
                         <DialogActions>
                             <Button onClick={handleClose}>Annuler</Button>
-                            <Button color="primary" type="submit">Créer votre compte</Button>
-                            <Button color="primary" type="submit">J'ai déjà un compte</Button>
+                            <Button color="primary" type="submit" variant="outlined">Créer votre compte</Button>
+                            <Button color="primary" type="submit" variant="outlined">J'ai déjà un compte</Button>
                         </DialogActions>
                     </form>
                 </DialogContent>
@@ -213,7 +272,5 @@ const SignUpPop = () => {
     );
 };
 
-
 export default SignUpPop;
 
-// 
