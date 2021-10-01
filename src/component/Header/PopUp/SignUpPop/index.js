@@ -3,20 +3,15 @@ import * as yup from 'yup';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import NavButton from '../../NavButton/index';
-
-//import React from 'react';
+import NavButton from '../../../Materials/NavButton/index';
 
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-
 import { TextField, Button, Grid, Avatar, Typography, FormControlLabel, Checkbox, InputLabel, Select, MenuItem, ListItemText } from '@mui/material';
-
-
-
+import { AddAPhotoOutlined, ChangeCircleOutlined } from "@mui/icons-material";
 import { AssignmentIndOutlined } from '@material-ui/icons';
 
 import './style.scss';
@@ -90,9 +85,22 @@ const SignUpPop = () => {
 
     const handleClose = () => {
         dispatch({type: 'CLOSE_SIGNPOP'});
+        dispatch({type: 'UNMOUNT_PICTURE_PREVIEW'});
+        formik.resetForm();
+    };
+
+    const handleUploadFile = (event) => {
+        const picturePreview = event.target.files[0];
+        const localPicturePreview = window.URL.createObjectURL(picturePreview);
+        dispatch({
+            type :'UPLOAD_PICTURE_PREVIEW',
+            file: localPicturePreview,
+        });
     };
 
     const signUpPopState = useSelector((state) => (state.home.signUpPop));
+    const picturePreview = useSelector((state) => (state.user.picturePreview));
+    const isLoadedPicture = useSelector((state) => (state.user.isLoadedPicture));
 
     const formik = useFormik({
         initialValues: {
@@ -106,9 +114,10 @@ const SignUpPop = () => {
             city: "",
             sports: [],
             CGU: false,
+            picture:{},
             
         },
-        // validationSchema,
+        validationSchema,
         onSubmit: (values) => {
             dispatch({
                 type:'ASK_INSCRIPTION',
@@ -126,24 +135,26 @@ const SignUpPop = () => {
                 handleClick= {handleClickOpen}           
             />
             <Dialog className="navbar-signpop" color="primary" open={signUpPopState} onClose={handleClose}>
-                <DialogTitle>Inscription</DialogTitle>
+                <DialogTitle>Création d'un compte</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         Veuillez renseigner les informations suivantes...
                     </DialogContentText>
-                    <Grid align='center'>
-                        <h2>S'inscrire</h2>
-                        <Typography variant='caption' gutterBottom>Créer votre compte</Typography>
-                        
-                        <Avatar alt="Nom Prénom"
-                            src="/static/images/avatar/1.jpg"
-                            sx={{ width: 60, height: 60 }}>
-                        
-                        </Avatar>
-                    </Grid>
-    
+                    <Grid className="navbar-signpop-header" align='center'>
+                        <div className="navbar-signpop-header-avatar">
+                            <Avatar  alt="Nom Prénom"
+                                src={picturePreview}
+                            />
+                            <label 
+                                className={!isLoadedPicture ? 'navbar-button navbar-signpop-header-avatar-button': 'navbar-signpop-header-avatar-button navbar-button navbar-button--open'} 
+                            >
+                                {isLoadedPicture ? <ChangeCircleOutlined /> : <AddAPhotoOutlined />}
+                                <input name="picture" type="file" onChange={handleUploadFile} />
+                            </label>
+                        </div>
+                    </Grid> 
+
                     <form onSubmit={formik.handleSubmit}>
-                        
                         <TextField 
                             className="navbar-signpop-input"
                             fullWidth
@@ -152,7 +163,7 @@ const SignUpPop = () => {
                             variant="standard"
                             id="pseudo"
                             name="pseudo"
-                            label="Prénom"
+                            label="Pseudo"
                             value={formik.values.pseudo}
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
@@ -165,7 +176,6 @@ const SignUpPop = () => {
                             <TextField 
                                 className="navbar-signpop-input"
                                 fullWidth
-                                autoFocus
                                 size="normal"
                                 variant="standard"
                                 id="firstName"
@@ -306,7 +316,6 @@ const SignUpPop = () => {
                         />
                         <DialogActions>
                             <Button onClick={handleClose}>Annuler</Button>
-                            <Button color="primary" >Connexion</Button>
                             <Button color="primary" type="submit" variant="contained">Inscription</Button>
                             
                         </DialogActions>

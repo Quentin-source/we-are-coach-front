@@ -33,10 +33,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     // action : connection utilisateur et récupération pseudo image en cas de succes 
     if (action.type === 'ASK_LOGIN') {
-        const state = store.getState();
+        console.log(action.email, action.password);
+        
         api.post('/api/login_check', {
-            username: state.user.inputEmail,
-            password: state.user.inputPassword,
+            username: action.email,
+            password: action.password,
         })
             .then((response) => {
                 token = response.data.token;
@@ -86,10 +87,17 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         
         }).then((response)=> {
             
+            alert('Utilisateur enregistré avec succès!')
+            console.log(response);
+            console.log(action.userDatas.email, action.userDatas.password);
             store.dispatch({
-                type: 'OK_INSCRIPTION',
-                user: action.userDatas.email,
-                password: action.userData.password
+                type: 'ASK_LOGIN',
+                email : action.userDatas.email,
+                password : action.userDatas.password,
+
+            });
+            store.dispatch({
+                type : 'CLEAN_MENU'
             });
         }).catch((error) => (console.error(error)));
 

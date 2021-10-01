@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '@mui/material/Button';
-import NavButton from '../../NavButton'
+import NavButton from '../../../Materials/NavButton';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -12,6 +12,9 @@ import { LockOpen } from '@material-ui/icons';
 
 const Connectpop = () =>  {
     const dispatch = useDispatch();
+    const connectPopState = useSelector ((state) => (state.home.connectPop));
+    const userEmailContent = useSelector((state) => (state.user.inputEmail));
+    const userPasswordContent = useSelector((state)=>(state.user.inputPassword));
 
     const handleClickOpen = () => {
         dispatch({type : 'OPEN_CONNECTPOP'});
@@ -22,7 +25,12 @@ const Connectpop = () =>  {
     };
 
     const handleConnection = () => {
-        dispatch({type: 'ASK_LOGIN'});
+        console.log(userEmailContent, userPasswordContent);
+        
+        dispatch({type: 'ASK_LOGIN',
+            email:userEmailContent,
+            password: userPasswordContent,
+        });
         
     };
 
@@ -40,9 +48,7 @@ const Connectpop = () =>  {
         });
     }
 
-    const connectPopState = useSelector ((state) => (state.home.connectPop));
-    const userEmailContent = useSelector((state) => (state.user.userEmail));
-    const userPasswordContent = useSelector((state)=>(state.user.userPassword));
+    
 
     return (
         <div>

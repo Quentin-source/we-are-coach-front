@@ -2,7 +2,7 @@
 @use 'src/styles/motion';
 
 
-button.navbar-button {
+.navbar-button {
     position: relative;
     background-color: vars.$mainColor;
     height: 40px;

@@ -13,7 +13,7 @@ const HomeTraining = () => {
         <Container className="trainings-home" fixed>
             <List >
                 <div className="trainings-home-container">
-                    {topTrainings.map((training)=>(
+                    {topTrainings.map((training, index)=>(
                         <div key={training.id}>
                             <ListItem  className="training-home" alignItems="flex-start">
                                 <ListItemAvatar className="training-home-avatar" >
@@ -39,7 +39,7 @@ const HomeTraining = () => {
                                     }
                                 />
                             </ListItem>
-                            <Divider variant="inset" component="li" />
+                            {index < 2 && <Divider variant="inset" component="li" />}
                         </div >
                     ))}
                 </div>

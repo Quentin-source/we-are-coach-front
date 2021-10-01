@@ -1,7 +1,4 @@
 export const initialState = {
-    apiLogin: 'test@test.com',
-    apiPassword: 'demo',
-    apiToken : '',
     loading: false,
     userMenu : false,
     dropMenu : false,
@@ -14,6 +11,17 @@ export const initialState = {
 
 const homeReducer = (state = initialState, action = {}) => {
     switch (action.type) {
+    case 'CLEAN_MENU':
+        return(
+            {
+                ...state,
+                connectPop : false,
+                signUpPop : false,
+                dropMenu : false,
+                userMenu : false,
+            }
+        );
+
     case 'CONNECTION':
         return (
             {

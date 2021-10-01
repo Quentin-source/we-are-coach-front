@@ -7,7 +7,7 @@ import { Menu, Close} from "@material-ui/icons";
 
 import Connectpop from '../PopUp/ConnectPop';
 import SignupPop from '../PopUp/SignUpPop'
-import NavButton from "../NavButton";
+import NavButton from "../../Materials/NavButton";
 
 
 import logo from '../../../assets/images/svg/we are coach long basket.svg';

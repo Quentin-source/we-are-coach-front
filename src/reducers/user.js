@@ -3,6 +3,8 @@ export const initialState = {
     inputPassword: '',
     pseudo:'',
     picture:'',
+    picturePreview:'',
+    isLoadedPicture: false,
 
 };
 
@@ -46,12 +48,21 @@ const userReducer = (state = initialState, action = {}) => {
             }
         );
 
-    case 'OK_INSCIPTION':
+    case 'UPLOAD_PICTURE_PREVIEW':
         return (
             {
                 ...state,
-                inputEmail: action.email,
-                inputPassword: action.password,
+                picturePreview : action.file,
+                isLoadedPicture: true,
+            }
+        );
+
+    case 'UNMOUNT_PICTURE_PREVIEW':
+        return (
+            {
+                ...state,
+                picturePreview : '',
+                isLoadedPicture: false,
             }
         );
     
