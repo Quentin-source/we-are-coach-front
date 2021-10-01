@@ -1,5 +1,5 @@
 export const initialState = {
-    loading: false,
+    loading: true,
     userMenu : false,
     dropMenu : false,
     connectPop : false,

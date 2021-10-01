@@ -15,10 +15,12 @@ import { useEffect } from 'react';
 const Trainings = () => {
     const dispatch = useDispatch();
     
-    useEffect(()=>{
+    
+    useEffect(()=> {
+        dispatch({type:'LOADING_ON'});
         dispatch({type:'FETCH_TRAINING'});
     }, []);
-    
+
     const displayedTrainingsArray = useSelector((state)=>state.trainings.displayedTrainings);
     return (
         <main className="main-content main-content-trainings">

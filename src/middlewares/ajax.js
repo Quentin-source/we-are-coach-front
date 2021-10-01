@@ -23,7 +23,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                     cat: categories.data,
                     top: homeWorkout.data,
                 });
-                store.dispatch({type: 'LOADING_OFF'});
+                setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
             })
             .catch((error) => {
                 alert('Problème communication serveur');
@@ -69,7 +69,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 type : 'SAVE_TRAININGS',
                 datas : response.data,
             })
-            store.dispatch({type: 'LOADING_OFF'});
+            setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
         })
             .catch((error) => (console.error(error)));
 
