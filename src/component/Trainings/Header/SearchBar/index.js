@@ -17,21 +17,34 @@ const SearchBar = () => {
             value: event.target.value,
         })        
     };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        dispatch({
+            type: 'ASK_SEARCH',
+            value: inputSearch,
+        })
+
+
+    }
+
     return (
-        <TextField 
-            className="trainings-header-searchbar"
-            InputProps={{
-                startAdornment: (
-                    <InputAdornment position="start">
-                        <SearchIcon />
-                    </InputAdornment>
-                ),
-            }}
-            value={inputSearch}
-            onChange={handleChange}
-            id="outlined-search"
-            type="search" 
-        /> 
+        <form onSubmit={handleSubmit}>
+            <TextField 
+                className="trainings-header-searchbar"
+                InputProps={{
+                    startAdornment: (
+                        <InputAdornment position="start">
+                            <SearchIcon />
+                        </InputAdornment>
+                    ),
+                }}
+                value={inputSearch}
+                onChange={handleChange}
+                id="outlined-search"
+                type="search" 
+            />
+        </form> 
     )      
 }
 

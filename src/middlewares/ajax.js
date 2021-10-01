@@ -12,8 +12,8 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     // action récupération des données de la page home
     if (action.type === 'API_LOG') {
-        const categoryPromise = api.get('/home/category');
-        const homeWorkoutPromise = api.get('/home/workout');
+        const categoryPromise = api.get('/api/home/category');
+        const homeWorkoutPromise = api.get('/api/home/workout');
 
         Promise.all([categoryPromise,homeWorkoutPromise])
             .then((response)=> {
@@ -33,7 +33,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
     // action : connection utilisateur et récupération pseudo image en cas de succes 
     if (action.type === 'ASK_LOGIN') {
         const state = store.getState();
-        api.post('/login_check', {
+        api.post('/api/login_check', {
             username: state.user.inputEmail,
             password: state.user.inputPassword,
         })
@@ -53,7 +53,13 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 console.error('pb identification', error);
                 alert('Utilisateur non reconnu');
             });
-    }   
+    }  
+    
+    if(action.type === 'ASK_SEARCH')  {
+
+        api.get('/api/search', {params:{search : action.value}}).then((response)=>(console.log(response.data))).catch((error)=>(console.error(error)));
+
+    }
     
     next(action);
 };

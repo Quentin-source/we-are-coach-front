@@ -136,59 +136,65 @@ const SignUpPop = () => {
                     </Grid>
     
                     <form onSubmit={formik.handleSubmit}>
-                        <TextField 
-                            className="navbar-signpop-input"
-                            fullWidth
-                            autoFocus
-                            variant="standard"
-                            id="firstName"
-                            name="firstName"
-                            label="Prénom"
-                            value={formik.values.firstName}
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-                            helperText={formik.touched.firstName && formik.errors.firstName}
-                        />
-                        <TextField 
-                            className="navbar-signpop-input"
-                            fullWidth
-                            variant="standard"
-                            id="lastName"
-                            name="lastName"
-                            label="Nom"
-                            value={formik.values.lastName}
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-                            helperText={formik.touched.lastName && formik.errors.lastName}
-                        />
-                        <TextField 
-                            className="navbar-signpop-input"
-                            fullWidth
-                            variant="standard"
-                            id="age"
-                            name="age"
-                            label="Age"
-                            value={formik.values.age}
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            error={formik.touched.age && Boolean(formik.errors.age)}
-                            helperText={formik.touched.age && formik.errors.age}
-                        />
-                        <TextField 
-                            className="navbar-signpop-input"
-                            fullWidth
-                            variant="standard"
-                            id="city"
-                            name="city"
-                            label="Ville"
-                            value={formik.values.city}
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            error={formik.touched.city && Boolean(formik.errors.city)}
-                            helperText={formik.touched.city && formik.errors.city}
-                        />
+                        
+                        <div className="navbar-signpop-input-group">
+                            <TextField 
+                                className="navbar-signpop-input"
+                                fullWidth
+                                autoFocus
+                                size="normal"
+                                variant="standard"
+                                id="firstName"
+                                name="firstName"
+                                label="Prénom"
+                                value={formik.values.firstName}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+                                helperText={formik.touched.firstName && formik.errors.firstName}
+                            />
+                            <TextField 
+                                className="navbar-signpop-input"
+                                fullWidth
+                                variant="standard"
+                                id="lastName"
+                                name="lastName"
+                                label="Nom"
+                                value={formik.values.lastName}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+                                helperText={formik.touched.lastName && formik.errors.lastName}
+                            />
+                        </div>
+                        <div className="navbar-signpop-input-group">
+                            <TextField 
+                                className="navbar-signpop-input"
+                                fullWidth
+                                variant="standard"
+                                id="age"
+                                name="age"
+                                label="Age"
+                                value={formik.values.age}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                error={formik.touched.age && Boolean(formik.errors.age)}
+                                helperText={formik.touched.age && formik.errors.age}
+                            />
+                            <TextField 
+                                className="navbar-signpop-input"
+                                fullWidth
+                                variant="standard"
+                                id="city"
+                                name="city"
+                                label="Ville"
+                                value={formik.values.city}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                error={formik.touched.city && Boolean(formik.errors.city)}
+                                helperText={formik.touched.city && formik.errors.city}
+                            />
+                        </div>
                         <TextField 
                             className="navbar-signpop-input"
                             fullWidth
@@ -202,35 +208,37 @@ const SignUpPop = () => {
                             error={formik.touched.email && Boolean(formik.errors.email)}
                             helperText={formik.touched.email && formik.errors.email}
                         />
-                        <TextField 
-                            className="navbar-signpop-input"
-                            variant="standard"
-                            fullWidth
-                            id="password"
-                            name="password"
-                            label="Mot de Passe"
-                            type="password"
-                            value={formik.values.password}
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            error={formik.touched.password && Boolean(formik.errors.password)}
-                            helperText={formik.touched.password && formik.errors.password}
-                        />
-                        <TextField 
-                            className="navbar-signpop-input"
-                            variant="standard"
-                            fullWidth
-                            id="confirmPassword"
-                            name="confirmPassword"
-                            label="Confirmation du Mot de Passe"
-                            type="password"
-                            value={formik.values.confirmPassword}
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
-                            helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
-                        />
-                            
+
+                        <div className="navbar-signpop-input-group">
+                            <TextField 
+                                className="navbar-signpop-input"
+                                variant="standard"
+                                fullWidth
+                                id="password"
+                                name="password"
+                                label="Mot de Passe"
+                                type="password"
+                                value={formik.values.password}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                error={formik.touched.password && Boolean(formik.errors.password)}
+                                helperText={formik.touched.password && formik.errors.password}
+                            />
+                            <TextField 
+                                className="navbar-signpop-input"
+                                variant="standard"
+                                fullWidth
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                label="Confirmation"
+                                type="password"
+                                value={formik.values.confirmPassword}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+                                helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+                            />
+                        </div>    
                         <InputLabel className="navbar-signpop-select" id="sports">Sports préférés</InputLabel>
                         <Select
                             className="navbar-signpop-select"

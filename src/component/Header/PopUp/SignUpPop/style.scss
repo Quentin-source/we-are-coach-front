@@ -14,6 +14,9 @@
 div.navbar-signpop-input{
     margin: 0.2em;
     padding: 0.2em;
+    &-group{
+        display: flex;
+    }
 }
 
 label.navbar-signpop-select{
