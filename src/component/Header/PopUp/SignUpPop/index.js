@@ -38,6 +38,10 @@ const names = [
 
 
 const validationSchema = yup.object({
+    pseudo: yup
+        .string('Pseudo invalide')
+        .min(2, 'Pseudo invalide')
+        .required('Requis'),
     firstName: yup
         .string('Prénom invalide')
         .min(2, 'Prénom invalide')
@@ -81,7 +85,6 @@ const SignUpPop = () => {
     const dispatch = useDispatch();
 
     const handleClickOpen = () => {
-        formik.resetForm({});
         dispatch({type : 'OPEN_SIGNPOP'});
     };
 
@@ -93,6 +96,7 @@ const SignUpPop = () => {
 
     const formik = useFormik({
         initialValues: {
+            pseudo:"",
             email: "",
             password: "",
             confirmPassword: "",
@@ -104,9 +108,12 @@ const SignUpPop = () => {
             CGU: false,
             
         },
-        validationSchema,
+        // validationSchema,
         onSubmit: (values) => {
-            console.log(JSON.stringify(values, null, 2));
+            dispatch({
+                type:'ASK_INSCRIPTION',
+                userDatas: values,
+            })
         },
     });
 
@@ -137,6 +144,23 @@ const SignUpPop = () => {
     
                     <form onSubmit={formik.handleSubmit}>
                         
+                        <TextField 
+                            className="navbar-signpop-input"
+                            fullWidth
+                            autoFocus
+                            size="normal"
+                            variant="standard"
+                            id="pseudo"
+                            name="pseudo"
+                            label="Prénom"
+                            value={formik.values.pseudo}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            error={formik.touched.pseudo && Boolean(formik.errors.pseudo)}
+                            helperText={formik.touched.pseudo && formik.errors.pseudo}
+                        />
+
+
                         <div className="navbar-signpop-input-group">
                             <TextField 
                                 className="navbar-signpop-input"

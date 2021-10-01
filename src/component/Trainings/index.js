@@ -7,12 +7,13 @@ import './style.scss';
 import CardTrainning from './Training/';
 import TrainingsHeader from './Header';
 import Pagination from './Pagination';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
 const Trainings = () => {
-
+    const dispatch = useDispatch();
+    dispatch({type:'FETCH_TRAINING'});
     const displayedTrainingsArray = useSelector((state)=>state.trainings.diplayedTrainings);
     return (
         <main className="main-content main-content-trainings">
@@ -24,18 +25,7 @@ const Trainings = () => {
             </div>
             <div className= 'trainings'>
                 {displayedTrainingsArray.map((training, index) =>  (<CardTrainning key={index} image= {run}/>))}
-                {/* <CardTrainning image= {run}/>
-                <CardTrainning image= {pool}/>
-                <CardTrainning image= {tennis}/>
-                <CardTrainning image= {run}/>
-                <CardTrainning image= {pool}/>
-                <CardTrainning image= {tennis}/>
-                <CardTrainning image= {run}/>
-                <CardTrainning image= {pool}/>
-                <CardTrainning image= {tennis}/>
-                <CardTrainning image= {run}/>
-                <CardTrainning image= {pool}/>
-                <CardTrainning image= {tennis}/> */}
+              
             </div>
             <Pagination />  
     

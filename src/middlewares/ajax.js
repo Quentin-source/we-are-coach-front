@@ -6,6 +6,7 @@ const api = axios.create({
 api.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 let token = "";
+let fetchedTrainings = [];
 
 const ajaxMiddleware = (store) => (next) => (action) => {
 
@@ -53,14 +54,52 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 console.error('pb identification', error);
                 alert('Utilisateur non reconnu');
             });
-    }  
+    }; 
     
     if(action.type === 'ASK_SEARCH')  {
 
         api.get('/api/search', {params:{search : action.value}}).then((response)=>(console.log(response.data))).catch((error)=>(console.error(error)));
 
-    }
+    };
     
+    if(action.type === 'FETCH_TRAINING')  {
+
+        api.get('/api/workout').then((response)=> {
+            console.log(response.data)
+        })
+            .catch((error) => (console.error(error)));
+
+    };
+
+    if(action.type === 'ASK_INSCRIPTION')  {
+        api.post('/api/registration', {
+            pseudo : action.userDatas.pseudo,
+            firstname : action.userDatas.firstName,
+            lastname :  action.userDatas.lastName,
+            email :  action.userDatas.email,
+            password : action.userDatas.password,
+            city :  action.userDatas.city,
+            age : parseInt(action.userDatas.age),
+            sport1 :  action.userDatas.sports[0],
+            sport2 : action.userDatas.sports[1],
+            sport3 :  action.userDatas.sports[2],
+        
+        }).then((response)=> {
+            
+            store.dispatch({
+                type: 'OK_INSCRIPTION',
+                user: action.userDatas.email,
+                password: action.userData.password
+            });
+        }).catch((error) => (console.error(error)));
+
+    }
+
+
+
+
     next(action);
 };
 export default ajaxMiddleware;
+
+

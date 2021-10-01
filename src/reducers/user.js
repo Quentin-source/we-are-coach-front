@@ -45,6 +45,15 @@ const userReducer = (state = initialState, action = {}) => {
                 inputPassword: '',
             }
         );
+
+    case 'OK_INSCIPTION':
+        return (
+            {
+                ...state,
+                inputEmail: action.email,
+                inputPassword: action.password,
+            }
+        );
     
     default:
         return state;
