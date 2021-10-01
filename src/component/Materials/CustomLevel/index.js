@@ -1,5 +1,6 @@
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { FlashOn, FlashOnOutlined } from '@material-ui/icons';
+
+  
 import './style.scss';
 
 
@@ -7,11 +8,11 @@ const CustomLevel = ({level}) => {
 
     return(
         <div className="custom-level" >
-            {level > 0 ? <FavoriteIcon /> :<FavoriteBorderIcon />}
-            {level > 1 ? <FavoriteIcon /> :<FavoriteBorderIcon />}
-            {level > 2 ? <FavoriteIcon /> :<FavoriteBorderIcon />}
-            {level > 3 ? <FavoriteIcon /> :<FavoriteBorderIcon />}
-            {level > 4 ? <FavoriteIcon /> :<FavoriteBorderIcon />}    
+            {level > 0 && <FlashOn />}
+            {level > 1 && <FlashOn />}
+            {level > 2 && <FlashOn />}
+            {level > 3 && <FlashOn />}
+            {level > 4 && <FlashOn />}    
         </div > 
     );
 }

@@ -6,13 +6,12 @@ const api = axios.create({
 api.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 let token = "";
-let fetchedTrainings = [];
 
 const ajaxMiddleware = (store) => (next) => (action) => {
 
 
     // action récupération des données de la page home
-    if (action.type === 'API_LOG') {
+    if (action.type === 'FETCH_HOME') {
         const categoryPromise = api.get('/api/home/category');
         const homeWorkoutPromise = api.get('/api/home/workout');
 
@@ -20,7 +19,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             .then((response)=> {
                 const [categories, homeWorkout] = response;
                 store.dispatch({
-                    type: 'FETCH_HOME',
+                    type: 'SAVE_HOME',
                     cat: categories.data,
                     top: homeWorkout.data,
                 });
@@ -66,7 +65,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
     if(action.type === 'FETCH_TRAINING')  {
 
         api.get('/api/workout').then((response)=> {
-            console.log(response.data)
+            store.dispatch({
+                type : 'SAVE_TRAININGS',
+                datas : response.data,
+            })
+            store.dispatch({type: 'LOADING_OFF'});
         })
             .catch((error) => (console.error(error)));
 

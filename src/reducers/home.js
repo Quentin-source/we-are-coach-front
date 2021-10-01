@@ -110,7 +110,7 @@ const homeReducer = (state = initialState, action = {}) => {
                 apiToken : action.token,
             }
         );
-    case 'FETCH_HOME':
+    case 'SAVE_HOME':
         return (
             {
                 ...state,

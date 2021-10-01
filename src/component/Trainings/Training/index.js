@@ -4,49 +4,47 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CustomNote from '../../Materials/CustomNote';
+import CustomLevel from '../../Materials/CustomLevel';
 
 
 import '../style.scss';
 
 
-const CardTrainning = ({image}) => {
+const CardTrainning = ({training}) => {
+    const {picture, level, name, description, sport, published_at} = training;
     return (
         <Card className= "training-card" sx={{ maxWidth: 345 }}>
             <CardMedia
                 component="img"
                 height="140"
-                image={image}
+                image={picture}
                 alt="green iguana"
             />
             <CardContent>
                 <Typography className="training-card-category" gutterBottom variant="h10" component="div">
-                Catégorie
+                    {sport.category.name}
                 </Typography>
                 <Typography gutterBottom variant="h9" component="div">
-                Nom du sport
+                    {sport.name}
                 </Typography>
                 <Typography gutterBottom variant="h7" component="div">
-                Nom de l'entrainement
+                    {name}
                 </Typography>
                 <CardContent className= "description-card">
                     <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                        {description}
                     </Typography>
                 </CardContent>
+                <Typography gutterBottom variant="caption text" component="div">
+                    {/* {published_at} */}
+                </Typography>
             </CardContent>
             <CardContent className= "footer-card">
                 <Typography gutterBottom variant="h10" component="div">
-                    difficulté
+                    <CustomLevel level={level} />
                 </Typography>
                 <Typography gutterBottom variant="h10" component="div">
                     <CustomNote note={3} />
-                </Typography>
-                <Typography gutterBottom variant="h10" component="div">
-                    Date
                 </Typography>
             </CardContent>
         </Card>

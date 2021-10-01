@@ -16,10 +16,6 @@ import './style.scss';
 
 
 const App = () => {
-    const dispatch = useDispatch();
-    // dispatch({type:'LOADING_ON'});
-    dispatch({type:'API_LOG'});   
-
     return (
         <div className="app">
             <Loader />    

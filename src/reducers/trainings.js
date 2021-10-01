@@ -1,3 +1,9 @@
+let allTrainings = [];
+
+const paginate = (array, page_size, page_number) => {
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
+};
+
 export const initialState = {
     inputSearch: "",
     filterLevelValue: [],
@@ -5,11 +11,10 @@ export const initialState = {
     filterSportValue: [],
     filterNoteValue: [],
     currentPage: 1,
-    pageCount: 1,
-    pageSize: 1,
-    diplayedTrainings : [{},{},{}],
+    pageCount: 0,
+    pageSize: 2,
+    displayedTrainings :[],
     
-
 };
 
 
@@ -32,14 +37,26 @@ const reducer = (state = initialState, action = {}) => {
             }
         );
 
-
     case 'CHANGE_PAGE':
         return (
             {
                 ...state,
-                currentPage: action.value
+                currentPage: action.value,
+                displayedTrainings : paginate(allTrainings, state.pageSize, action.value),
             }
         );
+    
+
+    case 'SAVE_TRAININGS':
+        allTrainings = action.datas;
+        return (
+            {
+                ...state,
+                displayedTrainings: paginate(allTrainings, state.pageSize, state.currentPage),
+                pageCount: Math.ceil(allTrainings.length / state.pageSize),
+            }
+        );
+    
     
     default:
         return state;

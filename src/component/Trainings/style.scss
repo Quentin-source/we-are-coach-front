@@ -1,11 +1,35 @@
 @use 'src/styles/vars';
 
+@keyframes scrollUp {
+
+    40% {
+        transform : translateX(-300%);
+    }
+    41%{
+        display:none;
+    }
+    42%{
+        transform: translateX(300%);
+    }
+    43%{
+        display: flex;
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
 .trainings {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     max-width: 1200px;
     margin-bottom: 1em;
+    position : relative;
+    &--pageup{
+        animation: scrollUp;
+        animation-duration: 1s;
+    }
 }
 
 .main-content-trainings{
@@ -33,6 +57,10 @@ div.MuiCard-root.training-card {
     .custom-note svg{
         font-size: 12px;
         color:vars.$mainColor;
+    }
+    .custom-level svg{
+        font-size: 14px;
+        // color:vars.$mainColor;
     }
     &:hover{
         transform: scale(1.02);
