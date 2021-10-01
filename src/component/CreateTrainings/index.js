@@ -1,13 +1,9 @@
-import Header from '../CreateTrainings/Header';
-import Main from '../CreateTrainings/Main';
-import Footer from '../CreateTrainings/Footer';
 
+import Form from '../CreateTrainings/FormCreateTraining/form';
 const CreateTraining = () => {
     return (
         <div>
-            <Header />
-            <Main />
-            <Footer />
+            <Form />
         </div>
     )
 }
