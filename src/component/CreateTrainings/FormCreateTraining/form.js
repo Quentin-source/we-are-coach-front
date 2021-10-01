@@ -69,8 +69,8 @@ const Form = () => {
     console.log(formik.initialValues.trainingName);
 
     return (
-        <>
-  
+        <main className="main-content main-content-home">
+          
             <Typography variant="h6" gutterBottom component="div">
             Création d'un entrainement
             </Typography>
@@ -84,6 +84,7 @@ const Form = () => {
                     label="Nom de l'entrainement"
                     value={formik.values.trainingName}
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     error={formik.touched.trainingName && Boolean(formik.errors.trainingName)}
                     helperText={formik.touched.trainingName && formik.errors.trainingName}
                     sx={{
@@ -99,6 +100,7 @@ const Form = () => {
                     label="Nom du sport"
                     value={formik.values.sportName}
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     error={formik.touched.sportName && Boolean(formik.errors.sportName)}
                     helperText={formik.touched.sportName && formik.errors.sportName}
                     sx={{
@@ -117,19 +119,21 @@ const Form = () => {
                     }}>
                     <InputLabel id="demo-simple-select-standard-label">Catégorie</InputLabel>
                     <Select
+                        name="catégorie"
                         labelId="demo-simple-select-standard-label"
                         id="demo-simple-select-standard"
                         value={formik.values.catégorie}
                         onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         error={formik.touched.catégorie && Boolean(formik.errors.catégorie)}
                         label="Catégorie"
                     >
-                        <MenuItem value="">
+                        <MenuItem name="catégorie" value="">
                             <em>None</em>
                         </MenuItem>
-                        <MenuItem value={1}>catégorie 1</MenuItem>
-                        <MenuItem value={2}>catégorie 2</MenuItem>
-                        <MenuItem value={3}>catégorie 3</MenuItem>
+                        <MenuItem name="catégorie" value={1}>catégorie 1</MenuItem>
+                        <MenuItem name="catégorie" value={2}>catégorie 2</MenuItem>
+                        <MenuItem name="catégorie" value={3}>catégorie 3</MenuItem>
                     </Select>
                 </FormControl>
 
@@ -139,6 +143,7 @@ const Form = () => {
                     name="description"
                     value={formik.values.description}
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     error={formik.touched.description && Boolean(formik.errors.description)}
                     helperText={formik.touched.description && formik.errors.description}
                     multiline
@@ -161,37 +166,23 @@ const Form = () => {
                     }}>
                     <InputLabel id="demo-simple-select-standard-label">Niveau</InputLabel>
                     <Select
+                        name="level"
                         labelId="demo-simple-select-standard-label"
                         id="demo-simple-select-standard"
                         value={formik.values.level}
                         onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         label="Entre la difficulté de l\'entrainement"
                         error={formik.touched.level && Boolean(formik.errors.level)}
-                    >
+                    >   
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>Facile</MenuItem>
-                        <MenuItem value={20}>Moyen</MenuItem>
-                        <MenuItem value={30}>Armageddon</MenuItem>
+                        <MenuItem name="level" value={10}>Facile</MenuItem>
+                        <MenuItem name="level" value={20}>Moyen</MenuItem>
+                        <MenuItem name="level" value={30}>Armageddon</MenuItem>
                     </Select>
                 </FormControl>
-
-                <TextField
-                    id="standard-basic"
-                    name="date"
-                    label="Date"
-                    value={formik.values.date}
-                    onChange={formik.handleChange}
-                    variant="standard" 
-                    error={formik.touched.date && Boolean(formik.errors.date)}
-                    helperText={formik.touched.age && formik.errors.age}
-                    sx={{
-                        width: 800,
-                        maxWidth: '100%',
-                        m: 2 
-                    }}
-                />
 
                 <div className = "footer-content">
                     <Button 
@@ -206,7 +197,7 @@ const Form = () => {
             </form>
                 
              
-        </>
+        </main >
     )
 }
 
