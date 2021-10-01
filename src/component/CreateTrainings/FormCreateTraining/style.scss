@@ -1,22 +1,9 @@
-div.main-box-content {
-    display: flex;
-    justify-content: space-between;
-    margin: 3em;
-    margin-right: 20em;
-}
 
-div.main-box-content-level {
-    display: flex;
-    justify-content: flex-start;
-    margin: 3em;
-}
 
-.main-box-content-level-test {
-    margin-right: 3em;
-}
-
-.footer-content {
-    margin: 5rem;
+.form {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    padding-bottom: 10em;
 }
