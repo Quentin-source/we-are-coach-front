@@ -19,6 +19,25 @@
     }
 }
 
+@keyframes scrollDown {
+
+    40% {
+        transform : translateX(300%);
+    }
+    41%{
+        display:none;
+    }
+    42%{
+        transform: translateX(-300%);
+    }
+    43%{
+        display: flex;
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
 .trainings {
     display: flex;
     justify-content: center;
@@ -28,6 +47,10 @@
     position : relative;
     &--pageup{
         animation: scrollUp;
+        animation-duration: 1s;
+    }
+    &--pagedown{
+        animation: scrollDown;
         animation-duration: 1s;
     }
 }

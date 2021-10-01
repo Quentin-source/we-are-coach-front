@@ -2,12 +2,14 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { useSelector, useDispatch } from 'react-redux';
 
+let pastPage = 0;
+
+
 const Paginations = () => {
     const currentPage = useSelector ((state) => state.trainings.currentPage);
     const pageSize = useSelector((state) => state.trainings.pageSize);
     const pageCount = useSelector((state) => state.trainings.pageCount);
 
-    let pastPage = 0;
 
     const dispatch = useDispatch();
     const handleChange = (event, value) => {
