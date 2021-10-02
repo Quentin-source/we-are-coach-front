@@ -11,6 +11,7 @@ import Navdrop from '../Header/NavDrop';
 
 import './style.scss';
 import Trainings from '../Trainings';
+import TrainingDetails from '../TrainingDetails';
 
 import './style.scss';
 
@@ -32,7 +33,7 @@ const App = () => {
                     <Trainings />    
                 </Route>
                 <Route path="/Contacts" exact>
-                
+                    <TrainingDetails />
                 </Route>
                 <Route>
                     <Home />
