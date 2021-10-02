@@ -29,10 +29,10 @@ const App = () => {
                 <Route path="/" exact>
                     <Home />    
                 </Route>
-                <Route path="/Entrainements" exact>
+                <Route path="/Entrainement" exact>
                     <Trainings />    
                 </Route>
-                <Route path="/Contacts" exact>
+                <Route path="/Entrainement/:slug" exact>
                     <TrainingDetails />
                 </Route>
                 <Route>

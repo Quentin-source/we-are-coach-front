@@ -75,6 +75,19 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     };
 
+    if(action.type === 'FETCH_TRAINING_DETAILS')  {
+
+        api.get(`/api/workout/${action.slug}`).then((response)=> {
+            store.dispatch({
+                type : 'SAVE_TRAINING_DETAILS',
+                datas : response.data,
+            })
+            setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
+        })
+            .catch((error) => (console.error(error)));
+
+    };
+
     if(action.type === 'ASK_INSCRIPTION')  {
         api.post('/api/registration', {
             pseudo : action.userDatas.pseudo,
