@@ -6,11 +6,12 @@ const formContact = () => {
 
     return (
         <div className="contact">
-            <Typography style={{maxWidth:500, margin:"0 auto", padding:"50px 5px"}} gutterBottom variant="h2" align="center">Contact </Typography>
-
             
             <CardContent style={{maxWidth:500, margin:"0 auto", padding:"20px 5px"}}>
                 <Card>
+                    <Typography style={{maxWidth:500, margin:"0 auto", padding:"50px 5px"}} 
+                        gutterBottom variant="h4" 
+                        align="center">Contacter We Are Coach </Typography>
                     <Typography gutterBottom variant="h5">Formulaire de Contact</Typography>
                     <Typography gutterBottom color="textSecondary" variant="body2" component="p">Besoin d'un renseignement ? Remplissez le formulaire ci-dessous et nous vous répondrons dans les meilleurs délais.</Typography>
                     <form>
@@ -62,9 +63,12 @@ const formContact = () => {
 
             </CardContent>
 
-        </div>
+        </div>      
+    
 
     );
 };
 
+
 export default formContact;
+
