@@ -6,8 +6,7 @@ import Home from '../Home';
 import Header from '../Header';
 import Footer from '../Footer';
 
-import Usermenu from '../Header/Usermenu';
-import Navdrop from '../Header/NavDrop';
+
 
 import './style.scss';
 import Trainings from '../Trainings';
@@ -20,11 +19,7 @@ const App = () => {
     return (
         <div className="app">
             <Loader />    
-            <div className="app-header">
-                <Header />
-                <Usermenu />
-                <Navdrop />
-            </div>
+            <Header />    
             <Switch>
                 <Route path="/" exact>
                     <Home />    

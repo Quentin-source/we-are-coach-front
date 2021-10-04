@@ -1,9 +1,13 @@
+import Usermenu from '../Header/Usermenu';
+import Navdrop from '../Header/NavDrop';
 import Nav from './Nav';
 import './style.scss'
 
 const Header = () => (
-    <header>
+    <header className="app-header">
         <Nav />
+        <Usermenu />
+        <Navdrop />
     </header>
 );
 

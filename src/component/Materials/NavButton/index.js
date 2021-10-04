@@ -1,15 +1,13 @@
 import './style.scss';
 
 
-const NavButton = ({content, className, handleClick, dataTarget, dataToggle}) => {
+const NavButton = ({content, className, handleClick}) => {
 
     return(
         <button 
             className={className}
             type="button"
             onClick={handleClick}
-            data-Target={dataTarget}
-            data-Toggle={dataToggle}
         >
             {content}
         </button>

@@ -2,12 +2,13 @@
 export const initialState = {
 
     content:{},
-
-    editName: false,
-    editSport: false,
-    editCategory:false,
-    editDescription:false, 
-    editLevel:false,
+    editState:{
+        name: false,
+        sport: false,
+        category:false,
+        description:false, 
+        level:false,
+    },
 
     picturePreview:'',
     isLoadedPicture: false,
@@ -21,11 +22,11 @@ const trainingReducer = (state = initialState, action = {}) => {
         return (
             {
                 ...state,
-                [action.toggle] : !state[action.toggle],
-                content :  {
-                    [action.target] : action.validateYupSchema,
-                    ...state.content,                
-                }
+                editState : {
+                    ...state.editState,
+                    [action.target] : !state.editState[action.target],
+                },
+
             }
         );
 

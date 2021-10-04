@@ -2,7 +2,8 @@
 
 .dropmenu-nav{
     text-align: left;
-    left : 0;   
+    left : 0; 
+    z-index: -1;  
     &--hidden{
         transform: translate(0%, -100%);
     }

@@ -4,6 +4,27 @@ div {
 
 form{
     max-width: 800px;
+    min-width: 100px;
+}
+
+.training-picture{
+}
+
+.training-details-picture{
+    display : flex;
+    align-items: flex-end;
+    position: relative;
+    img{
+        height : 20vh;
+        width : 80vw;
+        object-fit: cover;
+    }
+    label{
+        position : absolute;
+        right : 5px;
+        bottom : 5px;
+        
+    }
 }
 
 .training-details-input-group{
