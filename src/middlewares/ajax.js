@@ -54,6 +54,22 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 alert('Client non reconnu');
             });
     }
+
+    //la pas besoin de state ici on va parler avec l'api
+    // la il faut console.log value first thing to do
+    // et colle ici le résultat du console.log en commentaire
+
+    if (action.type === 'ASK_CREATTRAINING') {
+
+       // console.log(action.values);
+
+
+       
+        //il faut submit ton formulaire...
+        //pour faire envoyer le console.log
+    }
+
+
    
     next(action);
 };

@@ -1,11 +1,9 @@
 import { useFormik} from 'formik';
 import * as yup from 'yup';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import run from '../../../assets/images/run.jpg'
-import pool from '../../../assets/images/pool.jpg'
-import tennis from '../../../assets/images/tennis.jpg'
+
 
 
 
@@ -19,11 +17,12 @@ import FormControl from '@mui/material/FormControl';
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 
 import './style.scss';
+import ButtonFile from './Button/buttonFile';
 
 
 
 
-const validationSchema = yup.object({
+const validationSchema = yup.object().shape({
     trainingName: yup
         .string('Entre le de l\'entrainement')
         .min(2, 'Tape ton nom d\'entrainement')
@@ -53,20 +52,30 @@ const validationSchema = yup.object({
 
 const Form = () => {
 
+    const dispatch = useDispatch();
+
+    const initialValues = {
+        trainingName: '',
+        sportName: '',
+        description: '',
+        catégorie: '',
+        level: ''
+    }
+
     const formik = useFormik({
-        initialValues: {
-            trainingName: '',
-            sportName: '',
-            description: '',
-            catégorie: '',
-            level: ''
-        },
+        initialValues,
         validationSchema: validationSchema,
-        onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+        onSubmit: (formValues) => {
+            console.log(formValues);
+            //ca doit etre ok
+            dispatch ({
+                type: 'ASK_CREATTRAINING', // a la soumission on demande un dispatch nickel
+                values: formValues, // ici on recupere les valeur sous forme d'objet nickel
+            });
+            
         },
     });
-    console.log(formik.initialValues.trainingName);
+    //console.log(formik.values);
 
     return (
         <main className="main-content main-content-home">
@@ -76,7 +85,9 @@ const Form = () => {
             </Typography>
 
             <form className="form" onSubmit={formik.handleSubmit}>
-                
+
+                <ButtonFile />
+
                 <TextField 
                     variant="standard"
                     id="name"
