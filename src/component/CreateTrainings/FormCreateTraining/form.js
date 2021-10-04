@@ -40,12 +40,8 @@ const validationSchema = yup.object().shape({
         .min(1, 'Choisissez une catégorie')
         .required('Catégorie requise'),
     level: yup
-        .string('Entre la difficulté de l\'entrainement')
+        .number('Entre la difficulté de l\'entrainement')
         .required('difficulté requise'),
-    date: yup
-        .string('Date de création')
-        .min(10, 'Entrer une date de type ##/##/####')
-        .required('Date requise'),
 });
 
 
@@ -64,7 +60,7 @@ const Form = () => {
 
     const formik = useFormik({
         initialValues,
-        validationSchema: validationSchema,
+        validationSchema,
         onSubmit: (formValues) => {
             console.log(formValues);
             //ca doit etre ok
@@ -142,9 +138,9 @@ const Form = () => {
                         <MenuItem name="catégorie" value="">
                             <em>None</em>
                         </MenuItem>
-                        <MenuItem name="catégorie" value={1}>catégorie 1</MenuItem>
-                        <MenuItem name="catégorie" value={2}>catégorie 2</MenuItem>
-                        <MenuItem name="catégorie" value={3}>catégorie 3</MenuItem>
+                        <MenuItem name="catégorie" value={'categorie1'}>catégorie 1</MenuItem>
+                        <MenuItem name="catégorie" value={'categorie2'}>catégorie 2</MenuItem>
+                        <MenuItem name="catégorie" value={'categorie3'}>catégorie 3</MenuItem>
                     </Select>
                 </FormControl>
 

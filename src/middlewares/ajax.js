@@ -61,7 +61,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     if (action.type === 'ASK_CREATTRAINING') {
 
-       // console.log(action.values);
+        console.log(action.values);
 
 
        
