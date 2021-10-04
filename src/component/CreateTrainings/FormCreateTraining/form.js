@@ -35,7 +35,7 @@ const validationSchema = yup.object().shape({
         .string('Description de l\'entrainement')
         .min(20, 'Tape ta descrition d\'entrainement')
         .required('Description requis'),
-    catégorie: yup
+    category: yup
         .string('Choisissez une catégorie')
         .min(1, 'Choisissez une catégorie')
         .required('Catégorie requise'),
@@ -54,7 +54,7 @@ const Form = () => {
         trainingName: '',
         sportName: '',
         description: '',
-        catégorie: '',
+        category: '',
         level: ''
     }
 
@@ -62,7 +62,7 @@ const Form = () => {
         initialValues,
         validationSchema,
         onSubmit: (formValues) => {
-            console.log(formValues);
+            //console.log(formValues);
             //ca doit etre ok
             dispatch ({
                 type: 'ASK_CREATTRAINING', // a la soumission on demande un dispatch nickel
@@ -72,7 +72,6 @@ const Form = () => {
         },
     });
     //console.log(formik.values);
-
     return (
         <main className="main-content main-content-home">
           
@@ -126,21 +125,21 @@ const Form = () => {
                     }}>
                     <InputLabel id="demo-simple-select-standard-label">Catégorie</InputLabel>
                     <Select
-                        name="catégorie"
+                        name="category"
                         labelId="demo-simple-select-standard-label"
                         id="demo-simple-select-standard"
-                        value={formik.values.catégorie}
+                        value={formik.values.category}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        error={formik.touched.catégorie && Boolean(formik.errors.catégorie)}
+                        error={formik.touched.category && Boolean(formik.errors.category)}
                         label="Catégorie"
                     >
-                        <MenuItem name="catégorie" value="">
+                        <MenuItem name="category" value="">
                             <em>None</em>
                         </MenuItem>
-                        <MenuItem name="catégorie" value={'categorie1'}>catégorie 1</MenuItem>
-                        <MenuItem name="catégorie" value={'categorie2'}>catégorie 2</MenuItem>
-                        <MenuItem name="catégorie" value={'categorie3'}>catégorie 3</MenuItem>
+                        <MenuItem name="category" value={'categorie1'}>catégorie 1</MenuItem>
+                        <MenuItem name="category" value={'categorie2'}>catégorie 2</MenuItem>
+                        <MenuItem name="category" value={'categorie3'}>catégorie 3</MenuItem>
                     </Select>
                 </FormControl>
 
@@ -197,6 +196,7 @@ const Form = () => {
                         type="submit" 
                         endIcon={<BuildCircleIcon />}
                         sx={{ m: 2 }}
+                        disabled={! formik.isValid || formik.isSubmitting}
                     >
                         valider
                     </Button> 

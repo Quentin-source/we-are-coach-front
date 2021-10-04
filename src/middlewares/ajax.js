@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Formik } from 'formik';
 const ajaxMiddleware = (store) => (next) => (action) => {
     //You can create a new instance of axios with a custom config
     console.log(process.env);
@@ -58,15 +59,27 @@ const ajaxMiddleware = (store) => (next) => (action) => {
     //la pas besoin de state ici on va parler avec l'api
     // la il faut console.log value first thing to do
     // et colle ici le résultat du console.log en commentaire
+    //category: "categorie1"
+    //description: "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+    //level: 10
+    //sportName: "tatat"
+    //trainingName: "toto"
+
 
     if (action.type === 'ASK_CREATTRAINING') {
 
         console.log(action.values);
-
-
-       
+        
         //il faut submit ton formulaire...
         //pour faire envoyer le console.log
+
+        api.post('/CreerEntrainement', {
+            trainingName: action.values.trainingName,
+            sportName: action.values.sportName,
+            description: action.values.description,
+            category: action.values.category,
+            level: action.values.level,
+        })
     }
 
 
