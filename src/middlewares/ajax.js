@@ -74,11 +74,13 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         //pour faire envoyer le console.log
 
         api.post('/CreerEntrainement', {
-            trainingName: action.values.trainingName,
-            sportName: action.values.sportName,
+            name: action.values.trainingName,
             description: action.values.description,
+            picture : action.value.picture,
             category: action.values.category,
             level: action.values.level,
+            sport: action.values.sportName,
+            user:
         })
     }
 
