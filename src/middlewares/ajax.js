@@ -70,9 +70,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
         console.log(action.values);
         
-        //il faut submit ton formulaire...
-        //pour faire envoyer le console.log
-
+        //api.defaults.headers.common.Authorization = `bearer ${token}`;
         api.post('/CreerEntrainement', {
             name: action.values.trainingName,
             description: action.values.description,
@@ -80,8 +78,8 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             category: action.values.category,
             level: action.values.level,
             sport: action.values.sportName,
-            user:
-        })
+            user: 5,
+        }).then((response) => (console.log(response)))
     }
 
 

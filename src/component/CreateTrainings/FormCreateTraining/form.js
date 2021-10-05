@@ -81,20 +81,6 @@ const Form = () => {
 
             <form className="form" onSubmit={formik.handleSubmit}>
 
-                <Grid className="navbar-signpop-header" align='center'>
-                    <div className="navbar-signpop-header-avatar">
-                        <Avatar  alt="Nom Prénom"
-                            src={picturePreview}
-                        />
-                        <label 
-                            className={!isLoadedPicture ? 'navbar-button navbar-signpop-header-avatar-button': 'navbar-signpop-header-avatar-button navbar-button navbar-button--open'} 
-                        >
-                            {isLoadedPicture ? <ChangeCircleOutlined /> : <AddAPhotoOutlined />}
-                            <input name="picture" type="file" onChange={handleUploadFile} />
-                        </label>
-                    </div>
-                </Grid> 
-
                 <TextField 
                     variant="standard"
                     id="name"
