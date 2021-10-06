@@ -11,17 +11,32 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
 
     // action récupération des données de la page home
-    if (action.type === 'FETCH_HOME') {
-        const categoryPromise = api.get('/api/home/category');
-        const homeWorkoutPromise = api.get('/api/home/workout');
+    if (action.type === 'FETCH_COMMON') {
+        const categoriesPromise = api.get('/api/category');
+        const sportsPromise = api.get('/api/sport')
 
-        Promise.all([categoryPromise,homeWorkoutPromise])
+        Promise.all([categoriesPromise, sportsPromise])
             .then((response)=> {
-                const [categories, homeWorkout] = response;
+                const [categories, sports] = response;
+                store.dispatch({
+                    type: 'SAVE_COMMON',
+                    categories: categories.data,
+                    sports: sports.data,
+                });
+                setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
+            })
+            .catch((error) => {
+                alert('Problème communication serveur');
+            });
+    };
+
+    if (action.type === 'FETCH_HOME') {
+        
+        api.get('/api/home/workout')
+            .then((response)=> {
                 store.dispatch({
                     type: 'SAVE_HOME',
-                    cat: categories.data,
-                    top: homeWorkout.data,
+                    top: response.data,
                 });
                 setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
             })
@@ -32,20 +47,28 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     // action : connection utilisateur et récupération pseudo image en cas de succes 
     if (action.type === 'ASK_LOGIN') {
-        console.log(action.email, action.password);
         
-        api.post('/api/login_check', {
+        const connectionPromise = api.post('/api/login_check', {
             username: action.email,
             password: action.password,
-        })
+        });
+        const fetchUserPromise = api.get('api/user');
+
+        
+        Promise.all([connectionPromise, fetchUserPromise])
             .then((response) => {
-                token = response.data.token;
-                
+                const [connectionData, userData] = response;
+                const information = connectionData.data;
+                const user = userData.data.find((item) => (item.email === action.email));
+                token = information.token;     
+                console.log(user, information);
+                     
                 store.dispatch({
                     type: 'CONNECTION',
                     userLogged: true,
-                    userPseudo: response.data.data.pseudo,
-                    userPicture: response.data.data.picture,
+                    userPseudo: information.data.pseudo,
+                    userPicture: information.data.picture,
+                    user: user, 
                 });
                 console.log('Connection réussie');
                 
@@ -62,15 +85,27 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     };
     
-    if(action.type === 'FETCH_TRAINING')  {
+    if(action.type === 'FETCH_TRAININGS')  {
 
-        api.get('/api/workout').then((response)=> {
-            store.dispatch({
-                type : 'SAVE_TRAININGS',
-                datas : response.data,
+        const workoutPromise = api.get('/api/workout');
+        const categoriesPromise = api.get('/api/category');
+        const sportsPromise = api.get('api/sport');
+
+        Promise.all([categoriesPromise,sportsPromise,workoutPromise])        
+            .then((response)=> {
+
+                const [categories, sports, trainings] = response;
+                // console.log(categories,sports, trainings);
+                
+
+                store.dispatch({
+                    type : 'SAVE_TRAININGS',
+                    trainings : trainings.data,
+                    categories : categories.data,
+                    sports : sports.data,
+                })
+                setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
             })
-            setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
-        })
             .catch((error) => (console.error(error)));
 
     };
@@ -107,8 +142,23 @@ const ajaxMiddleware = (store) => (next) => (action) => {
     }
 
 
+    if (action.type === 'ASK_CREATE_TRAINING') {
+
+        console.log('middleware create training connecté');
+        
+        api.defaults.headers.common.Authorization = `bearer ${token}`;
+        api.post('/api/workout/add', {
+            name: action.values.name,
+            description: action.values.description,
+            picture : action.picture,
+            level: action.values.level,
+            sport: action.values.sport,
+            user: store.getState().user.user.id,
+        }).then((response) => (console.log(response)))
+    }
 
 
+   
     next(action);
 };
 export default ajaxMiddleware;

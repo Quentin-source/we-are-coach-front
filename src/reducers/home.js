@@ -4,7 +4,6 @@ export const initialState = {
     dropMenu : false,
     connectPop : false,
     signUpPop : false,
-    categories: [],
     bestWorkout : [],
     
 };
@@ -114,7 +113,6 @@ const homeReducer = (state = initialState, action = {}) => {
         return (
             {
                 ...state,
-                categories: action.cat,
                 bestWorkout: action.top,  
             }
         );

@@ -18,7 +18,7 @@ const Trainings = () => {
     
     useEffect(()=> {
         dispatch({type:'LOADING_ON'});
-        dispatch({type:'FETCH_TRAINING'});
+        dispatch({type:'FETCH_TRAININGS'});
     }, []);
 
     const displayedTrainingsArray = useSelector((state)=>state.trainings.displayedTrainings);

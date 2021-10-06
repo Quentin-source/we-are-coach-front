@@ -12,10 +12,10 @@
     position: absolute;
     transition: transform 0.2s;
     a{
-        color : white;
+        color : vars.$backColor;
         padding: 0.5em;
         &:hover{
-            color : white;
+            color : vars.$backColor;
             text-decoration: underline;
         }
     }

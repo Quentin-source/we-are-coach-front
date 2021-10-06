@@ -14,8 +14,16 @@ import Trainings from '../Trainings';
 
 import './style.scss';
 
+import CreateTraining from '../CreateTrainings';
+import { useEffect } from 'react';
+
 
 const App = () => {
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        dispatch({type: 'FETCH_COMMON'});
+    },[]);
+
     return (
         <div className="app">
             <Loader />    
@@ -33,6 +41,9 @@ const App = () => {
                 </Route>
                 <Route path="/Contacts" exact>
                 
+                </Route>
+                <Route path="/CreerEntrainement" exact>
+                    <CreateTraining />
                 </Route>
                 <Route>
                     <Home />

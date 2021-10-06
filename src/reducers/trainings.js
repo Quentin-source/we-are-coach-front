@@ -1,3 +1,5 @@
+import { CallToActionSharp } from "@material-ui/icons";
+
 let allTrainings = [];
 
 const paginate = (array, page_size, page_number) => {
@@ -5,6 +7,7 @@ const paginate = (array, page_size, page_number) => {
 };
 
 export const initialState = {
+    displayedTrainings:[],
     inputSearch: "",
     filterLevelValue: [],
     filterCatValue: [],
@@ -13,8 +16,9 @@ export const initialState = {
     currentPage: 1,
     pageCount: 0,
     pageSize: 2,
-    displayedTrainings :[],
-    
+    picturePreview:'',
+    isLoadedPicture: false,
+
 };
 
 
@@ -48,7 +52,9 @@ const reducer = (state = initialState, action = {}) => {
     
 
     case 'SAVE_TRAININGS':
-        allTrainings = action.datas;
+        allTrainings = action.trainings;
+        console.log(allTrainings);
+        
         return (
             {
                 ...state,
@@ -57,6 +63,24 @@ const reducer = (state = initialState, action = {}) => {
             }
         );
     
+    case 'UPLOAD_TRAINING_PICTURE':
+        return (
+            {
+                ...state,
+                picturePreview : action.file,
+                isLoadedPicture: true,
+            }
+        );
+
+    case 'UNMOUNT__PICTURE':
+        return (
+            {
+                ...state,
+                picturePreview : '',
+                isLoadedPicture: false,
+            }
+        );
+        
     
     default:
         return state;

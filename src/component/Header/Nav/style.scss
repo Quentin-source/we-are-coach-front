@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
+    background-color: vars.$backColor;
     border: vars.$mainColor 4px solid;
     padding: 0.2em;
     z-index: 5;

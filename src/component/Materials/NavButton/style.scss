@@ -19,7 +19,7 @@
     border:0;
 
     svg {
-        fill: white;
+        fill: vars.$backColor;
         width:40px;
     }
 
@@ -28,7 +28,7 @@
             fill: vars.$mainColor;
         }
 
-        background-color: white;
+        background-color: vars.$backColor;
     }
     &:before {
         content: '';

@@ -33,7 +33,7 @@ const Filter = ({filterKey, label, optionsObject, optionsArray}) => {
                     // multiple={true}
                     variant="standard"
                 >
-                    <MenuItem value="">
+                    <MenuItem value={[]}>
                         <em>None</em>
                     </MenuItem>
                     {optionsArray !== undefined && optionsArray
@@ -42,7 +42,7 @@ const Filter = ({filterKey, label, optionsObject, optionsArray}) => {
                         ))}
                     {optionsObject !== undefined && optionsObject
                         .map((option)=>(
-                            <MenuItem key={option.name} value={option.name}>{option.name}</MenuItem>
+                            <MenuItem key={option.name} value={option.id}>{option.name}</MenuItem>
                         ))}
                 </Select>
             </FormControl>

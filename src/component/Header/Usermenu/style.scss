@@ -7,7 +7,7 @@
         transform: translate(0%, -100%);
     }
     button{
-        background-color: white;
+        background-color: vars.$backColor;
         font-weight: normal;
     }
     .navbar-deconnect-button{
@@ -18,7 +18,7 @@
         margin-top: 0.5em;
 
         &:hover{
-            background-color: white;
+            background-color: vars.$backColor;
             text-decoration: underline;
         }
     }

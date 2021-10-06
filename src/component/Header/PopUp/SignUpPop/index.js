@@ -85,7 +85,7 @@ const SignUpPop = () => {
 
     const handleClose = () => {
         dispatch({type: 'CLOSE_SIGNPOP'});
-        dispatch({type: 'UNMOUNT_PICTURE_PREVIEW'});
+        dispatch({type: 'UNMOUNT_USER_PICTURE'});
         formik.resetForm();
     };
 
@@ -93,7 +93,7 @@ const SignUpPop = () => {
         const picturePreview = event.target.files[0];
         const localPicturePreview = window.URL.createObjectURL(picturePreview);
         dispatch({
-            type :'UPLOAD_PICTURE_PREVIEW',
+            type :'UPLOAD_USER_PICTURE',
             file: localPicturePreview,
         });
     };

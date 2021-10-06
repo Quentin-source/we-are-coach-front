@@ -1,4 +1,5 @@
 export const initialState = {
+    user : {},    
     inputEmail: '',
     inputPassword: '',
     pseudo:'',
@@ -34,6 +35,7 @@ const userReducer = (state = initialState, action = {}) => {
                 picture : action.userPicture,
                 inputEmail: '',
                 inputPassword: '',
+                user: action.user,
             }
         );
 
@@ -48,7 +50,7 @@ const userReducer = (state = initialState, action = {}) => {
             }
         );
 
-    case 'UPLOAD_PICTURE_PREVIEW':
+    case 'UPLOAD_USER_PICTURE':
         return (
             {
                 ...state,
@@ -57,7 +59,7 @@ const userReducer = (state = initialState, action = {}) => {
             }
         );
 
-    case 'UNMOUNT_PICTURE_PREVIEW':
+    case 'UNMOUNT_USER_PICTURE':
         return (
             {
                 ...state,
