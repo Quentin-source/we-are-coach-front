@@ -6,10 +6,10 @@
     text-align: right;
     width: 100vw;
     max-width: 1920px;
-    position:fixed;
+    height : 100px;
     bottom: 0;
    
-    border : vars.$mainColor 4px solid;
+    // border : vars.$mainColor 4px solid;
     padding: 0.3em 0em;
     z-index: 2;
     a{

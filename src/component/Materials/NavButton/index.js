@@ -7,7 +7,8 @@ const NavButton = ({content, className, handleClick}) => {
         <button 
             className={className}
             type="button"
-            onClick={handleClick}>
+            onClick={handleClick}
+        >
             {content}
         </button>
     );

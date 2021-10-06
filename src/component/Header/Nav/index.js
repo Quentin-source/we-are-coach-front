@@ -44,7 +44,7 @@ const Nav = () => {
                 <NavLink
                     className="navbar-linkgroup-link"
                     activeClassName="navbar-linkgroup-link--active"
-                    to="/Entrainements"
+                    to="/Entrainement"
                     exact
                 >
                     Entrainement
