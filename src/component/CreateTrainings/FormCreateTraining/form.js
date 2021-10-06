@@ -61,7 +61,7 @@ const Form = () => {
     const formik = useFormik({
         initialValues,
         validationSchema,
-        onSubmit: (formValues) => {
+        onSubmit: (formValues, onSubmittingProps) => {
             //console.log(formValues);
             //ca doit etre ok
             dispatch ({

@@ -80,6 +80,18 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             category: action.values.category,
             level: action.values.level,
         })
+
+            .then ((response) => {
+                api.defaults.headers.common.Authorization = `bearer ${response.data.token}`;
+                store.dispatch({
+                    type: 'SAVE_TRAINING',
+                    training: response.data.training,
+                });  
+            })
+            .catch((error) => {
+                console.error(error);
+                alert('Création échouée');
+            });
     }
 
 
