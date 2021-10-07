@@ -76,7 +76,7 @@ const Form = () => {
     return (
         <main className="main-content main-content-training-create">
           
-            <h2 className="main-content-training-create-title" >
+            <h2 className="main-content-title" >
             Création d'un entrainement
             </h2>
 

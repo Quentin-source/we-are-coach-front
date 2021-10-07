@@ -42,6 +42,9 @@
     &-form{
         display: flex;
         flex-direction: column;
+        button{
+            color : white;
+        }
         &>*{
         min-width : 100px;
         width : 50vw;
