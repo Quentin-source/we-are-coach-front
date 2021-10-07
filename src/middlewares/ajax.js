@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Formik } from 'formik';
+//import { Formik } from 'formik';
 const ajaxMiddleware = (store) => (next) => (action) => {
     //You can create a new instance of axios with a custom config
     console.log(process.env);
@@ -68,30 +68,18 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     if (action.type === 'ASK_CREATTRAINING') {
 
-        console.log(action.values);
+        //console.log(action.values);
         
-        //il faut submit ton formulaire...
-        //pour faire envoyer le console.log
-
+        //api.defaults.headers.common.Authorization = `bearer ${token}`;
         api.post('/CreerEntrainement', {
-            trainingName: action.values.trainingName,
-            sportName: action.values.sportName,
+            name: action.values.trainingName,
             description: action.values.description,
+            picture : action.value.picture,
             category: action.values.category,
             level: action.values.level,
-        })
-
-            .then ((response) => {
-                api.defaults.headers.common.Authorization = `bearer ${response.data.token}`;
-                store.dispatch({
-                    type: 'SAVE_TRAINING',
-                    training: response.data.training,
-                });  
-            })
-            .catch((error) => {
-                console.error(error);
-                alert('Création échouée');
-            });
+            sport: action.values.sportName,
+            user: 5,
+        }).then((response) => (console.log(response)))
     }
 
 

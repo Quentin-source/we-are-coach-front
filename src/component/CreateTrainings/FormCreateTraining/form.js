@@ -81,8 +81,6 @@ const Form = () => {
 
             <form className="form" onSubmit={formik.handleSubmit}>
 
-                <ButtonFile />
-
                 <TextField 
                     variant="standard"
                     id="name"
