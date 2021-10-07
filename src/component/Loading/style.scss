@@ -1,34 +1,46 @@
+
+@keyframes fade_out {
+    0%{
+        opacity: 100%;
+    }
+    
+    99%{
+        opacity:0;
+        left:0;
+    }
+    100%{
+        left:120vw;
+    }
+}
+
+
+
 .loader.loader-main{
     position : fixed;
-    // background-color: black;
     width : 100vw;
     height : 100vh;
     top : 0;
     left: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
     background-color: black;
     z-index: 5;
-    transition: 0.5s;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-
+    padding: 2em;
+    
+   
     &--true{
         left: 0;
-        opacity: 100;
+        opacity: 100%;
     }
     &--false{
-       opacity: 0;
-       left: 120vw;
-       
+        animation: fade_out 0.5s forwards;
     }
 }
 
 .loader-main-logo{
-    
-   width : 40vw;
+   width : 150px;
    filter: invert(100%);
-   margin-bottom: 4em;
-
+   margin-left: 2em;
+   padding-bottom: 0.5em;
 }

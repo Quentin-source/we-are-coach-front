@@ -10,6 +10,9 @@ button{
     height: 100vh;
     width: 100vw;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: vars.$backColor;
     position : relative;
     overflow-y: hidden;
@@ -26,52 +29,21 @@ button{
     display: flex;
     flex-direction: column;
     align-items: center;
+    // justify-content: space-between;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;   
     &-title{
         font-size: larger;
         font-weight: bolder;
         color: vars.$backColor;
-        background: vars.$mainColor;
-        padding : 0.5em 2em;
+        background: linear-gradient(90deg,vars.$optionColor 0%, vars.$mainColor 50%);
+        padding : 0.3em 2em;
         width: 100%;
-    
-    }
-    &-form{
         display: flex;
-        flex-direction: column;
-        &>*{
-        min-width : 100px;
-        width : 50vw;
-        max-width: 600px;
-        margin : 0.5em 0em !important;
-        }
-        
-    }
-    
-    &-picture{
-        margin-top: 1em !important;
-        display: flex;
-        justify-content: center;
-        position : relative;
-        div{
-            border-radius: 0;
-            height : 15vh;
-            min-width : 100px;
-            width : 50vw;
-            max-width: 600px;
-            }
-    
-        label{
-            position: absolute;
-            bottom : 10px;
-            right : 10px;
-        }
-        
-    }
-    &>*{
-        
+        justify-content: space-between;
     }
 }
-
 
 body::-webkit-scrollbar {
     width: 12px;               /* width of the entire scrollbar */
@@ -87,7 +59,7 @@ body::-webkit-scrollbar {
     border: 3px solid vars.$mainColor; ;  /* creates padding around scroll thumb */
   }
 
-@media (max-width: 450px) {
+@media (max-width: 800px) {
     
     .navbar-linkgroup {
       display : none;
@@ -98,16 +70,17 @@ body::-webkit-scrollbar {
     }
     .navbar .header-logo{
         width: 120px
-    }       
-   
-  }
+    }    
+    .main-content-title{
+        font-size: 90%;
+    }
+}
 
-  @media (min-width: 450px) {
+  @media (min-width: 800px) {
    button.navbar-button-navdrop{
        display : none;
    }  
-   
-  }
+}
   
   a{
       text-decoration: none;

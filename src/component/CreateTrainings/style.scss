@@ -1,9 +1,75 @@
+@use 'src/styles/vars';
 
-
-.form {
+.main-content-training-create{
+   
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: auto;
-    padding-bottom: 10em;
+    align-items: center;
+    // justify-content: space-between;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    
+    &-group-line{
+        display: flex;
+        width: 100%;
+        align-items: center;   
+    }
+
+     &-group-block{
+        display: flex;
+        flex-direction: column;
+        &>*{
+        min-width : 100px;
+        width : 50vw;
+        max-width: 600px;
+        margin : 0.5em 0em !important;
+        }
+     }
+
+    &-title{
+        font-size: larger;
+        font-weight: bolder;
+        color: vars.$backColor;
+        background: vars.$mainColor;
+        padding : 0.3em 2em;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        
+    
+    }
+    &-form{
+        display: flex;
+        flex-direction: column;
+        &>*{
+        min-width : 100px;
+        width : 50vw;
+        max-width: 600px;
+        margin : 0.5em 0em !important;
+        }
+        
+    }
+    
+    &-picture{
+        margin-top: 1em !important;
+        display: flex;
+        justify-content: center;
+        position : relative;
+        div{
+            border-radius: 0;
+            height : 20vh;
+            min-width : 100px;
+            width : 50vw;
+            max-width: 600px;
+            }
+    
+        label{
+            position: absolute;
+            bottom : 10px;
+            right : 10px;
+        }
+        
+    }
+
 }

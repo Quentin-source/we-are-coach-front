@@ -16,13 +16,10 @@ import './index.scss';
 const mainThemeMUI = createTheme({
     palette: {
         primary: {
-            main: '#ffb74d',
+            main: '#df943e',
         },
         secondary: {
-            main: '#ffab91',
-        },
-        maeva:{
-            main: '#ffffff',
+            main: '#ff9191',
         },
         mode: 'light',
     },

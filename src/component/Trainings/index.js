@@ -22,6 +22,7 @@ const Trainings = () => {
     }, []);
 
     const displayedTrainingsArray = useSelector((state)=>state.trainings.displayedTrainings);
+    dispatch({type:'REDIRECT_OFF'});
     return (
         <main className="main-content main-content-trainings">
             <TrainingsHeader />

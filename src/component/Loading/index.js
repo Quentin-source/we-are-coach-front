@@ -12,9 +12,8 @@ const Loading = () => {
     return (
         <div className={loadingStatus ? 'loader loader-main loader-main--true' : 'loader loader-main loader-main--false'}>
             
-            <img src={logoLoader} className ='loader-main-logo' alt="loading" />
             <CircularProgress/>
-            
+            <img src={logoLoader} className ='loader-main-logo' alt="loading" />
 
         </div>
     );

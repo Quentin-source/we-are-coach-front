@@ -1,3 +1,5 @@
+import { Redirect } from 'react-router';
+import { useSelector , useDispatch} from 'react-redux';
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -6,14 +8,28 @@ import Typography from '@mui/material/Typography';
 import CustomNote from '../../Materials/CustomNote';
 import CustomLevel from '../../Materials/CustomLevel';
 
-
 import '../style.scss';
 
-
 const CardTrainning = ({training}) => {
+
+    const redirectionPath = useSelector((state)=>(state.trainings.redirectedTo));
+    const dispatch = useDispatch();
     const {picture, level, name, description, sport, published_at} = training;
+    const handleCardClick = (event) => {
+        dispatch({
+            type:'REDIRECTION',
+            path : `/Entrainement/${training.id}`
+        })
+    };
+
+    if (redirectionPath !== '') return <Redirect to={redirectionPath} />;
     return (
-        <Card className= "training-card" sx={{ maxWidth: 345 }}>
+        <Card 
+            onClick={handleCardClick}
+            className= "training-card" 
+            sx={{ maxWidth: 345 }}
+        >
+
             <CardMedia
                 component="img"
                 height="140"

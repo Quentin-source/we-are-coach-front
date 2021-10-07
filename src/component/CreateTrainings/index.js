@@ -74,15 +74,15 @@ const Form = () => {
         },
     });
     return (
-        <main className="main-content main-content-home">
+        <main className="main-content main-content-training-create">
           
-            <h2 className="main-content-title" >
+            <h2 className="main-content-training-create-title" >
             Création d'un entrainement
             </h2>
 
-            <form className="main-content-form" onSubmit={formik.handleSubmit}>
+            <form className="main-content-training-create-form" onSubmit={formik.handleSubmit}>
 
-                <div className="main-content-picture">
+                <div className="main-content-training-create-picture">
                     <Avatar  alt="Nom Prénom"
                         src={picturePreview}
                     />
@@ -95,7 +95,7 @@ const Form = () => {
                 </div>
 
                 <TextField 
-                    className="main-content-form-input"
+                    className="main-content-training-create-form-input"
                     fullWidth
                     variant="standard"
                     id="name"
@@ -138,7 +138,7 @@ const Form = () => {
                 <FormControl variant="standard">
                     <InputLabel id="sports-list">Sport</InputLabel>
                     <Select
-                        className="main-content-form-select"
+                        className="main-content-training-create-form-select"
                         name="sport"
                         labelId="sports-list"
                         id="sports-list"
@@ -165,7 +165,7 @@ const Form = () => {
                 </FormControl>
 
                 <TextField
-                    className="main-content-form-multi"
+                    className="main-content-training-create-form-multi"
                     fullWidth
                     id="outlined-multiline-static"
                     label="Description"
@@ -184,7 +184,7 @@ const Form = () => {
                 <FormControl variant="standard"  >
                     <InputLabel id="demo-simple-select-standard-label">Niveau</InputLabel>
                     <Select
-                        className="main-content-form-select"
+                        className="main-content-training-create-form-select"
                         fullWidth
                         name="level"
                         labelId="demo-simple-select-standard-label"

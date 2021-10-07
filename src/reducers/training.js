@@ -2,49 +2,41 @@
 export const initialState = {
 
     content:{},
-    editState:{
-        name: false,
-        sport: false,
-        category:false,
-        description:false, 
-        level:false,
-    },
-
-    picturePreview:'',
-    isLoadedPicture: false,
+    editState : false,
+    commentPop : false,
+    commentInput : '',
 
 };
 
 const trainingReducer = (state = initialState, action = {}) => {
     switch (action.type) {
 
+
+    case  'CHANGE_COMMENT' :
+        return(
+            {
+                ...state,
+                commentInput: action.value,
+            }
+        );
+
+    case 'TOGGLE_COMMENT':
+        return (
+            {
+                ...state,
+                commentPop : !state.commentPop,
+            }
+        );
+    
     case 'TOGGLE_EDIT':
         return (
             {
                 ...state,
-                editState : {
-                    ...state.editState,
-                    [action.target] : !state.editState[action.target],
-                },
-
-            }
-        );
-
-    case 'MODIFY_INPUT_TRAINING':
-        return (
-            {
-                ...state,
-                content : {
-                    ...state.content,
-                    [action.target] : action.value,
-                },
+                editState : !state.editState,
             }
         );
     
     case 'SAVE_TRAINING_DETAILS':
-
-        console.log(action.datas);
-        
         return (
             {
                 ...state,

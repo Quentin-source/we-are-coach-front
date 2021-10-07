@@ -158,7 +158,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
     if (action.type === 'ASK_CREATE_TRAINING') {
 
         console.log('middleware create training connecté');
-        
         api.defaults.headers.common.Authorization = `bearer ${token}`;
         api.post('/api/workout/add', {
             name: action.values.name,
@@ -170,8 +169,18 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         }).then((response) => (console.log(response)))
     }
 
+    if(action.type === 'SUBMIT_COMMENT') {
 
-   
+        console.log('middleware creation commentaire connecté');
+        api.defaults.headers.common.Authorization = `bearer ${token}`;
+        api.post('/api/comment/add', {
+            comment : action.comment,
+            workout : action.workout,
+            user : store.getState().user.user.id,
+            published_at : '2021-09-22 10:46:02'
+        }).then((response)=>(console.log(response))).catch((error)=>(console.error(error)));
+    
+    }
     next(action);
 };
 export default ajaxMiddleware;

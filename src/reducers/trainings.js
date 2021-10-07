@@ -1,5 +1,3 @@
-import { CallToActionSharp } from "@material-ui/icons";
-
 let allTrainings = [];
 
 const paginate = (array, page_size, page_number) => {
@@ -15,9 +13,10 @@ export const initialState = {
     filterNoteValue: [],
     currentPage: 1,
     pageCount: 0,
-    pageSize: 2,
+    pageSize: 3,
     picturePreview:'',
     isLoadedPicture: false,
+    redirectedTo:'', 
 
 };
 
@@ -80,8 +79,24 @@ const reducer = (state = initialState, action = {}) => {
                 isLoadedPicture: false,
             }
         );
-        
+
+    case 'REDIRECTION':
+        return (
+            {
+                ...state,
+                redirectedTo : action.path,
+
+            }
+        );
     
+    case 'REDIRECT_OFF':
+        return (
+            {
+                ...state,
+                redirectedTo : '',
+
+            }
+        );
     default:
         return state;
     }
