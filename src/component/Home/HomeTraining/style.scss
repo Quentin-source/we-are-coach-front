@@ -2,24 +2,40 @@
 .trainings-home {
     margin-top: 2em;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    height: fit-content;
-    box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+    height: 100%;
+    // box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+   
+}
+
+.training-home {
+    height: 12vh;
+    
+    li{
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+   
 }
 
 .training-home-title{
     margin-left: 1em;
+    
+   
 }
 
 span.training-home-name{
     font-size: 1.2em;
+    text-align: center;
 }
 
 
 .training-home-text {
     display: block;
     text-align: justify;
-    margin-left: 5vw;
+    margin-left: 1em;
     font-size: 1em;
+    
+
 }
 
 .training-home-title .MuiListItemText-primary{
@@ -27,15 +43,7 @@ span.training-home-name{
 }
 
 .training-home-avatar div{
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
 }
 
-@media (max-width : 450px) {
-    
-    .training-home-avatar div{
-        width: 60px;
-        height: 60px;
-    }
-    
-}

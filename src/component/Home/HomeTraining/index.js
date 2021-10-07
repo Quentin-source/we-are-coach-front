@@ -14,7 +14,7 @@ const HomeTraining = () => {
             <List >
                 <div className="trainings-home-container">
                     {topTrainings.map((training, index)=>(
-                        <div key={training.id}>
+                        <div className="training-home" key={training.id}>
                             <ListItem  className="training-home" alignItems="flex-start">
                                 <ListItemAvatar className="training-home-avatar" >
                                     <Avatar  alt="avatar auteur" src={training.picture} />
@@ -33,7 +33,7 @@ const HomeTraining = () => {
                                                 {training.name}
                                             </Typography>
                                             <span className="training-home-text">
-                                                {training.description}
+                                                {/* {training.description} */}
                                             </span>
                                         </>
                                     }
