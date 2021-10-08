@@ -6,6 +6,10 @@ import * as yup from 'yup';
 import { TextField, Button, Avatar, Typography, FormControl, InputLabel, Select, MenuItem,} from '@mui/material';
 import { AddAPhotoOutlined, ChangeCircleOutlined } from "@mui/icons-material";
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+import * as React from 'react';
+
 import './style.scss';
 
 import CustomLevel from '../Materials/CustomLevel'
@@ -27,7 +31,11 @@ const validationSchema = yup.object().shape({
         .number('Entre la difficulté de l\'entrainement')
         .required('difficulté requise'),
 });
+console.log(validationSchema);
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 
 const Form = () => {
@@ -37,6 +45,23 @@ const Form = () => {
     const picturePreview = useSelector((state) => (state.trainings.picturePreview));
     const isLoadedPicture = useSelector((state) => (state.trainings.isLoadedPicture));
     const sports = useSelector((state)=>(state.data.sports));
+    const openSnackbarState = useSelector ((state) => (state.home.openSnackbar));
+    const snackbarType = useSelector ((state) => (state.home.snackbarType))
+    const message = useSelector ((state) => (state.home.message))
+
+    const handleClick = () => {
+        dispatch({
+            type: 'OPEN_SNACKBAR',
+            color: snackbarType,
+            content: message,
+        })
+    };
+    const handleClose = (e, reason) => {
+        if (reason === 'clickaway') {
+
+            dispatch({type: 'CLOSE_SNACKBAR'})
+        }
+    }
     
 
     useEffect(()=>()=>{
@@ -212,10 +237,17 @@ const Form = () => {
                         variant="contained" 
                         type="submit" 
                         endIcon={<BuildCircleIcon />}
+                        onClick={handleClick}
                         // disabled={! formik.isValid || formik.isSubmitting}
                     >
                         valider
-                    </Button> 
+                    </Button>
+                    <Snackbar open={openSnackbarState} autoHideDuration={6000} onClose={handleClose}>
+                        <Alert onClose={handleClose} severity={snackbarType} sx={{ width: '100%' }}>
+                            {message}
+                        </Alert>
+                    </Snackbar>
+                    
                 </div>          
             </form>
                 

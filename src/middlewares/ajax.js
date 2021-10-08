@@ -167,7 +167,26 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             level: action.values.level,
             sport: action.values.sport,
             user: store.getState().user.user.id,
-        }).then((response) => (console.log(response)))
+        }).then((response) => {
+            console.log(response);
+            store.dispatch ({
+                type: 'OPEN_SNACKBAR_SUCCESS',
+                openSnackbar: true,
+                color: action.color,
+                content: action.content
+            });
+        }).catch((error) => {
+            console.log(error);
+            store.dispatch ({
+                type: 'OPEN_SNACKBAR_ERROR',
+                openSnackbar: true,
+                color: action.color,
+                content: action.content 
+            })
+        })
+
+        
+        
     }
 
 

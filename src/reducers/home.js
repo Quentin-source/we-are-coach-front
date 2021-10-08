@@ -5,6 +5,9 @@ export const initialState = {
     connectPop : false,
     signUpPop : false,
     bestWorkout : [],
+    openSnackbar: false,
+    snackbarType: 'error',
+    message: 'Votre entrainement n\'a pas été créé, corrigez les erreurs',
     
 };
 
@@ -116,6 +119,34 @@ const homeReducer = (state = initialState, action = {}) => {
                 bestWorkout: action.top,  
             }
         );
+
+    case 'OPEN_SNACKBAR':
+        return ({
+            ...state,
+            openSnackbar: true,
+        });
+
+    case 'CLOSE_SNACKBAR':
+        return ({
+            ...state,
+            openSnackbar: false,
+        })
+
+    case 'OPEN_SNACKBAR_SUCCESS':
+        return ({
+            ...state,
+            openSnackbar: true,
+            snackbarType: 'success',
+            message: 'Votre entrainement a bien été créé',
+        })
+
+    case 'OPEN_SNACKBAR_ERROR':
+        return ({
+            ...state,
+            openSnackbar: true,
+            snackbarType: 'error',
+            message: 'Votre entrainement n\'a pas été créé, corrigez les erreurs',
+        })
     
     default:
         return state;
