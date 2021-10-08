@@ -16,8 +16,6 @@ export const initialState = {
     pageSize: 3,
     picturePreview:'',
     isLoadedPicture: false,
-    redirectedTo:'', 
-
 };
 
 
@@ -80,23 +78,6 @@ const reducer = (state = initialState, action = {}) => {
             }
         );
 
-    case 'REDIRECTION':
-        return (
-            {
-                ...state,
-                redirectedTo : action.path,
-
-            }
-        );
-    
-    case 'REDIRECT_OFF':
-        return (
-            {
-                ...state,
-                redirectedTo : '',
-
-            }
-        );
     default:
         return state;
     }

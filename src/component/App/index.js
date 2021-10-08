@@ -5,6 +5,7 @@ import Loader from '../Loading';
 import Home from '../Home';
 import Header from '../Header';
 import Footer from '../Footer';
+import Profile from '../Profile';
 
 
 
@@ -37,6 +38,9 @@ const App = () => {
                 </Route>
                 <Route path="/Entrainement/:slug" exact>
                     <TrainingDetails />
+                </Route>
+                <Route path="/Utilisateur" exact>
+                    <Profile/>
                 </Route>
                 <Route path="/CreerEntrainement" exact>
                     <CreateTraining />

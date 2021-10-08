@@ -12,7 +12,7 @@ import '../style.scss';
 
 const CardTrainning = ({training}) => {
 
-    const redirectionPath = useSelector((state)=>(state.trainings.redirectedTo));
+    const redirectionPath = useSelector((state)=>(state.home.redirectedTo));
     const dispatch = useDispatch();
     const {picture, level, name, description, sport, published_at} = training;
     const handleCardClick = (event) => {

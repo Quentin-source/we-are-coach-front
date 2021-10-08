@@ -6,6 +6,8 @@ export const initialState = {
     signUpPop : false,
     connected : false,
     bestWorkout : [],
+    redirectedTo:'', 
+    redirectionState : false,
     
 };
 
@@ -19,6 +21,26 @@ const homeReducer = (state = initialState, action = {}) => {
                 signUpPop : false,
                 dropMenu : false,
                 userMenu : false,
+            }
+        );
+
+    case 'REDIRECTION':
+        return (
+            {
+                ...state,
+                redirectedTo : action.path,
+                redirectionState : true,
+
+            }
+        );
+    
+    case 'REDIRECT_OFF':
+        return (
+            {
+                ...state,
+                redirectedTo : '',
+                redirectionState : false,
+
             }
         );
 

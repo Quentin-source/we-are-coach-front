@@ -52,32 +52,27 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             username: action.email,
             password: action.password,
         });
-        const fetchUserPromise = api.get('api/user');
 
         
-        Promise.all([connectionPromise, fetchUserPromise])
-            .then((response) => {
-                const [connectionData, userData] = response;
-                const information = connectionData.data;
-                const user = userData.data.find((item) => (item.email === action.email));
-                token = information.token;     
-                console.log(user, information);
-                     
-                store.dispatch({
-                    type: 'CONNECTION',
-                    userLogged: true,
-                    userPseudo: information.data.pseudo,
-                    userPicture: information.data.picture,
-                    user: user, 
-                });
-                console.log('Connection réussie');
-                
-            })
+        connectionPromise.then((response) => {
+            const information = response.data;
+            token = information.token;     
+                    
+            store.dispatch({
+                type: 'CONNECTION',
+                userLogged: true,
+                userPseudo: information.data.pseudo,
+                userPicture: information.data.picture,
+                userId: information.data.id, 
+            });
+            console.log('Connection réussie');
+            
+        })
             .catch((error) => {
                 console.error('pb identification', error);
                 alert('Utilisateur non reconnu');
             });
-    }; 
+}; 
     
     if(action.type === 'ASK_SEARCH')  {
 
@@ -115,6 +110,19 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         api.get(`/api/workout/${action.slug}`).then((response)=> {
             store.dispatch({
                 type : 'SAVE_TRAINING_DETAILS',
+                datas : response.data,
+            })
+            setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
+        })
+            .catch((error) => (console.error(error)));
+
+    };
+
+    if(action.type === 'FETCH_USER')  {
+
+        api.get(`/api/user/${store.getState().user.id}`).then((response)=> {
+            store.dispatch({
+                type : 'SAVE_USER',
                 datas : response.data,
             })
             setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);

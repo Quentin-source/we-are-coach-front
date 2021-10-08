@@ -4,6 +4,7 @@ export const initialState = {
     inputPassword: '',
     pseudo:'',
     picture:'',
+    id: 0,
     picturePreview:'',
     isLoadedPicture: false,
 
@@ -35,7 +36,15 @@ const userReducer = (state = initialState, action = {}) => {
                 picture : action.userPicture,
                 inputEmail: '',
                 inputPassword: '',
-                user: action.user,
+                id: action.userId,
+            }
+        );
+    
+    case 'SAVE_USER':
+        return (
+            {
+                ...state,
+                user: action.datas,
             }
         );
 
@@ -47,6 +56,8 @@ const userReducer = (state = initialState, action = {}) => {
                 picture:'',
                 inputEmail: '',
                 inputPassword: '',
+                id:0,
+                user:{},
             }
         );
 
