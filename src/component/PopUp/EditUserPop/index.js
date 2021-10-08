@@ -3,18 +3,19 @@ import * as yup from 'yup';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import NavButton from '../../../Materials/NavButton/index';
+import NavButton from '../../Materials/NavButton/index';
 
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { TextField, Button, Grid, Avatar, Typography, FormControlLabel, Checkbox, InputLabel, Select, MenuItem, ListItemText } from '@mui/material';
-import { AddAPhotoOutlined, ChangeCircleOutlined } from "@mui/icons-material";
+import { TextField, Button, Grid, Avatar, FormControlLabel, Checkbox, InputLabel, Select, MenuItem, ListItemText } from '@mui/material';
+import { AddAPhotoOutlined, ChangeCircleOutlined, Edit, CheckCircleOutline} from "@mui/icons-material";
 import { AssignmentIndOutlined } from '@material-ui/icons';
 
 import './style.scss';
+import { useEffect } from 'react';
 
 
 const names = [
@@ -60,8 +61,7 @@ const validationSchema = yup.object({
         .required('Requis'),
     password: yup
         .string('Mot de passe')
-        .min(8, '8 caractères min')
-        .required('Requis'),
+        .min(8, '8 caractères min'),
     confirmPassword: yup
         .string('Confirme ton mot de passe')
         .required('Confirme ton mot de passe').oneOf([yup.ref('password')],'Les mots de passe ne concordent pas'),
@@ -75,46 +75,48 @@ const validationSchema = yup.object({
         .oneOf([true],'Veuillez valider les CGU'),
 });
 
-const SignUpPop = () => {
+const EditUserPop = ({user}) => {
 
     const dispatch = useDispatch();
 
+   
+
     const handleClickOpen = () => {
-        dispatch({type : 'OPEN_SIGNPOP'});
+        dispatch({type : 'TOGGLE_EDIT_USER'});
     };
 
     const handleClose = () => {
-        dispatch({type: 'CLOSE_SIGNPOP'});
+        dispatch({type: 'TOGGLE_EDIT_USER'});
         dispatch({type: 'UNMOUNT_USER_PICTURE'});
         formik.resetForm();
     };
 
     const handleUploadFile = (event) => {
-        const picturePreview = event.target.files[0];
-        const localPicturePreview = window.URL.createObjectURL(picturePreview);
+        const picture = event.target.files[0];
+        const localPicturePreview = window.URL.createObjectURL(picture);
         dispatch({
             type :'UPLOAD_USER_PICTURE',
             file: localPicturePreview,
         });
     };
 
-    const signUpPopState = useSelector((state) => (state.home.signUpPop));
-    const picturePreview = useSelector((state) => (state.user.picturePreview));
+    const editUserPopState = useSelector((state) => (state.user.editUserPop));
     const isLoadedPicture = useSelector((state) => (state.user.isLoadedPicture));
-
+    const picturePreview = useSelector((state)=> state.user.picturePreview);
+    
     const formik = useFormik({
         initialValues: {
-            pseudo:"",
-            email: "",
+            pseudo:user.pseudo,
+            email:user.email,
             password: "",
             confirmPassword: "",
-            firstName: "",
-            lastName: "",
-            age: "",
-            city: "",
-            sports: [],
+            firstName: user.firstname,
+            lastName: user.lastname,
+            age: user.age,
+            city: user.city,
+            sports: [user.sport1,user.sport2,user.sport3],
             CGU: false,
-            picture:{},
+            
             
         },
         validationSchema,
@@ -130,11 +132,11 @@ const SignUpPop = () => {
     return (
         <>
             <NavButton 
-                className={!signUpPopState ? 'navbar-button': 'navbar-button navbar-button--open'} 
-                content={<AssignmentIndOutlined />} 
+                className={!editUserPopState ? 'user-profile-button-edit navbar-button': 'user-profile-button-edit navbar-button navbar-button--open'} 
+                content={!editUserPopState ? <Edit /> : <CheckCircleOutline /> } 
                 handleClick= {handleClickOpen}           
             />
-            <Dialog className="navbar-signpop" color="primary" open={signUpPopState} onClose={handleClose}>
+            <Dialog className="navbar-signpop" color="primary" open={editUserPopState} onClose={handleClose}>
                 <DialogTitle>Création d'un compte</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -300,23 +302,9 @@ const SignUpPop = () => {
                             ))}
                         </Select>
                       
-                        <FormControlLabel 
-                            className="navbar-signpop-select-item"
-                            control={<Checkbox
-                                name='CGU'
-                                checked={formik.values.CGU}
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                            />}
-                            name='TermsEtConditions' 
-                            label="J'accepte les termes et conditions d'utilisation"
-                            error={formik.touched.CGU && Boolean(formik.errors.CGU)}
-                            helperText={formik.touched.CGU && formik.errors.CGU}
-                            type="checkbox"
-                        />
                         <DialogActions>
                             <Button onClick={handleClose}>Annuler</Button>
-                            <Button color="primary" type="submit" variant="contained">Inscription</Button>
+                            <Button color="primary" type="submit" variant="contained">Confirmer</Button>
                             
                         </DialogActions>
                     </form>
@@ -327,5 +315,5 @@ const SignUpPop = () => {
     );
 };
 
-export default SignUpPop;
+export default EditUserPop;
 

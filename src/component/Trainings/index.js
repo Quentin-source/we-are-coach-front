@@ -19,10 +19,10 @@ const Trainings = () => {
     useEffect(()=> {
         dispatch({type:'LOADING_ON'});
         dispatch({type:'FETCH_TRAININGS'});
+        dispatch({type : 'CLEAN_MENU'});
     }, []);
 
     const displayedTrainingsArray = useSelector((state)=>state.trainings.displayedTrainings);
-    dispatch({type:'REDIRECT_OFF'});
     return (
         <main className="main-content main-content-trainings">
             <TrainingsHeader />

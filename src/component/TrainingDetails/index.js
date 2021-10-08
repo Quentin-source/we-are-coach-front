@@ -21,6 +21,7 @@ const TrainingDetails = () => {
 
     useEffect(()=>{
         dispatch({type:'LOADING_ON'});
+        dispatch({type : 'CLEAN_MENU'});
         dispatch({
             type:'FETCH_TRAINING_DETAILS',
             slug: slug,    

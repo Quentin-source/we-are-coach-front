@@ -12,7 +12,8 @@ const Home = () => {
     dispatch({type:'LOADING_ON'});
 
     useEffect(()=>{
-        dispatch({type:'FETCH_HOME'}); 
+        dispatch({type:'FETCH_HOME'});
+        dispatch({type : 'CLEAN_MENU'});   
     });
     
     return (

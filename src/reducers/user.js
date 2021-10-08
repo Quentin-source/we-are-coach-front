@@ -7,6 +7,7 @@ export const initialState = {
     id: 0,
     picturePreview:'',
     isLoadedPicture: false,
+    editUserPop : false,
 
 };
 
@@ -78,6 +79,15 @@ const userReducer = (state = initialState, action = {}) => {
                 isLoadedPicture: false,
             }
         );
+
+    case 'TOGGLE_EDIT_USER' :
+        return (
+            {
+                ...state,
+                editUserPop : !state.editUserPop,
+            }
+        );
+
     
     default:
         return state;

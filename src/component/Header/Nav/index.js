@@ -2,13 +2,12 @@ import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 import { useDispatch , useSelector} from "react-redux";
-import { Redirect } from "react-router";
 
 import { Menu, Close} from "@material-ui/icons";
 import { Logout } from "@mui/icons-material";
 
-import Connectpop from '../PopUp/ConnectPop';
-import SignupPop from '../PopUp/SignUpPop'
+import Connectpop from '../../PopUp/ConnectPop';
+import SignupPop from '../../PopUp/SignUpPop'
 import NavButton from "../../Materials/NavButton";
 
 

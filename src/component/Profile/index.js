@@ -7,10 +7,9 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 import CustomLevel from '../Materials/CustomLevel'
-import NavButton from '../Materials/NavButton';
 
 import './style.scss';
-import { HdrOnSelectRounded } from '@mui/icons-material';
+import EditUserPop from '../PopUp/EditUserPop';
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -18,17 +17,21 @@ const Profile = () => {
     const user = useSelector((state)=>state.user.user);
     const connected = useSelector((state)=>state.home.connected);
 
+
     useEffect(()=>{
         dispatch({type:'LOADING_ON'});
+        dispatch({type:'FETCH_USER'}); 
+        dispatch({type : 'CLEAN_MENU'});
         dispatch({
-            type:'FETCH_USER'    
-        }); 
+            type :'UPLOAD_USER_PICTURE',
+            file: user.picture,
+        });
     },[]);
     
     const settings = {
         infinite: false,
         dots:true,
-        speed: 1000,
+        speed: 300,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: false,
@@ -39,9 +42,6 @@ const Profile = () => {
     const handleClickTraining = (event, id) => { 
         history.push(`/Entrainement/${id}`);
     };
-
-   
-   
     
     if (!connected) history.push('/');
     return (
@@ -56,6 +56,7 @@ const Profile = () => {
                 <div className="user-profile-header">
                     <img className="user-profile-avatar" src={user.picture} alt="Avatar de l'utilisateur"/>   
                     <h3 className="user-profile-title">{user.pseudo}</h3>   
+                    <EditUserPop user={user}/>
                 </div>
                 <div className="user-profile-id">  
                     <h3 className="user-profile-name"><span>Prénom</span>{`${user.firstname} `}<span>Nom</span>{user.lastname}</h3>   
