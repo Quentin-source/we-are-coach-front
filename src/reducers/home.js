@@ -4,6 +4,7 @@ export const initialState = {
     dropMenu : false,
     connectPop : false,
     signUpPop : false,
+    connected : false,
     bestWorkout : [],
     
 };

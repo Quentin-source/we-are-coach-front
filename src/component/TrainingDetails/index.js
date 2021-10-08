@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Avatar, Button, TextField} from '@mui/material';
-import { Edit, CheckCircleOutline } from '@material-ui/icons';
+import { Edit, CheckCircleOutline, HighlightOff } from '@material-ui/icons';
 import NavButton from '../Materials/NavButton';
 import CustomLevel from '../Materials/CustomLevel';
 
@@ -15,6 +15,7 @@ const TrainingDetails = () => {
     const commentPopState = useSelector((state) =>(state.training.commentPop));
     const content = useSelector((state)=>(state.training.content));
     const commentInput = useSelector((state) =>(state.training.commentInput));
+    const isConnected = useSelector((state) => state.home.connected);
 
     
 
@@ -75,7 +76,7 @@ const TrainingDetails = () => {
                         <img  alt="Nom Prénom"
                             src={content.picture}
                         />
-                        <NavButton  
+                        {isConnected && <NavButton  
                             content={editState.name ? 
                                 <CheckCircleOutline /> 
                                 : 
@@ -83,7 +84,7 @@ const TrainingDetails = () => {
                             } 
                             handleClick={handleEdit}
                             className={!editState ? 'training-details-button-edit navbar-button': 'training-details-button-edit navbar-button navbar-button--open'}
-                        />
+                        />}
                         <h4 className="training-details-category" > {content.hasOwnProperty('sport') && content.sport.category.name}</h4>
                     </div>
                     <div className="training-details-description">
@@ -100,10 +101,15 @@ const TrainingDetails = () => {
                         <p>{content.hasOwnProperty('user')&&content.user.pseudo}</p>
                        
                     </div>                  
-                    <div className="training-details-group-button">
-                        <Button onClick={handleToggleComment}>Commenter</Button> 
+                    {isConnected && <div className="training-details-group-button">
+                        <Button 
+                            classNames={commentPopState?'training-details-button training-details-button--open': 'training-details-button'} 
+                            color={commentPopState ? 'secondary' : 'primary'}
+                            onClick={!commentPopState ? handleToggleComment : handleSubmitComment}>
+                            {commentPopState? 'ENVOYER': 'COMMENTER'}
+                        </Button> 
                         <Button>Noter</Button> 
-                    </div>
+                    </div>}
                 </div>
             </section>  
             
@@ -124,13 +130,9 @@ const TrainingDetails = () => {
                 />
 
                 <NavButton  
-                    content={editState.name ? 
-                        <CheckCircleOutline /> 
-                        : 
-                        <Edit />
-                    } 
-                    handleClick={handleSubmitComment}
-                    className={!editState ? 'training-new-comment-button navbar-button': 'training-new-comment-button navbar-button navbar-button--open'}
+                    content={<HighlightOff /> } 
+                    handleClick={handleToggleComment}
+                    className={!commentPopState ? 'training-new-comment-button navbar-button': 'training-new-comment-button navbar-button navbar-button--open'}
                 />
             </div>
 
