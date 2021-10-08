@@ -1,5 +1,4 @@
-import { Redirect } from 'react-router';
-import { useSelector , useDispatch} from 'react-redux';
+import { useHistory } from 'react-router';
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -11,18 +10,13 @@ import CustomLevel from '../../Materials/CustomLevel';
 import '../style.scss';
 
 const CardTrainning = ({training}) => {
-
-    const redirectionPath = useSelector((state)=>(state.home.redirectedTo));
-    const dispatch = useDispatch();
+    const history = useHistory();
+    
     const {picture, level, name, description, sport, published_at} = training;
     const handleCardClick = (event) => {
-        dispatch({
-            type:'REDIRECTION',
-            path : `/Entrainement/${training.id}`
-        })
+        history.push(`/Entrainement/${training.id}`);
     };
 
-    if (redirectionPath !== '') return <Redirect to={redirectionPath} />;
     return (
         <Card 
             onClick={handleCardClick}

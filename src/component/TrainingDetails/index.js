@@ -27,13 +27,6 @@ const TrainingDetails = () => {
         }); 
     },[]);
     
-    const handleEdit = (event, target) => {
-        dispatch({
-            type:'TOGGLE_EDIT',
-            target: target,
-            value: content[target],
-        })
-    };
 
     const handleChangeComment = (event) => {
         dispatch({
@@ -82,10 +75,10 @@ const TrainingDetails = () => {
                                 : 
                                 <Edit />
                             } 
-                            handleClick={handleEdit}
+                            
                             className={!editState ? 'training-details-button-edit navbar-button': 'training-details-button-edit navbar-button navbar-button--open'}
                         />}
-                        <h4 className="training-details-category" > {content.hasOwnProperty('sport') && content.sport.category.name}</h4>
+                        <h4 className="training-details-category" >Catégorie</h4>
                     </div>
                     <div className="training-details-description">
                         

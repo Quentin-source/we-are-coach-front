@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import { Divider} from '@mui/material';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-import Training from '../Trainings/Training'
+import CustomLevel from '../Materials/CustomLevel'
 import NavButton from '../Materials/NavButton';
 
 import './style.scss';
@@ -13,8 +14,9 @@ import { HdrOnSelectRounded } from '@mui/icons-material';
 
 const Profile = () => {
     const dispatch = useDispatch();
-    dispatch({type:'REDIRECT_OFF'});
+    const history = useHistory();
     const user = useSelector((state)=>state.user.user);
+    const connected = useSelector((state)=>state.home.connected);
 
     useEffect(()=>{
         dispatch({type:'LOADING_ON'});
@@ -34,12 +36,14 @@ const Profile = () => {
         lazyLoad : true,
     };
 
-   
+    const handleClickTraining = (event, id) => { 
+        history.push(`/Entrainement/${id}`);
+    };
 
    
    
     
-
+    if (!connected) history.push('/');
     return (
         <main className="main-content">
             <h2 className="main-content-title" >
@@ -77,6 +81,7 @@ const Profile = () => {
                     {user.hasOwnProperty('workout') && user.workout.map((training)=> (
                         <div key={training.id} index={(training.id)-1}>
                             <img 
+                                onClick={(event) => handleClickTraining(event, training.id) }
                                 className="user-profile-trainings-slider-image" 
                                 src={training.picture} 
                                 alt={training.name} 
@@ -93,11 +98,11 @@ const Profile = () => {
                                     </span>
                                 </div>
                                 <div className="user-profile-trainings-slider-infos-footer">
-                                    <span className="name">
-                                        {training.name}
+                                    <span className="level">
+                                        <CustomLevel level = {training.level}/>
                                     </span>
-                                    <span className="category">
-                                        {training.sport.name}
+                                    <span className="date">
+                                        {training.published_at}
                                     </span>
                                 </div>
 
