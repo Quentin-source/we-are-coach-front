@@ -18,20 +18,6 @@ import './style.scss';
 import { useEffect } from 'react';
 
 
-const names = [
-    'Badminton',
-    'FootBall',
-    'Rugby',
-    'Randonnée',
-    'Tennis',
-    'Surf',
-    'Natation',
-    'Basket Ball',
-    'Vélo',
-    'Karaté',
-];
-
-
 
 const validationSchema = yup.object({
     pseudo: yup
@@ -64,22 +50,22 @@ const validationSchema = yup.object({
         .min(8, '8 caractères min'),
     confirmPassword: yup
         .string('Confirme ton mot de passe')
-        .required('Confirme ton mot de passe').oneOf([yup.ref('password')],'Les mots de passe ne concordent pas'),
+        .oneOf([yup.ref('password')],'Les mots de passe ne concordent pas'),
     sports: yup
         .array()
         .max(3, '3 sports maximum')
         .min(1,'1 sport minimun')
         .required('Un sport préféré est requis'),
-    CGU: yup
-        .boolean()
-        .oneOf([true],'Veuillez valider les CGU'),
 });
 
 const EditUserPop = ({user}) => {
 
     const dispatch = useDispatch();
-
-   
+    const editUserPopState = useSelector((state) => (state.user.editUserPop));
+    const isLoadedPicture = useSelector((state) => (state.user.isLoadedPicture));
+    const databasePicture = useSelector((state) => state.user.picture);
+    const userStatePicture = useSelector((state)=>state.user.user.picture);
+    const sports = useSelector((state)=> state.data.sports)
 
     const handleClickOpen = () => {
         dispatch({type : 'TOGGLE_EDIT_USER'});
@@ -87,7 +73,10 @@ const EditUserPop = ({user}) => {
 
     const handleClose = () => {
         dispatch({type: 'TOGGLE_EDIT_USER'});
-        dispatch({type: 'UNMOUNT_USER_PICTURE'});
+        dispatch({
+            type :'UPLOAD_USER_PICTURE',
+            file: databasePicture,
+        });
         formik.resetForm();
     };
 
@@ -100,9 +89,8 @@ const EditUserPop = ({user}) => {
         });
     };
 
-    const editUserPopState = useSelector((state) => (state.user.editUserPop));
-    const isLoadedPicture = useSelector((state) => (state.user.isLoadedPicture));
-    const picturePreview = useSelector((state)=> state.user.picturePreview);
+    
+    console.log('pre use Formik');
     
     const formik = useFormik({
         initialValues: {
@@ -115,20 +103,22 @@ const EditUserPop = ({user}) => {
             age: user.age,
             city: user.city,
             sports: [user.sport1,user.sport2,user.sport3],
-            CGU: false,
+            passwordRequest: false,
             
             
         },
         validationSchema,
         onSubmit: (values) => {
             dispatch({
-                type:'ASK_INSCRIPTION',
+                type:'ASK_MODIFY_USER',
                 userDatas: values,
+                id: user.id,
             })
         },
     });
 
-
+    
+    
     return (
         <>
             <NavButton 
@@ -137,15 +127,15 @@ const EditUserPop = ({user}) => {
                 handleClick= {handleClickOpen}           
             />
             <Dialog className="navbar-signpop" color="primary" open={editUserPopState} onClose={handleClose}>
-                <DialogTitle>Création d'un compte</DialogTitle>
+                <DialogTitle>Modification du compte</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Veuillez renseigner les informations suivantes...
+                        renseigner les informations à modifier...
                     </DialogContentText>
                     <Grid className="navbar-signpop-header" align='center'>
                         <div className="navbar-signpop-header-avatar">
                             <Avatar  alt="Nom Prénom"
-                                src={picturePreview}
+                                src={userStatePicture}
                             />
                             <label 
                                 className={!isLoadedPicture ? 'navbar-button navbar-signpop-header-avatar-button': 'navbar-signpop-header-avatar-button navbar-button navbar-button--open'} 
@@ -156,7 +146,7 @@ const EditUserPop = ({user}) => {
                         </div>
                     </Grid> 
 
-                    <form onSubmit={formik.handleSubmit}>
+                    <form onSubmit={formik.handleSubmit} >
                         <TextField 
                             className="navbar-signpop-input"
                             fullWidth
@@ -235,6 +225,9 @@ const EditUserPop = ({user}) => {
                             className="navbar-signpop-input"
                             fullWidth
                             variant="standard"
+                            inputProps={{
+                                autoComplete: "off"
+                            }}
                             id="email"
                             name="email"
                             label="Email"
@@ -246,10 +239,15 @@ const EditUserPop = ({user}) => {
                         />
 
                         <div className="navbar-signpop-input-group">
+                            {formik.values.passwordRequest && 
                             <TextField 
                                 className="navbar-signpop-input"
                                 variant="standard"
                                 fullWidth
+                                disabled={!formik.values.passwordRequest}
+                                inputProps={{
+                                    autoComplete: "new-password"
+                                }}
                                 id="password"
                                 name="password"
                                 label="Mot de Passe"
@@ -259,11 +257,16 @@ const EditUserPop = ({user}) => {
                                 onBlur={formik.handleBlur}
                                 error={formik.touched.password && Boolean(formik.errors.password)}
                                 helperText={formik.touched.password && formik.errors.password}
-                            />
+                            />}
+
+                            {formik.values.passwordRequest && 
                             <TextField 
                                 className="navbar-signpop-input"
                                 variant="standard"
                                 fullWidth
+                                inputProps={{
+                                    autoComplete: "new-password"
+                                }}
                                 id="confirmPassword"
                                 name="confirmPassword"
                                 label="Confirmation"
@@ -273,7 +276,13 @@ const EditUserPop = ({user}) => {
                                 onBlur={formik.handleBlur}
                                 error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
                                 helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+                            />}
+
+                            <FormControlLabel 
+                                control={<Checkbox name="passwordRequest" checked={formik.values.passwordRequest} onChange={formik.handleChange} />}
+                                label={!formik.values.passwordRequest && 'Modifier le mot de passe'}
                             />
+
                         </div>    
                         <InputLabel className="navbar-signpop-select" id="sports">Sports préférés</InputLabel>
                         <Select
@@ -286,18 +295,18 @@ const EditUserPop = ({user}) => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             error={formik.touched.sports && Boolean(formik.errors.sports)}
-                            helperText={formik.touched.sports && formik.errors.sports}
+                            // helperText={formik.touched.sports && formik.errors.sports}
                             renderValue={(selected) => selected.join(', ')}
                         >
-                            {names.map((name) => (
+                            {sports.map((sport) => (
                                 <MenuItem
                                     name="sports"
-                                    key={name}
-                                    value={name}
+                                    key={sport.id}
+                                    value={sport.name}
                                     className="navbar-signpop-select-item"
                                 >
-                                    <Checkbox checked={formik.values.sports.indexOf(name) > -1} />
-                                    <ListItemText primary={name} />
+                                    <Checkbox checked={formik.values.sports.indexOf(sport.name) > -1} />
+                                    <ListItemText primary={sport.name} />
                                 </MenuItem>
                             ))}
                         </Select>

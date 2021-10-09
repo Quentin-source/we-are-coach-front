@@ -5,7 +5,6 @@ export const initialState = {
     pseudo:'',
     picture:'',
     id: 0,
-    picturePreview:'',
     isLoadedPicture: false,
     editUserPop : false,
 
@@ -66,17 +65,10 @@ const userReducer = (state = initialState, action = {}) => {
         return (
             {
                 ...state,
-                picturePreview : action.file,
-                isLoadedPicture: true,
-            }
-        );
-
-    case 'UNMOUNT_USER_PICTURE':
-        return (
-            {
-                ...state,
-                picturePreview : '',
-                isLoadedPicture: false,
+                user: {
+                    ...state.user,
+                    picture : action.file,
+                }
             }
         );
 

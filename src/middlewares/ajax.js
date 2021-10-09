@@ -66,6 +66,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 userId: information.data.id, 
             });
             console.log('Connection réussie');
+            store.dispatch({
+                type:'FETCH_USER',
+                id: information.data.id,
+
+            })
             
         })
             .catch((error) => {
@@ -120,7 +125,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     if(action.type === 'FETCH_USER')  {
 
-        api.get(`/api/user/${store.getState().user.id}`).then((response)=> {
+        api.get(`/api/user/${action.id}`).then((response)=> {
             store.dispatch({
                 type : 'SAVE_USER',
                 datas : response.data,
@@ -162,6 +167,27 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     }
 
+    if (action.type === 'ASK_MODIFY_USER'){
+        api.defaults.headers.common.Authorization = `bearer ${token}`;
+        const dataToSend = {
+            pseudo : action.userDatas.pseudo,
+            firstname : action.userDatas.firstName,
+            lastname :  action.userDatas.lastName,
+            email :  action.userDatas.email,
+            city :  action.userDatas.city,
+            age : parseInt(action.userDatas.age),
+            sport1 :  action.userDatas.sports[0],
+            sport2 : action.userDatas.sports[1],
+            sport3 :  action.userDatas.sports[2],
+        };
+        if(action.userDatas.passwordRequest) Object.defineProperty(dataToSend,'password', {
+            value : action.userDatas.password,
+        });
+        console.log(dataToSend);
+        api.patch(`/api/user/${action.id}`, dataToSend).then((response)=>console.log(response)).catch((error)=>console.error(error));
+    }
+
+    
 
     if (action.type === 'ASK_CREATE_TRAINING') {
 

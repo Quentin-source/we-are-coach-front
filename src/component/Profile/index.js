@@ -16,16 +16,16 @@ const Profile = () => {
     const history = useHistory();
     const user = useSelector((state)=>state.user.user);
     const connected = useSelector((state)=>state.home.connected);
+    const picture = useSelector((state)=>state.user.picture);
 
 
     useEffect(()=>{
         dispatch({type:'LOADING_ON'});
-        dispatch({type:'FETCH_USER'}); 
-        dispatch({type : 'CLEAN_MENU'});
         dispatch({
-            type :'UPLOAD_USER_PICTURE',
-            file: user.picture,
-        });
+            type:'FETCH_USER',
+            id: user.id,
+        }); 
+        dispatch({type : 'CLEAN_MENU'});
     },[]);
     
     const settings = {
@@ -54,7 +54,7 @@ const Profile = () => {
             
             <section className="user-profile">
                 <div className="user-profile-header">
-                    <img className="user-profile-avatar" src={user.picture} alt="Avatar de l'utilisateur"/>   
+                    <img className="user-profile-avatar" src={picture} alt="Avatar de l'utilisateur"/>   
                     <h3 className="user-profile-title">{user.pseudo}</h3>   
                     <EditUserPop user={user}/>
                 </div>
