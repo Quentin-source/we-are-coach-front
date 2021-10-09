@@ -1,4 +1,4 @@
-import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import Loader from '../Loading';
@@ -21,7 +21,6 @@ import { useEffect } from 'react';
 
 const App = () => {
     const dispatch = useDispatch();
-    const match = useRouteMatch();
     useEffect(()=>{
         dispatch({type: 'FETCH_COMMON'});
     },[]);

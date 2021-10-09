@@ -33,7 +33,7 @@ const Filter = ({filterKey, label, optionsObject, optionsArray}) => {
                     // multiple={true}
                     variant="standard"
                 >
-                    <MenuItem value={[]}>
+                    <MenuItem value="">
                         <em>None</em>
                     </MenuItem>
                     {optionsArray !== undefined && optionsArray

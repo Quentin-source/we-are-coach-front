@@ -16,6 +16,7 @@ const TrainingDetails = () => {
     const content = useSelector((state)=>(state.training.content));
     const commentInput = useSelector((state) =>(state.training.commentInput));
     const isConnected = useSelector((state) => state.home.connected);
+    const comments = useSelector((state)=> state.training.comments);
 
     
 
@@ -46,7 +47,10 @@ const TrainingDetails = () => {
             type:'SUBMIT_COMMENT',
             comment : commentInput,
             workout : content.id,
-        })
+        });
+        dispatch({type:'TOGGLE_COMMENT'});
+       
+
     }
 
    
@@ -92,15 +96,15 @@ const TrainingDetails = () => {
                 <div className="training-details-group-aside">
                     <div className="training-details-coach">
                         <Avatar/>
-                        <p>{content.hasOwnProperty('user')&&content.user.pseudo}</p>
+                        <p>{content.user.hasOwnProperty('pseudo') && content.user.pseudo}</p>
                        
                     </div>                  
                     {isConnected && <div className="training-details-group-button">
                         <Button 
                             classNames={commentPopState?'training-details-button training-details-button--open': 'training-details-button'} 
                             color={commentPopState ? 'secondary' : 'primary'}
-                            onClick={!commentPopState ? handleToggleComment : handleSubmitComment}>
-                            {commentPopState? 'ENVOYER': 'COMMENTER'}
+                            onClick={handleToggleComment}>
+                            {commentPopState? 'FERMER': 'COMMENTER'}
                         </Button> 
                         <Button>Noter</Button> 
                     </div>}
@@ -125,7 +129,7 @@ const TrainingDetails = () => {
 
                 <NavButton  
                     content={<HighlightOff /> } 
-                    handleClick={handleToggleComment}
+                    handleClick={handleSubmitComment}
                     className={!commentPopState ? 'training-new-comment-button navbar-button': 'training-new-comment-button navbar-button navbar-button--open'}
                 />
             </div>
@@ -134,14 +138,14 @@ const TrainingDetails = () => {
             
                
 
-                {content.hasOwnProperty('comment') && content.comment.map((comment)=> (
-                    <div className="training-comments-card">
+                {content.hasOwnProperty('comment') && comments.map((comment)=> (
+                    <div key={comment.id} className="training-comments-card">
                         <Avatar />
                         <div className="training-comments-card-content">
                             <p>{comment.comment}</p>
                             <div className="training-comments-card-content-date">publié le 7/09/1987</div>
                         </div>
-                    </div>))}
+                    </div>)).reverse()}
                 
             </section>
 

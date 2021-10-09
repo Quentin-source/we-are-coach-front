@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import { useDispatch , useSelector} from "react-redux";
 
 import { Menu, Close} from "@material-ui/icons";
-import { Logout } from "@mui/icons-material";
 
 import Connectpop from '../../PopUp/ConnectPop';
 import SignupPop from '../../PopUp/SignUpPop'

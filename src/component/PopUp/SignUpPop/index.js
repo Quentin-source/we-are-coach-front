@@ -10,7 +10,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { TextField, Button, Grid, Avatar, Typography, FormControlLabel, Checkbox, InputLabel, Select, MenuItem, ListItemText } from '@mui/material';
+import { TextField, Button, Grid, Avatar, FormControlLabel, Checkbox, InputLabel, Select, MenuItem, ListItemText } from '@mui/material';
 import { AddAPhotoOutlined, ChangeCircleOutlined } from "@mui/icons-material";
 import { AssignmentIndOutlined } from '@material-ui/icons';
 

@@ -1,4 +1,3 @@
-import run from '../../assets/images/run.jpg'
 
 import Typography from '@mui/material/Typography';
 

@@ -5,6 +5,7 @@ export const initialState = {
     editState : false,
     commentPop : false,
     commentInput : '',
+    comments:[],
 
 };
 
@@ -17,6 +18,14 @@ const trainingReducer = (state = initialState, action = {}) => {
             {
                 ...state,
                 commentInput: action.value,
+            }
+        );
+    case 'CLEAN_COMMENT' :
+        return (
+            {
+                ...state,
+                commentInput : '',
+                commentPop : false,
             }
         );
 
@@ -40,9 +49,19 @@ const trainingReducer = (state = initialState, action = {}) => {
         return (
             {
                 ...state,
-                content: action.datas,              
+                content: action.datas,
+                comments: action.datas.comment,              
             }
         );
+    
+    case 'SAVE_TRAINING_COMMENTS':
+        return (
+            {
+                ...state,
+                comments: action.comments,              
+            }
+        );
+
 
     default:
         return state;

@@ -12,10 +12,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { TextField, Button, Grid, Avatar, FormControlLabel, Checkbox, InputLabel, Select, MenuItem, ListItemText } from '@mui/material';
 import { AddAPhotoOutlined, ChangeCircleOutlined, Edit, CheckCircleOutline} from "@mui/icons-material";
-import { AssignmentIndOutlined } from '@material-ui/icons';
 
 import './style.scss';
-import { useEffect } from 'react';
 
 
 
@@ -88,9 +86,6 @@ const EditUserPop = ({user}) => {
             file: localPicturePreview,
         });
     };
-
-    
-    console.log('pre use Formik');
     
     const formik = useFormik({
         initialValues: {

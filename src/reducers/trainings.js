@@ -50,7 +50,6 @@ const reducer = (state = initialState, action = {}) => {
 
     case 'SAVE_TRAININGS':
         allTrainings = action.trainings;
-        console.log(allTrainings);
         
         return (
             {

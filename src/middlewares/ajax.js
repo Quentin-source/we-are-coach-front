@@ -70,14 +70,22 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 type:'FETCH_USER',
                 id: information.data.id,
 
-            })
+            });
+            store.dispatch({
+                type:'OPEN_SNACK',
+                message : 'connexion réussie!',
+                severity : 'success',
+            });
             
         })
             .catch((error) => {
-                console.error('pb identification', error);
-                alert('Utilisateur non reconnu');
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Echec identification',
+                    severity : 'error',
+                });
             });
-}; 
+    }; 
     
     if(action.type === 'ASK_SEARCH')  {
 
@@ -123,6 +131,20 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     };
 
+    if(action.type === 'FETCH_TRAINING_COMMENTS')  {
+
+        api.get(`/api/workout/${action.slug}`).then((response)=> {
+            store.dispatch({
+                type : 'SAVE_TRAINING_COMMENTS',
+                comments : response.data.comment,
+            })
+            setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
+        })
+            .catch((error) => (console.error(error)));
+
+    };
+
+
     if(action.type === 'FETCH_USER')  {
 
         api.get(`/api/user/${action.id}`).then((response)=> {
@@ -153,7 +175,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             
             alert('Utilisateur enregistré avec succès!')
             console.log(response);
-            console.log(action.userDatas.email, action.userDatas.password);
             store.dispatch({
                 type: 'ASK_LOGIN',
                 email : action.userDatas.email,
@@ -163,7 +184,19 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             store.dispatch({
                 type : 'CLEAN_MENU'
             });
-        }).catch((error) => (console.error(error)));
+            store.dispatch({
+                type:'OPEN_SNACK',
+                message : 'Inscription réussie!',
+                severity : 'success',
+            });
+        }).catch((error) => {
+            console.error(error)
+            store.dispatch({
+                type:'OPEN_SNACK',
+                message : 'Echec Inscription!',
+                severity : 'error',
+            });
+        });
 
     }
 
@@ -184,7 +217,24 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             value : action.userDatas.password,
         });
         console.log(dataToSend);
-        api.patch(`/api/user/${action.id}`, dataToSend).then((response)=>console.log(response)).catch((error)=>console.error(error));
+        api.patch(`/api/user/${action.id}`, dataToSend)
+            .then((response)=>{
+                console.log(response);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Modification Utilisateur réussie!',
+                    severity : 'success',
+                });
+                
+            })
+            .catch((error)=>{
+                console.error(error);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Echec modification utilisateur!',
+                    severity : 'error',
+                });   
+            });
     }
 
     
@@ -200,7 +250,22 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             level: action.values.level,
             sport: action.values.sport,
             user: store.getState().user.user.id,
-        }).then((response) => (console.log(response)))
+        })
+            .then((response) => {
+                console.log(response);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Crétaion de l\'entrainement  réussie!',
+                    severity : 'success',
+                });
+            }).catch((error)=>{
+                console.error(error);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Echec création Entrainement! ',
+                    severity : 'success',
+                });
+            });
     }
 
     if(action.type === 'SUBMIT_COMMENT') {
@@ -212,7 +277,32 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             workout : action.workout,
             user : store.getState().user.user.id,
             published_at : '2021-09-22 10:46:02'
-        }).then((response)=>(console.log(response))).catch((error)=>(console.error(error)));
+        }).then((response)=> {
+            console.log(response);
+            store.dispatch({
+                type:'FETCH_TRAINING_COMMENTS',
+                slug:action.workout,
+            });
+
+            store.dispatch({
+                type:'CLEAN_COMMENT',
+            });
+            
+            store.dispatch({
+                type:'OPEN_SNACK',
+                message : 'commentaire envoyé!',
+                severity : 'success',
+            });
+
+        })
+            .catch((error) => {
+                console.error(error);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Echec commentaire!',
+                    severity : 'success',
+                });
+            });
     
     }
     next(action);

@@ -30,8 +30,6 @@ const Paginations = () => {
         }));   
     };
 
-    console.log(pageCount);
-
     return (
         <Stack spacing={2}>
             <Pagination className="trainings-pagination" count={pageCount} page={currentPage} onChange={handleChange}/>

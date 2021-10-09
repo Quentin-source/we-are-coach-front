@@ -5,6 +5,8 @@ export const initialState = {
     connectPop : false,
     signUpPop : false,
     connected : false,
+    snackBar : false,
+    snackAlert : {},
     bestWorkout : [],    
 };
 
@@ -102,6 +104,25 @@ const homeReducer = (state = initialState, action = {}) => {
                 userMenu: false,
             }
         );
+    case 'CLOSE_SNACK' :
+        return(
+            {
+                ...state,
+                snackBar : false,
+            }
+        );
+    case 'OPEN_SNACK' :
+        return(
+            {
+                ...state,
+                snackBar : true,
+                snackAlert : {
+                    severity : action.severity,
+                    message : action.message,
+                }
+            }
+        );
+    
     case 'API_CONNECTION':
         return (
             {

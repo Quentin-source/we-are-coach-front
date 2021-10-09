@@ -25,8 +25,7 @@ const Connectpop = () =>  {
     };
 
     const handleConnection = () => {
-        console.log(userEmailContent, userPasswordContent);
-        
+       
         dispatch({type: 'ASK_LOGIN',
             email:userEmailContent,
             password: userPasswordContent,
