@@ -1,0 +1,40 @@
+.training-edit{
+    &-pop{
+        div{
+            margin : 0.2em 0.5em;
+        }
+    }
+    &-header{
+        &-avatar{
+            position : relative;
+            img{
+                width: 100%;
+                height : 15vh;
+                object-fit: cover;
+            }
+            label{
+                position : absolute;
+                top : 1rem;
+                right : 1rem;
+            }
+        }
+    }
+    div &-form-multi{
+        margin-top: 1em;
+    }
+}
+
+@media (max-width : 500px) {
+    h2.training-edit-title{
+            font-size: 1.1em;
+            padding: 0.5em 2em;
+    }
+    .training-edit-pop{
+        div{
+            font-size: 95%;
+        }
+    }
+    div.training-edit-content{
+       padding-bottom: 0.5em;
+    }
+}

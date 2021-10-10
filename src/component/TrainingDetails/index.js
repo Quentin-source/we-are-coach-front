@@ -5,13 +5,16 @@ import { Avatar, Button, TextField} from '@mui/material';
 import { Edit, CheckCircleOutline, HighlightOff } from '@material-ui/icons';
 import NavButton from '../Materials/NavButton';
 import CustomLevel from '../Materials/CustomLevel';
+import EditTrainingPop from "../PopUp/EditTrainingPop";
+
+
 
 import './style.scss';
 
 const TrainingDetails = () => {
     const dispatch = useDispatch();
     const { slug } = useParams();
-    const editState = useSelector((state)=>(state.training.editState));
+    const editTrainingPopState = useSelector((state)=>(state.training.editTrainingPop));
     const commentPopState = useSelector((state) =>(state.training.commentPop));
     const content = useSelector((state)=>(state.training.content));
     const commentInput = useSelector((state) =>(state.training.commentInput));
@@ -29,6 +32,11 @@ const TrainingDetails = () => {
         }); 
     },[]);
     
+
+    const handleEditTraining = (event) => {
+
+        dispatch({type:'TOGGLE_EDIT_TRAINING'})
+    };
 
     const handleChangeComment = (event) => {
         dispatch({
@@ -53,9 +61,6 @@ const TrainingDetails = () => {
 
     }
 
-   
-
-
     return (
         <main className="main-content">
             <h2 className="main-content-title" >
@@ -74,15 +79,20 @@ const TrainingDetails = () => {
                         <img  alt="Nom Prénom"
                             src={content.picture}
                         />
-                        {isConnected && <NavButton  
-                            content={editState.name ? 
-                                <CheckCircleOutline /> 
-                                : 
-                                <Edit />
-                            } 
-                            
-                            className={!editState ? 'training-details-button-edit navbar-button': 'training-details-button-edit navbar-button navbar-button--open'}
-                        />}
+                        {isConnected && 
+                            <>
+                                <NavButton  
+                                    content={editTrainingPopState ? 
+                                        <CheckCircleOutline /> 
+                                        : 
+                                        <Edit />
+                                    } 
+                                    handleClick={handleEditTraining}
+                                    className={!editTrainingPopState ? 'training-details-button-edit navbar-button': 'training-details-button-edit navbar-button navbar-button--open'}
+                                />
+                                <EditTrainingPop training={content} />
+                            </>
+                        }
                         <h4 className="training-details-category" >Catégorie</h4>
                     </div>
                     <div className="training-details-description">
@@ -96,7 +106,7 @@ const TrainingDetails = () => {
                 <div className="training-details-group-aside">
                     <div className="training-details-coach">
                         <Avatar/>
-                        <p>{content.user !== null && content.user.pseudo}</p>
+                        <p>{content.hasOwnProperty('user') && content.user !== null && content.user.pseudo}</p>
                        
                     </div>                  
                     {isConnected && <div className="training-details-group-button">

@@ -263,9 +263,45 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 store.dispatch({
                     type:'OPEN_SNACK',
                     message : 'Echec création Entrainement! ',
-                    severity : 'success',
+                    severity : 'error',
                 });
             });
+    }
+
+    if (action.type === 'ASK_MODIFY_TRAINING') {
+
+        console.log('middleware modifier training connecté');
+        api.defaults.headers.common.Authorization = `bearer ${token}`;
+        console.table(action.trainingDatas);
+        console.log(action.sportId);
+        console.log(action.picture);
+        
+
+        
+        
+        // api.patch('/api/workout/update', {
+        //     name: action.trainingDatas.name,
+        //     description: action.trainingDatas.description,
+        //     picture : action.picture,
+        //     level: action.trainingDatas.level,
+        //     sport: action.trainingDatas.sport,
+        //     user: store.getState().user.user.id,
+        // })
+        //     .then((response) => {
+        //         console.log(response);
+        //         store.dispatch({
+        //             type:'OPEN_SNACK',
+        //             message : 'Crétaion de l\'entrainement  réussie!',
+        //             severity : 'success',
+        //         });
+        //     }).catch((error)=>{
+        //         console.error(error);
+        //         store.dispatch({
+        //             type:'OPEN_SNACK',
+        //             message : 'Echec création Entrainement! ',
+        //             severity : 'error',
+        //         });
+        //     });
     }
 
     if(action.type === 'SUBMIT_COMMENT') {
@@ -300,7 +336,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 store.dispatch({
                     type:'OPEN_SNACK',
                     message : 'Echec commentaire!',
-                    severity : 'success',
+                    severity : 'error',
                 });
             });
     

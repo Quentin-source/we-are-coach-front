@@ -2,10 +2,12 @@
 export const initialState = {
 
     content:{},
-    editState : false,
+    editTrainingPop : false,
     commentPop : false,
     commentInput : '',
     comments:[],
+    isLoadedPicture : false,
+    picturePreview :'',
 
 };
 
@@ -37,11 +39,11 @@ const trainingReducer = (state = initialState, action = {}) => {
             }
         );
     
-    case 'TOGGLE_EDIT':
+    case 'TOGGLE_EDIT_TRAINING':
         return (
             {
                 ...state,
-                editState : !state.editState,
+                editTrainingPop : !state.editTrainingPop,
             }
         );
     
@@ -61,7 +63,24 @@ const trainingReducer = (state = initialState, action = {}) => {
                 comments: action.comments,              
             }
         );
+    case 'UPLOAD_TRAINING_PICTURE':
+        return (
+            {
+                ...state,
+                picturePreview : action.file,
+                isLoadedPicture: true,
+            }
+        );
 
+    case 'UNMOUNT__PICTURE':
+        return (
+            {
+                ...state,
+                picturePreview : '',
+                isLoadedPicture: false,
+            }
+        );
+    
 
     default:
         return state;

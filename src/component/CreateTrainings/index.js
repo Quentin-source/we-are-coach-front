@@ -34,8 +34,8 @@ const Form = () => {
 
     const dispatch = useDispatch();
 
-    const picturePreview = useSelector((state) => (state.trainings.picturePreview));
-    const isLoadedPicture = useSelector((state) => (state.trainings.isLoadedPicture));
+    const picturePreview = useSelector((state) => (state.training.picturePreview));
+    const isLoadedPicture = useSelector((state) => (state.training.isLoadedPicture));
     const sports = useSelector((state)=>(state.data.sports));
     
 
@@ -56,7 +56,7 @@ const Form = () => {
 
     const initialValues = {
         name: '',
-        sport: '',
+        sport: {},
         description: '',
         level: '',
     }
@@ -135,7 +135,9 @@ const Form = () => {
                     </Select>
                 </FormControl> */}
 
-                <FormControl variant="standard">
+                <FormControl 
+                    variant="standard"
+                >
                     <InputLabel id="sports-list">Sport</InputLabel>
                     <Select
                         className="main-content-training-create-form-select"
@@ -146,16 +148,15 @@ const Form = () => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         error={formik.touched.sport && Boolean(formik.errors.sport)}
-                        helperText={formik.touched.sport && formik.errors.sport}
                         label="Sport"
                     >
-                        <MenuItem name="category" value="">
+                        <MenuItem name="category" value={0}>
                             <em>None</em>
                         </MenuItem>
                         {sports.map((sport)=>( 
                             <MenuItem 
                                 name="sport" 
-                                value={sport.id}
+                                value={sport}
                                 key={sport.id}
                             >
                                 {sport.name}

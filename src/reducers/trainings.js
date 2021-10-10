@@ -14,8 +14,6 @@ export const initialState = {
     currentPage: 1,
     pageCount: 0,
     pageSize: 3,
-    picturePreview:'',
-    isLoadedPicture: false,
 };
 
 
@@ -59,23 +57,7 @@ const reducer = (state = initialState, action = {}) => {
             }
         );
     
-    case 'UPLOAD_TRAINING_PICTURE':
-        return (
-            {
-                ...state,
-                picturePreview : action.file,
-                isLoadedPicture: true,
-            }
-        );
-
-    case 'UNMOUNT__PICTURE':
-        return (
-            {
-                ...state,
-                picturePreview : '',
-                isLoadedPicture: false,
-            }
-        );
+    
 
     default:
         return state;
