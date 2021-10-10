@@ -96,7 +96,7 @@ const TrainingDetails = () => {
                 <div className="training-details-group-aside">
                     <div className="training-details-coach">
                         <Avatar/>
-                        <p>{content.user.hasOwnProperty('pseudo') && content.user.pseudo}</p>
+                        <p>{content.user !== null && content.user.pseudo}</p>
                        
                     </div>                  
                     {isConnected && <div className="training-details-group-button">
