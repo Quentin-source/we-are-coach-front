@@ -45,11 +45,10 @@ const Form = () => {
     },[]);
 
     const handleUploadFile = (event) => {
-        const file = event.target.files[0];
-        const URLToFile = URL.createObjectURL(file);
         dispatch({
-            type: 'UPLOAD_TRAINING_PICTURE',
-            file: URLToFile,
+            type: 'UPLOAD_IMAGE',
+            file : event.target.files[0],
+            target: 'training',
         });
     };
 

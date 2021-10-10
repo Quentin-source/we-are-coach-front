@@ -299,12 +299,13 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             level: action.trainingDatas.level,
             sport: action.trainingDatas.sport,
             user: store.getState().user.id,
+            id: action.id,
         })
             .then((response) => {
                 console.log(response);
                 store.dispatch({
                     type:'OPEN_SNACK',
-                    message : 'Crétaion de l\'entrainement  réussie!',
+                    message : 'Modification de l\'entrainement  réussie!',
                     severity : 'success',
                 });
                 store.dispatch({

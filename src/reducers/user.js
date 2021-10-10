@@ -6,6 +6,7 @@ export const initialState = {
     picture:'',
     id: 0,
     isLoadedPicture: false,
+    picturePreview: '',
     editUserPop : false,
 
 };
@@ -61,16 +62,17 @@ const userReducer = (state = initialState, action = {}) => {
             }
         );
 
-    case 'UPLOAD_USER_PICTURE':
-        return (
-            {
-                ...state,
-                user: {
-                    ...state.user,
-                    picture : action.file,
+    case 'UPLOAD_IMAGE_OK':
+        if(action.target === 'user') 
+            return (
+                {
+                    ...state,
+                    picturePreview : action.url,
+                    isLoadedPicture: true,
                 }
-            }
-        );
+            );
+        else return state;
+    
 
     case 'TOGGLE_EDIT_USER' :
         return (

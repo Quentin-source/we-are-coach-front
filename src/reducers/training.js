@@ -80,14 +80,16 @@ const trainingReducer = (state = initialState, action = {}) => {
                 comments: action.comments,              
             }
         );
-    case 'UPLOAD_TRAINING_PICTURE':
-        return (
-            {
-                ...state,
-                picturePreview : action.file,
-                isLoadedPicture: true,
-            }
-        );
+    case 'UPLOAD_IMAGE_OK':
+        if(action.target === 'training') 
+            return (
+                {
+                    ...state,
+                    picturePreview : action.url,
+                    isLoadedPicture: true,
+                }
+            );
+        else return state;
 
     case 'UNMOUNT__PICTURE':
         return (

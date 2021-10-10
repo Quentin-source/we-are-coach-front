@@ -69,11 +69,10 @@ const EditTrainingPop = () => {
     };
 
     const handleUploadFile = (event) => {
-        const picture = event.target.files[0];
-        const localPicturePreview = window.URL.createObjectURL(picture);
         dispatch({
-            type :'UPLOAD_TRAINING_PICTURE',
-            file: localPicturePreview,
+            type: 'UPLOAD_IMAGE',
+            file : event.target.files[0],
+            target: 'training',
         });
     };
     
