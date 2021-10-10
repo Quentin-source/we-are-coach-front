@@ -16,9 +16,8 @@ const validationSchema = yup.object().shape({
         .min(2, 'Tape ton nom d\'entrainement')
         .required('Nom de l\'entrainement requis'),
     sport: yup
-        .string('Entre le nom du sport')
-        .min(2, 'Tape le nom du sport')
-        .required('Nom du sport requis'),
+        .number()
+        .required('Requis'),
     description: yup
         .string('Description de l\'entrainement')
         .min(20, 'Tape ta descrition d\'entrainement')
@@ -56,7 +55,7 @@ const Form = () => {
 
     const initialValues = {
         name: '',
-        sport: {},
+        sport: '',
         description: '',
         level: '',
     }
@@ -150,13 +149,13 @@ const Form = () => {
                         error={formik.touched.sport && Boolean(formik.errors.sport)}
                         label="Sport"
                     >
-                        <MenuItem name="category" value={0}>
+                        <MenuItem name="sport" value={0}>
                             <em>None</em>
                         </MenuItem>
                         {sports.map((sport)=>( 
                             <MenuItem 
                                 name="sport" 
-                                value={sport}
+                                value={sport.id}
                                 key={sport.id}
                             >
                                 {sport.name}

@@ -42,19 +42,28 @@ const validationSchema = yup.object().shape({
 
 let sportId = 0;
 
-const EditTrainingPop = ({training}) => {
+const EditTrainingPop = () => {
 
     const dispatch = useDispatch();
     const editTrainingPopState = useSelector((state) => (state.training.editTrainingPop));
     const isLoadedPicture = useSelector((state) => (state.training.isLoadedPicture));
     const picturePreview = useSelector((state)=>state.training.picturePreview);
+    
     const sports = useSelector((state)=> state.data.sports)
+    
+    
+    const name = useSelector((state)=> state.training.name);
+    const sport = useSelector((state)=> state.training.sportId);
+    const description = useSelector((state)=> state.training.description);
+    const level = useSelector((state)=> state.training.level);
+    const id = useSelector((state)=> state.training.id);
+    const picture = useSelector((state)=>state.training.picture);
 
     const handleClose = () => {
         dispatch({type: 'TOGGLE_EDIT_TRAINING'});
         dispatch({
             type :'UPLOAD_USER_PICTURE',
-            file: '',
+            file: picture,
         });
         formik.resetForm();
     };
@@ -75,27 +84,28 @@ const EditTrainingPop = ({training}) => {
 
     const formik = useFormik({
         initialValues : {
-            name: training.name,
-            sport: training.sport.name,
-            description: training.description,
-            level: training.level,
+            name: name,
+            sport: sport,
+            description: description,
+            level: level,
         },
         validationSchema,
         onSubmit: (values) => {
             dispatch({
                 type:'ASK_MODIFY_TRAINING',
                 trainingDatas: values,
-                id: training.id,
+                id: id,
                 sportId : sportId,
                 picture : picturePreview,
             })
         },
+        enableReinitialize : true,
+
     });
 
-    useEffect(()=>(dispatch({
-        type : 'UPLOAD_TRAINING_PICTURE',
-        file : training.picture
-    })),[]);
+    useEffect( ()=>{
+        formik.resetForm();
+    },[]);
     
     return (
         <Dialog className="training-edit-pop" color="primary" open={editTrainingPopState} onClose={handleClose}>
@@ -184,9 +194,9 @@ const EditTrainingPop = ({training}) => {
                             {sports.map((sport)=>( 
                                 <MenuItem 
                                     name="sport" 
-                                    value={sport.name}
+                                    value={sport.id}
                                     onClick={(event)=> handleClickSport(event, sport.id)}
-                                    key={sport.id}
+                                    key={sport.name}
                                 >
                                     {sport.name}
                                 </MenuItem>

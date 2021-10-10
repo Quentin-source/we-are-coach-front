@@ -8,8 +8,8 @@ const Navdrop = () => {
     return (
         <div className={!navDropState ? 'dropmenu dropmenu-nav dropmenu-nav--hidden' : 'dropmenu dropmenu-nav'} >
             <Link to="/"> Acceuil</Link>
-            <Link to="/Entrainements"> Entrainement</Link>
-            <Link to="/Contacts"> Contact</Link>
+            <Link to="/Entrainement"> Entrainement</Link>
+            <Link to="/Contact"> Contact</Link>
         </div>
     );
 } 

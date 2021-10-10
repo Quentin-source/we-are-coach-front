@@ -16,10 +16,18 @@ const TrainingDetails = () => {
     const { slug } = useParams();
     const editTrainingPopState = useSelector((state)=>(state.training.editTrainingPop));
     const commentPopState = useSelector((state) =>(state.training.commentPop));
-    const content = useSelector((state)=>(state.training.content));
+    
     const commentInput = useSelector((state) =>(state.training.commentInput));
     const isConnected = useSelector((state) => state.home.connected);
     const comments = useSelector((state)=> state.training.comments);
+
+    const name = useSelector((state)=> state.training.name);
+    const sport = useSelector((state)=> state.training.sport);
+    const description = useSelector((state)=> state.training.description);
+    const level = useSelector((state)=> state.training.level);
+    const id = useSelector((state)=> state.training.id);
+    const picture = useSelector((state)=>state.training.picture);
+    const pseudo = useSelector((state)=>state.training.userPseudo);
 
     
 
@@ -54,7 +62,7 @@ const TrainingDetails = () => {
         dispatch({
             type:'SUBMIT_COMMENT',
             comment : commentInput,
-            workout : content.id,
+            workout : id,
         });
         dispatch({type:'TOGGLE_COMMENT'});
        
@@ -72,12 +80,12 @@ const TrainingDetails = () => {
             <section className="training-details">
                 <div className="training-details-group-block"> 
                     <div className="training-details-header">
-                        <h3 className="training-details-title">{content.name}</h3>      
-                        <span> Niveau : <CustomLevel level={content.level}/></span>
+                        <h3 className="training-details-title">{name}</h3>      
+                        <span> Niveau : <CustomLevel level={level}/></span>
                     </div>
                     <div className="training-details-picture">
                         <img  alt="Nom Prénom"
-                            src={content.picture}
+                            src={picture}
                         />
                         {isConnected && 
                             <>
@@ -90,7 +98,7 @@ const TrainingDetails = () => {
                                     handleClick={handleEditTraining}
                                     className={!editTrainingPopState ? 'training-details-button-edit navbar-button': 'training-details-button-edit navbar-button navbar-button--open'}
                                 />
-                                <EditTrainingPop training={content} />
+                                <EditTrainingPop />
                             </>
                         }
                         <h4 className="training-details-category" >Catégorie</h4>
@@ -98,15 +106,15 @@ const TrainingDetails = () => {
                     <div className="training-details-description">
                         
                         
-                        <h5 className='training-details-sport'> {content.hasOwnProperty('sport') && content.sport.name}</h5>
-                        <p>{content.description}</p>
+                        <h5 className='training-details-sport'> {sport}</h5>
+                        <p>{description}</p>
 
                     </div>  
                 </div>    
                 <div className="training-details-group-aside">
                     <div className="training-details-coach">
                         <Avatar/>
-                        <p>{content.hasOwnProperty('user') && content.user !== null && content.user.pseudo}</p>
+                        <p>{pseudo}</p>
                        
                     </div>                  
                     {isConnected && <div className="training-details-group-button">
@@ -148,7 +156,7 @@ const TrainingDetails = () => {
             
                
 
-                {content.hasOwnProperty('comment') && comments.map((comment)=> (
+                {comments.map((comment)=> (
                     <div key={comment.id} className="training-comments-card">
                         <Avatar />
                         <div className="training-comments-card-content">

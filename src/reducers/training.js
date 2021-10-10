@@ -1,11 +1,19 @@
 
 export const initialState = {
 
-    content:{},
+    name : '',
+    description : '',
+    id : 0,
+    sport : '',
+    sportId : 0,
+    userPseudo : '',
+    userId : 0,
+    level : 0, 
+    picture : '',
     editTrainingPop : false,
     commentPop : false,
     commentInput : '',
-    comments:[],
+    comments : [],
     isLoadedPicture : false,
     picturePreview :'',
 
@@ -52,6 +60,15 @@ const trainingReducer = (state = initialState, action = {}) => {
             {
                 ...state,
                 content: action.datas,
+                name : action.datas.name,
+                description : action.datas.description,
+                level : action.datas.level,
+                id: action.datas.id,
+                picture : action.datas.picture,
+                sport : action.datas.sport.name,
+                sportId : action.datas.sport.id,
+                userPseudo: action.datas.user.pseudo,
+                userId: action.datas.user.id,
                 comments: action.datas.comment,              
             }
         );

@@ -4,11 +4,9 @@ const api = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
 });
 api.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-
 let token = "";
 
 const ajaxMiddleware = (store) => (next) => (action) => {
-
 
     // action récupération des données de la page home
     if (action.type === 'FETCH_COMMON') {
@@ -124,7 +122,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             store.dispatch({
                 type : 'SAVE_TRAINING_DETAILS',
                 datas : response.data,
-            })
+            });
+            store.dispatch({
+                type : 'UPLOAD_TRAINING_PICTURE',
+                file : response.data.picture,
+            });
             setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
         })
             .catch((error) => (console.error(error)));
@@ -225,7 +227,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                     message : 'Modification Utilisateur réussie!',
                     severity : 'success',
                 });
-                
+                store.dispatch({
+                    type: 'FETCH_USER',
+                    id: store.getState().user.id,
+                });
+                store.dispatch({type: 'TOGGLE_EDIT_USER'});
             })
             .catch((error)=>{
                 console.error(error);
@@ -243,13 +249,14 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
         console.log('middleware create training connecté');
         api.defaults.headers.common.Authorization = `bearer ${token}`;
+        console.table(action);
         api.post('/api/workout/add', {
             name: action.values.name,
             description: action.values.description,
             picture : action.picture,
             level: action.values.level,
             sport: action.values.sport,
-            user: store.getState().user.user.id,
+            user: store.getState().user.id,
         })
             .then((response) => {
                 console.log(response);
@@ -258,6 +265,8 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                     message : 'Crétaion de l\'entrainement  réussie!',
                     severity : 'success',
                 });
+                
+                
             }).catch((error)=>{
                 console.error(error);
                 store.dispatch({
@@ -279,29 +288,34 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
         
         
-        // api.patch('/api/workout/update', {
-        //     name: action.trainingDatas.name,
-        //     description: action.trainingDatas.description,
-        //     picture : action.picture,
-        //     level: action.trainingDatas.level,
-        //     sport: action.trainingDatas.sport,
-        //     user: store.getState().user.user.id,
-        // })
-        //     .then((response) => {
-        //         console.log(response);
-        //         store.dispatch({
-        //             type:'OPEN_SNACK',
-        //             message : 'Crétaion de l\'entrainement  réussie!',
-        //             severity : 'success',
-        //         });
-        //     }).catch((error)=>{
-        //         console.error(error);
-        //         store.dispatch({
-        //             type:'OPEN_SNACK',
-        //             message : 'Echec création Entrainement! ',
-        //             severity : 'error',
-        //         });
-        //     });
+        api.put('/api/workout/update', {
+            name: action.trainingDatas.name,
+            description: action.trainingDatas.description,
+            picture : action.picture,
+            level: action.trainingDatas.level,
+            sport: action.trainingDatas.sport,
+            user: store.getState().user.id,
+        })
+            .then((response) => {
+                console.log(response);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Crétaion de l\'entrainement  réussie!',
+                    severity : 'success',
+                });
+                store.dispatch({
+                    type: 'FETCH_TRAINING_DETAILS',
+                    slug: store.getState().training.id,
+                });
+                store.dispatch({type: 'TOGGLE_EDIT_TRAINING'});
+            }).catch((error)=>{
+                console.error(error);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Echec création Entrainement! ',
+                    severity : 'error',
+                });
+            });
     }
 
     if(action.type === 'SUBMIT_COMMENT') {

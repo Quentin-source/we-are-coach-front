@@ -14,6 +14,7 @@ import { TextField, Button, Grid, Avatar, FormControlLabel, Checkbox, InputLabel
 import { AddAPhotoOutlined, ChangeCircleOutlined, Edit, CheckCircleOutline} from "@mui/icons-material";
 
 import './style.scss';
+import { useEffect } from 'react';
 
 
 
@@ -112,7 +113,7 @@ const EditUserPop = ({user}) => {
         },
     });
 
-    
+    useEffect(()=> formik.resetForm(),[]);
     
     return (
         <>
