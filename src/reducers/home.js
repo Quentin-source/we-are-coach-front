@@ -1,3 +1,5 @@
+
+
 export const initialState = {
     loading: false,
     userMenu : false,
@@ -8,9 +10,12 @@ export const initialState = {
     snackBar : false,
     snackAlert : {},
     bestWorkout : [],    
+    redirect : false,
+    redirectTo : '/',
 };
 
 const homeReducer = (state = initialState, action = {}) => {
+
     switch (action.type) {
     case 'CLEAN_MENU':
         return(
@@ -135,6 +140,23 @@ const homeReducer = (state = initialState, action = {}) => {
             {
                 ...state,
                 bestWorkout: action.top,  
+            }
+        );
+    case 'REDIRECT':
+        return (
+            {
+                ...state,
+                redirectTo: action.path,
+                redirect: true,  
+            }
+        );
+
+    case 'REDIRECT_OFF':
+        return (
+            {
+                ...state,
+                redirectTo: '',
+                redirect: false,  
             }
         );
     

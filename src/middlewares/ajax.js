@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { push } from 'react-router-redux';
 
 const api = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
@@ -265,7 +266,10 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                     message : 'Crétaion de l\'entrainement  réussie!',
                     severity : 'success',
                 });
-                
+                store.dispatch({
+                    type:'REDIRECT',
+                    path : `/Entrainement/${response.data.id}`,
+                });
                 
             }).catch((error)=>{
                 console.error(error);
