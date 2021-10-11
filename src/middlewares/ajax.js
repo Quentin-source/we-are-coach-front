@@ -88,7 +88,28 @@ const ajaxMiddleware = (store) => (next) => (action) => {
     
     if(action.type === 'ASK_SEARCH')  {
 
-        api.get('/api/search', {params:{search : action.value}}).then((response)=>(console.log(response.data))).catch((error)=>(console.error(error)));
+        api.get('/api/search', {params:{search : action.value}})
+            .then((response)=>{
+                console.log(response.data)
+                store.dispatch({
+                    type : 'SAVE_TRAININGS',
+                    trainings : response.data.workouts,
+                });
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Recherche réussie!',
+                    severity : 'success',
+                });
+            })
+            .catch((error)=>{
+                console.error(error);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Echec recherche!',
+                    severity : 'error',
+                });
+
+            });
 
     };
     

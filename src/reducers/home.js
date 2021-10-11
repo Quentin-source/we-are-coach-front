@@ -12,6 +12,7 @@ export const initialState = {
     bestWorkout : [],    
     redirect : false,
     redirectTo : '/',
+    scrollValue : 0,
 };
 
 const homeReducer = (state = initialState, action = {}) => {
@@ -159,6 +160,16 @@ const homeReducer = (state = initialState, action = {}) => {
                 redirect: false,  
             }
         );
+
+    case 'CHANGE_SCROLL':
+        if (action.value >= 0)
+            return (
+                {
+                    ...state,
+                    scrollValue : action.value,  
+                }
+            );
+        else return state;
     
     default:
         return state;

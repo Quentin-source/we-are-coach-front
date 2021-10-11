@@ -54,6 +54,9 @@ const Form = () => {
             url : '',
             state : true,
         });
+        dispatch({
+            type :'CLEAN_MENU',
+        });
     },[]);
 
 

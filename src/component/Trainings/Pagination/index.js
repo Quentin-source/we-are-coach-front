@@ -9,7 +9,7 @@ const Paginations = () => {
     const currentPage = useSelector ((state) => state.trainings.currentPage);
     const pageSize = useSelector((state) => state.trainings.pageSize);
     const pageCount = useSelector((state) => state.trainings.pageCount);
-
+    const scrollValue = useSelector((state) => state.home.scrollValue);
 
     const dispatch = useDispatch();
     const handleChange = (event, value) => {
@@ -31,7 +31,7 @@ const Paginations = () => {
     };
 
     return (
-        <Stack spacing={2}>
+        <Stack spacing={1}>
             <Pagination className="trainings-pagination" count={pageCount} page={currentPage} onChange={handleChange}/>
         </Stack>
     )

@@ -10,10 +10,31 @@ const Footer = () => {
     const dispatch = useDispatch();
     const redirectState = useSelector((state)=> state.home.redirect);
     const redirectTo = useSelector((state)=> state.home.redirectTo);
+    // const scrollPage = useSelector((state)=> state.home.scrollValue);
+    // let scrollDelta = 1;
 
-    useEffect(()=> dispatch({
-        type: 'REDIRECT_OFF',
-    }),[]);
+
+    // const handleScrollEvent= (event, scrollValue, scrollPage) => {
+    //     if (scrollValue + (event.deltaY/100) > 0) {
+    //         scrollDelta = scrollValue + (event.deltaY/400);
+    //         if(Math.ceil(scrollDelta) !== scrollPage)
+    //             dispatch({
+    //                 type: 'CHANGE_PAGE',
+    //                 value : Math.ceil(scrollDelta),
+    //             });
+    //     }
+            
+        
+    // }
+
+    
+
+    useEffect(()=> {
+        dispatch({
+            type: 'REDIRECT_OFF',
+        });
+        // window.addEventListener('wheel', (event)=> handleScrollEvent(event, scrollDelta, scrollPage));
+    },[]);
 
     return (
         <div className= 'footer'>

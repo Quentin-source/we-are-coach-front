@@ -1,3 +1,5 @@
+import { ItemGroup } from "semantic-ui-react";
+
 let allTrainings = [];
 
 const paginate = (array, page_size, page_number) => {
@@ -42,6 +44,16 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 currentPage: action.value,
                 displayedTrainings : paginate(allTrainings, state.pageSize, action.value),
+            }
+        );
+    case 'CHANGE_PAGE_SIZE':
+        
+        return (
+            {
+                ...state,
+                pageSize : action.value,
+                pageCount: Math.ceil(allTrainings.length / state.pageSize),
+                
             }
         );
     
