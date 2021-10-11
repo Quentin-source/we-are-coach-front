@@ -4,6 +4,7 @@ import * as yup from 'yup';
 
 import NavButton from '../../Materials/NavButton/index';
 import CustomLevel from '../../Materials/CustomLevel';
+import { memo } from 'react';
 
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -11,7 +12,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { TextField, Button, Grid, Avatar, FormControlLabel, Checkbox, InputLabel, Select, MenuItem, ListItemText } from '@mui/material';
-import { AddAPhotoOutlined, ChangeCircleOutlined, Edit, CheckCircleOutline} from "@mui/icons-material";
+import { AddAPhotoOutlined, ChangeCircleOutlined, Edit, CheckCircleOutline, Image} from "@mui/icons-material";
 
 import './style.scss';
 
@@ -62,8 +63,10 @@ const EditTrainingPop = () => {
     const handleClose = () => {
         dispatch({type: 'TOGGLE_EDIT_TRAINING'});
         dispatch({
-            type :'UPLOAD_USER_PICTURE',
-            file: picture,
+            type :'UPLOAD_IMAGE_OK',
+            target : 'training',
+            url : picture,
+            state : false,
         });
         formik.resetForm();
     };
@@ -87,6 +90,7 @@ const EditTrainingPop = () => {
             sport: sport,
             description: description,
             level: level,
+            picture : picture,
         },
         validationSchema,
         onSubmit: (values) => {
@@ -116,9 +120,11 @@ const EditTrainingPop = () => {
                     </DialogContentText>}
                 <Grid className="training-edit-header" align='center'>
                     <div className="training-edit-header-avatar">
-                        <img alt="Nom Prénom"
+                        <Avatar  alt="Illustration de l'entrainement"
                             src={picturePreview}
-                        />
+                        >
+                            <Image />
+                        </Avatar>
                         <label 
                             className={!isLoadedPicture ? 'navbar-button training-edit-header-avatar-button': 'training-edit-header-avatar-button navbar-button navbar-button--open'} 
                         >
@@ -261,5 +267,5 @@ const EditTrainingPop = () => {
     );
 };
 
-export default EditTrainingPop;
+export default memo(EditTrainingPop);
 

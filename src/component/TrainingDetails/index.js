@@ -27,7 +27,7 @@ const TrainingDetails = () => {
     const level = useSelector((state)=> state.training.level);
     const id = useSelector((state)=> state.training.id);
     const picture = useSelector((state)=>state.training.picture);
-    const pseudo = useSelector((state)=>state.training.userPseudo);
+    const userPseudo = useSelector((state)=>state.training.userPseudo);
 
     
 
@@ -114,7 +114,7 @@ const TrainingDetails = () => {
                 <div className="training-details-group-aside">
                     <div className="training-details-coach">
                         <Avatar/>
-                        <p>{pseudo}</p>
+                        <p>{userPseudo}</p>
                        
                     </div>                  
                     {isConnected && <div className="training-details-group-button">

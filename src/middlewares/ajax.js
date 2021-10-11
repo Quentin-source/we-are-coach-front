@@ -125,8 +125,10 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 datas : response.data,
             });
             store.dispatch({
-                type : 'UPLOAD_TRAINING_PICTURE',
-                file : response.data.picture,
+                type : 'UPLOAD_IMAGE_OK',
+                url : response.data.picture,
+                target : 'training',
+                state : false,
             });
             setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
         })

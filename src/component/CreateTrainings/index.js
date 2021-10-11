@@ -4,7 +4,7 @@ import { useFormik} from 'formik';
 import * as yup from 'yup';
 
 import { TextField, Button, Avatar, FormControl, InputLabel, Select, MenuItem,} from '@mui/material';
-import { AddAPhotoOutlined, ChangeCircleOutlined } from "@mui/icons-material";
+import { AddAPhotoOutlined, ChangeCircleOutlined, Image } from "@mui/icons-material";
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 import './style.scss';
 
@@ -40,9 +40,22 @@ const Form = () => {
 
     useEffect(()=>()=>{
         dispatch({
-            type :'UNMOUNT_TRAINING_PICTURE',
+            type :'UPLOAD_IMAGE_OK',
+            target:'training',
+            url : '',
+            state : false,
         });
     },[]);
+
+    useEffect(()=>{
+        dispatch({
+            type :'UPLOAD_IMAGE_OK',
+            target:'training',
+            url : '',
+            state : true,
+        });
+    },[]);
+
 
     const handleUploadFile = (event) => {
         dispatch({
@@ -83,11 +96,13 @@ const Form = () => {
                 <div className="main-content-training-create-picture">
                     <Avatar  alt="Nom Prénom"
                         src={picturePreview}
-                    />
+                    >
+                        <Image />
+                    </Avatar>
                     <label 
                         className={!isLoadedPicture ? 'navbar-button': 'navbar-button navbar-button--open'} 
                     >
-                        {isLoadedPicture ? <ChangeCircleOutlined /> : <AddAPhotoOutlined />}
+                        {!isLoadedPicture ? <ChangeCircleOutlined /> : <AddAPhotoOutlined />}
                         <input name="picture" type="file" onChange={handleUploadFile} />
                     </label>
                 </div>

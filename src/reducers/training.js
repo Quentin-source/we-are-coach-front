@@ -56,22 +56,24 @@ const trainingReducer = (state = initialState, action = {}) => {
         );
     
     case 'SAVE_TRAINING_DETAILS':
-        return (
-            {
-                ...state,
-                content: action.datas,
-                name : action.datas.name,
-                description : action.datas.description,
-                level : action.datas.level,
-                id: action.datas.id,
-                picture : action.datas.picture,
-                sport : action.datas.sport.name,
-                sportId : action.datas.sport.id,
-                userPseudo: action.datas.user.pseudo,
-                userId: action.datas.user.id,
-                comments: action.datas.comment,              
-            }
-        );
+        const datasToUpdate = {
+            ...state,
+            content: action.datas,
+            name : action.datas.name,
+            description : action.datas.description,
+            level : action.datas.level,
+            id: action.datas.id,
+            picture : action.datas.picture,
+            sport : action.datas.sport.name,
+            sportId : action.datas.sport.id,
+            comments: action.datas.comment,              
+        }
+        if (action.datas.hasOwnProperty('user')){ 
+            Object.defineProperty(datasToUpdate,'userPseudo',{value:action.datas.user.pseudo});
+            Object.defineProperty(datasToUpdate,'userId',{value:action.datas.user.id});
+        };
+
+        return datasToUpdate;
     
     case 'SAVE_TRAINING_COMMENTS':
         return (
@@ -86,10 +88,11 @@ const trainingReducer = (state = initialState, action = {}) => {
                 {
                     ...state,
                     picturePreview : action.url,
-                    isLoadedPicture: true,
+                    isLoadedPicture: action.state,
                 }
             );
         else return state;
+
 
     case 'UNMOUNT__PICTURE':
         return (

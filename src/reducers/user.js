@@ -68,11 +68,10 @@ const userReducer = (state = initialState, action = {}) => {
                 {
                     ...state,
                     picturePreview : action.url,
-                    isLoadedPicture: true,
+                    isLoadedPicture: action.state,
                 }
             );
         else return state;
-    
 
     case 'TOGGLE_EDIT_USER' :
         return (

@@ -17,6 +17,7 @@ const debugMiddleware = (store) => (next) => (action) => {
                     type : 'UPLOAD_IMAGE_OK',
                     target : action.target,
                     url : response.data.secure_url,
+                    state : true,
                 })
 
             )

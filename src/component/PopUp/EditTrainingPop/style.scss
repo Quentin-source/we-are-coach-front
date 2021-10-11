@@ -6,11 +6,13 @@
     }
     &-header{
         &-avatar{
-            position : relative;
-            img{
+            position:relative;
+            div{
                 width: 100%;
                 height : 15vh;
                 object-fit: cover;
+                border-radius: 0;
+                margin : 0.5em
             }
             label{
                 position : absolute;
