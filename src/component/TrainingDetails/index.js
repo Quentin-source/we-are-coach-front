@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { Avatar, Button, TextField} from '@mui/material';
-import { Edit, CheckCircleOutline, HighlightOff, DeleteOutline} from '@material-ui/icons';
+import { Edit, CheckCircleOutline, HighlightOff, DeleteOutline, ArrowBack} from '@material-ui/icons';
 import NavButton from '../Materials/NavButton';
 import CustomLevel from '../Materials/CustomLevel';
 import EditTrainingPop from "../PopUp/EditTrainingPop";
@@ -15,6 +15,7 @@ import './style.scss';
 
 const TrainingDetails = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { slug } = useParams();
     const editTrainingPopState = useSelector((state)=>(state.training.editTrainingPop));
     const commentPopState = useSelector((state) =>(state.training.commentPop));
@@ -42,6 +43,12 @@ const TrainingDetails = () => {
         }); 
     },[]);
     
+
+    const handleClickBack = () => {
+
+        history.goBack();
+
+    };
 
     const handleEditTraining = (event) => {
 
@@ -85,19 +92,29 @@ const TrainingDetails = () => {
     
     return (
         <main className="main-content">
+            
             <h2 className="main-content-title" >
                     Détails d'un entrainement 
             </h2>
-
+            
             
             
             <section className="training-details">
+                
+                
+
                 <div className="training-details-group-block"> 
+                    
                     <div className="training-details-header">
                         <h3 className="training-details-title">{name}</h3>      
                         <span> Niveau : <CustomLevel level={level}/></span>
                     </div>
                     <div className="training-details-picture">
+                        <NavButton  
+                            content={<ArrowBack />}
+                            handleClick={handleClickBack}
+                            className='training-details-button-back navbar-button'
+                        />
                         <img  alt="Nom Prénom"
                             src={picture}
                         />

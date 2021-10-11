@@ -8,7 +8,7 @@ const TrainingsHeader = () => (
     <div className="trainings-header">
 
         <SearchBar />
-        <Filters />
+        {/* <Filters /> */}
 
     </div>
 

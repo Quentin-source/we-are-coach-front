@@ -15,6 +15,7 @@ import { AddAPhotoOutlined, ChangeCircleOutlined } from "@mui/icons-material";
 import { AssignmentIndOutlined } from '@material-ui/icons';
 
 import './style.scss';
+import { useEffect } from 'react';
 
 
 const names = [
@@ -78,6 +79,10 @@ const validationSchema = yup.object({
 const SignUpPop = () => {
 
     const dispatch = useDispatch();
+    const signUpPopState = useSelector((state) => (state.home.signUpPop));
+    const picturePreview = useSelector((state) => (state.user.picturePreview));
+    const isLoadedPicture = useSelector((state) => (state.user.isLoadedPicture));
+
 
     const handleClickOpen = () => {
         dispatch({type : 'OPEN_SIGNPOP'});
@@ -85,22 +90,24 @@ const SignUpPop = () => {
 
     const handleClose = () => {
         dispatch({type: 'CLOSE_SIGNPOP'});
-        dispatch({type: 'UNMOUNT_USER_PICTURE'});
+        dispatch({
+            type :'UPLOAD_IMAGE_OK',
+            target : 'user',
+            url : '',
+            state : false,
+        });
         formik.resetForm();
     };
 
     const handleUploadFile = (event) => {
-        const picturePreview = event.target.files[0];
-        const localPicturePreview = window.URL.createObjectURL(picturePreview);
         dispatch({
-            type :'UPLOAD_USER_PICTURE',
-            file: localPicturePreview,
+            type: 'UPLOAD_IMAGE',
+            file : event.target.files[0],
+            target: 'user',
         });
     };
 
-    const signUpPopState = useSelector((state) => (state.home.signUpPop));
-    const picturePreview = useSelector((state) => (state.user.picturePreview));
-    const isLoadedPicture = useSelector((state) => (state.user.isLoadedPicture));
+   
 
     const formik = useFormik({
         initialValues: {
@@ -114,7 +121,6 @@ const SignUpPop = () => {
             city: "",
             sports: [],
             CGU: false,
-            picture:{},
             
         },
         validationSchema,
@@ -122,10 +128,19 @@ const SignUpPop = () => {
             dispatch({
                 type:'ASK_INSCRIPTION',
                 userDatas: values,
+                picture: picturePreview,
             })
         },
     });
 
+    useEffect(()=>(
+        dispatch({
+            type :'UPLOAD_IMAGE_OK',
+            target : 'user',
+            url : '',
+            state : false,
+        })
+    ),[]);
 
     return (
         <>
@@ -142,7 +157,8 @@ const SignUpPop = () => {
                     </DialogContentText>
                     <Grid className="navbar-signpop-header" align='center'>
                         <div className="navbar-signpop-header-avatar">
-                            <Avatar  alt="Nom Prénom"
+                            <Avatar  
+                                alt="portrait de l'utilisateur"
                                 src={picturePreview}
                             />
                             <label 

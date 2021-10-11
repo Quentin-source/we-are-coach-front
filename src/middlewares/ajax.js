@@ -22,7 +22,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                     categories: categories.data,
                     sports: sports.data,
                 });
-                setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
+                setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 1000);
             })
             .catch((error) => {
                 alert('Problème communication serveur');
@@ -37,7 +37,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                     type: 'SAVE_HOME',
                     top: response.data,
                 });
-                setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
+                setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 1000);
             })
             .catch((error) => {
                 alert('Problème communication serveur');
@@ -111,7 +111,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                     categories : categories.data,
                     sports : sports.data,
                 })
-                setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
+                setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 1000);
             })
             .catch((error) => (console.error(error)));
 
@@ -130,7 +130,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 target : 'training',
                 state : false,
             });
-            setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
+            setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 1000);
         })
             .catch((error) => (console.error(error)));
 
@@ -143,7 +143,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 type : 'SAVE_TRAINING_COMMENTS',
                 comments : response.data.comment,
             })
-            setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
+            setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 1000);
         })
             .catch((error) => (console.error(error)));
 
@@ -157,7 +157,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 type : 'SAVE_USER',
                 datas : response.data,
             })
-            setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
+            setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 1000);
         })
             .catch((error) => (console.error(error)));
 
@@ -178,6 +178,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     if(action.type === 'ASK_INSCRIPTION')  {
         api.post('/api/registration', {
+            picture: action.userDatas.picture,
             pseudo : action.userDatas.pseudo,
             firstname : action.userDatas.firstName,
             lastname :  action.userDatas.lastName,
@@ -221,6 +222,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
     if (action.type === 'ASK_MODIFY_USER'){
         api.defaults.headers.common.Authorization = `bearer ${token}`;
         const dataToSend = {
+            picture : action.picture,
             pseudo : action.userDatas.pseudo,
             firstname : action.userDatas.firstName,
             lastname :  action.userDatas.lastName,

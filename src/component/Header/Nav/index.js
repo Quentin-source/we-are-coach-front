@@ -15,6 +15,7 @@ import logo from '../../../assets/images/svg/we are coach long basket.svg';
 
 
 import './style.scss';
+import { memo } from "react";
 
 const Nav = () => {
     const dispatch = useDispatch();
@@ -64,14 +65,6 @@ const Nav = () => {
                 >
                     Contact
                 </NavLink>
-                <NavLink
-                    className="navbar-linkgroup-link"
-                    activeClassName="navbar-linkgroup-link--active"
-                    to="/CreerEntrainement"
-                    exact
-                >
-                    Créer un entrainement
-                </NavLink>
             </div>
             {connectionStatus && 
             <div className="navbar-buttongroup-connect">
@@ -98,4 +91,4 @@ const Nav = () => {
     );
 }
 
-export default Nav;
+export default memo(Nav);

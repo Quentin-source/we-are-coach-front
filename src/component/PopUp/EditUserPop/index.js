@@ -62,8 +62,8 @@ const EditUserPop = ({user}) => {
     const dispatch = useDispatch();
     const editUserPopState = useSelector((state) => (state.user.editUserPop));
     const isLoadedPicture = useSelector((state) => (state.user.isLoadedPicture));
-    const databasePicture = useSelector((state) => state.user.picture);
-    const userStatePicture = useSelector((state)=>state.user.user.picture);
+    const picture = useSelector((state) => state.user.picture);
+    const picturePreview = useSelector((state)=>state.user.picturePreview);
     const sports = useSelector((state)=> state.data.sports)
 
     const handleClickOpen = () => {
@@ -73,18 +73,19 @@ const EditUserPop = ({user}) => {
     const handleClose = () => {
         dispatch({type: 'TOGGLE_EDIT_USER'});
         dispatch({
-            type :'UPLOAD_USER_PICTURE',
-            file: databasePicture,
+            type :'UPLOAD_IMAGE_OK',
+            target : 'user',
+            url : picture,
+            state : false,
         });
         formik.resetForm();
     };
 
     const handleUploadFile = (event) => {
-        const picture = event.target.files[0];
-        const localPicturePreview = window.URL.createObjectURL(picture);
         dispatch({
-            type :'UPLOAD_USER_PICTURE',
-            file: localPicturePreview,
+            type: 'UPLOAD_IMAGE',
+            file : event.target.files[0],
+            target: 'user',
         });
     };
     
@@ -109,11 +110,20 @@ const EditUserPop = ({user}) => {
                 type:'ASK_MODIFY_USER',
                 userDatas: values,
                 id: user.id,
+                picture : picturePreview,
             })
         },
     });
 
-    useEffect(()=> formik.resetForm(),[]);
+    useEffect(()=> {
+        formik.resetForm();
+        dispatch({
+            type :'UPLOAD_IMAGE_OK',
+            target : 'user',
+            url : picture,
+            state : false,
+        });
+    } ,[]);
     
     return (
         <>
@@ -131,7 +141,7 @@ const EditUserPop = ({user}) => {
                     <Grid className="navbar-signpop-header" align='center'>
                         <div className="navbar-signpop-header-avatar">
                             <Avatar  alt="Nom Prénom"
-                                src={userStatePicture}
+                                src={picturePreview}
                             />
                             <label 
                                 className={!isLoadedPicture ? 'navbar-button navbar-signpop-header-avatar-button': 'navbar-signpop-header-avatar-button navbar-button navbar-button--open'} 

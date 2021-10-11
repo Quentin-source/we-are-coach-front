@@ -110,7 +110,7 @@
     display: flex;
     flex-direction: column;
     margin: 1em;
-    width: 100%;
+    width: 90%;
     max-width: 500px;
     
  }
@@ -162,6 +162,11 @@
     position :absolute;
     right : 10px;
     bottom: 60px;
+}
+
+&-button-back{
+  position: absolute;
+  left : -60px;
 }
 
 &-header{
@@ -232,12 +237,33 @@
         font-size: 80%;
         flex-direction: column;
         align-items: center;
+        
         &-group-aside{
             margin:0;
         }
         &-coach{
                display:none;
         }
+        &-button-supress{
+            
+            right : 50px;
+            bottom: 10px;
+            width :30px;
+            height : 30px;
+        }
+        &-button-edit{
+            width :30px;
+            height : 30px;
+        }
+        &-button-back{
+            width :30px;
+            height : 30px;
+            left:-45px;
+        }
+    }
+
+    div.training-details-header{
+            font-size: 1.1em;
     }
 
 }

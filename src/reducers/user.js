@@ -5,6 +5,7 @@ export const initialState = {
     pseudo:'',
     picture:'',
     id: 0,
+    roles:'',
     trainings : [],
     isLoadedPicture: false,
     picturePreview: '',
@@ -48,6 +49,9 @@ const userReducer = (state = initialState, action = {}) => {
                 ...state,
                 user: action.datas,
                 trainings: action.datas.workout,
+                pseudo: action.datas.pseudo,
+                picture: action.datas.picture,
+                roles : action.datas.roles,
             }
         );
     
