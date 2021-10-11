@@ -47,7 +47,7 @@ const Nav = () => {
                     to="/"
                     exact
                 >
-                    Acceuil 
+                    Accueil 
                 </NavLink>
                 <NavLink
                     className="navbar-linkgroup-link"

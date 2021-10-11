@@ -7,7 +7,7 @@ const Navdrop = () => {
     const navDropState = useSelector((state)=> state.home.dropMenu)
     return (
         <div className={!navDropState ? 'dropmenu dropmenu-nav dropmenu-nav--hidden' : 'dropmenu dropmenu-nav'} >
-            <Link to="/"> Acceuil</Link>
+            <Link to="/"> Accueil</Link>
             <Link to="/Entrainement"> Entrainement</Link>
             <Link to="/Contact"> Contact</Link>
         </div>

@@ -1,9 +1,6 @@
 
 @keyframes fade_out {
-    0%{
-        opacity: 100%;
-    }
-    
+  
     99%{
         opacity:0;
         left:0;
@@ -31,7 +28,6 @@
    
     &--true{
         left: 0;
-        opacity: 100%;
     }
     &--false{
         animation: fade_out 0.5s forwards;
