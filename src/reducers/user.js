@@ -5,6 +5,7 @@ export const initialState = {
     pseudo:'',
     picture:'',
     id: 0,
+    trainings : [],
     isLoadedPicture: false,
     picturePreview: '',
     editUserPop : false,
@@ -46,6 +47,15 @@ const userReducer = (state = initialState, action = {}) => {
             {
                 ...state,
                 user: action.datas,
+                trainings: action.datas.workout,
+            }
+        );
+    
+    case 'SAVE_USER_TRAININGS':
+        return (
+            {
+                ...state,
+                trainings: action.datas.workout,
             }
         );
 

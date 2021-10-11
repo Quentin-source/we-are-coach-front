@@ -163,6 +163,19 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     };
 
+    if(action.type === 'FETCH_USER_TRAININGS')  {
+
+        api.get(`/api/user/${action.id}`).then((response)=> {
+            store.dispatch({
+                type : 'SAVE_USER_TRAININGS',
+                datas : response.data,
+            })
+        })
+            .catch((error) => (console.error(error)));
+
+    };
+
+
     if(action.type === 'ASK_INSCRIPTION')  {
         api.post('/api/registration', {
             pseudo : action.userDatas.pseudo,
@@ -269,6 +282,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                     severity : 'success',
                 });
                 store.dispatch({
+                    type: 'FETCH_USER_TRAININGS',
+                    id: store.getState().user.id,
+
+                });
+                store.dispatch({
                     type:'REDIRECT',
                     path : `/Entrainement/${response.data.id}`,
                 });
@@ -294,14 +312,13 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
         
         
-        api.put('/api/workout/update', {
+        api.put(`/api/workout/${action.id}`, {
             name: action.trainingDatas.name,
             description: action.trainingDatas.description,
             picture : action.picture,
             level: action.trainingDatas.level,
             sport: action.trainingDatas.sport,
             user: store.getState().user.id,
-            id: action.id,
         })
             .then((response) => {
                 console.log(response);
@@ -323,6 +340,35 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                     severity : 'error',
                 });
             });
+    }
+
+    if(action.type === 'ASK_TRAINING_SUPRESS'){
+
+        console.log('middleware modifier training connecté');
+        api.defaults.headers.common.Authorization = `bearer ${token}`;
+           
+        api.delete(`/api/workout/${action.id}`)
+            .then((response) => {
+                console.log(response);
+                store.dispatch({
+                    type:'REDIRECT',
+                    path : `/Entrainement/`,
+                });
+                setTimeout(() => store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Supression de l\'entrainement  réussie!',
+                    severity : 'success',
+                }),2000);
+                
+            }).catch((error)=>{
+                console.error(error);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Echec supression de l\'entrainement! ',
+                    severity : 'error',
+                });
+            });
+
     }
 
     if(action.type === 'SUBMIT_COMMENT') {

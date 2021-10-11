@@ -2,10 +2,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Avatar, Button, TextField} from '@mui/material';
-import { Edit, CheckCircleOutline, HighlightOff } from '@material-ui/icons';
+import { Edit, CheckCircleOutline, HighlightOff, DeleteOutline} from '@material-ui/icons';
 import NavButton from '../Materials/NavButton';
 import CustomLevel from '../Materials/CustomLevel';
 import EditTrainingPop from "../PopUp/EditTrainingPop";
+
+import {isMineTraining} from '../../selectors/training';
 
 
 
@@ -28,7 +30,7 @@ const TrainingDetails = () => {
     const id = useSelector((state)=> state.training.id);
     const picture = useSelector((state)=>state.training.picture);
     const userPseudo = useSelector((state)=>state.training.userPseudo);
-
+    const userTrainings = useSelector((state)=> state.user.trainings);
     
 
     useEffect(()=>{
@@ -44,6 +46,16 @@ const TrainingDetails = () => {
     const handleEditTraining = (event) => {
 
         dispatch({type:'TOGGLE_EDIT_TRAINING'})
+    };
+
+    const handleSupressTraining = (event) => {
+
+        if (window.confirm('Etes vous sûr de vouloir supprimer cet entrainement?'))
+            dispatch({
+                type:'ASK_TRAINING_SUPRESS',
+                id : id,
+            });
+    
     };
 
     const handleChangeComment = (event) => {
@@ -68,7 +80,9 @@ const TrainingDetails = () => {
        
 
     }
-
+    // console.log(userTrainings, id);
+    console.log(isMineTraining(userTrainings, id));
+    
     return (
         <main className="main-content">
             <h2 className="main-content-title" >
@@ -87,8 +101,13 @@ const TrainingDetails = () => {
                         <img  alt="Nom Prénom"
                             src={picture}
                         />
-                        {isConnected && 
+                        {isConnected && isMineTraining(userTrainings, id) &&
                             <>
+                                <NavButton  
+                                    content={<DeleteOutline />}
+                                    handleClick={handleSupressTraining}
+                                    className='training-details-button-supress navbar-button'
+                                />
                                 <NavButton  
                                     content={editTrainingPopState ? 
                                         <CheckCircleOutline /> 
@@ -98,6 +117,7 @@ const TrainingDetails = () => {
                                     handleClick={handleEditTraining}
                                     className={!editTrainingPopState ? 'training-details-button-edit navbar-button': 'training-details-button-edit navbar-button navbar-button--open'}
                                 />
+
                                 <EditTrainingPop />
                             </>
                         }
