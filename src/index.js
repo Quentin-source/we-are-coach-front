@@ -10,6 +10,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import './styles/_reset.css'
 import './index.scss';
+import 'animate.css';
 
 // import reportWebVitals from './reportWebVitals';
 

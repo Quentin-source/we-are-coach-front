@@ -17,6 +17,7 @@ import './style.scss';
 
 import CreateTraining from '../CreateTrainings';
 import { useEffect } from 'react';
+import Error from '../Error';
 
 
 const App = () => {
@@ -46,7 +47,7 @@ const App = () => {
                     <CreateTraining />
                 </Route>
                 <Route>
-                    <Home />
+                    <Error />
                 </Route>
             </Switch>
             <Footer />
