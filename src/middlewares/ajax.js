@@ -190,7 +190,8 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             store.dispatch({
                 type : 'SAVE_USER_TRAININGS',
                 datas : response.data,
-            })
+            });
+            setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 1000);
         })
             .catch((error) => (console.error(error)));
 
@@ -199,7 +200,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     if(action.type === 'ASK_INSCRIPTION')  {
         api.post('/api/registration', {
-            picture: action.userDatas.picture,
+            picture: action.picture,
             pseudo : action.userDatas.pseudo,
             firstname : action.userDatas.firstName,
             lastname :  action.userDatas.lastName,

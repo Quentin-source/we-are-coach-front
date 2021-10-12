@@ -17,7 +17,7 @@ const Usermenu = () => {
     return (
         <div className={!menuState ? 'dropmenu dropmenu-user dropmenu-user--hidden' : 'dropmenu dropmenu-user'}>
             <Link to="/Utilisateur"> Mon profil</Link>
-            <Link to="/"> Mes entrainements</Link>
+            <Link to="/MesEntrainements"> Mes entrainements</Link>
             <Link to="/CreerEntrainement"> Créer un entrainenemt</Link>
             <Button color="primary" variant="outlined" onClick={handleDeconnection} className="navbar-deconnect-button"> Deconnection </Button>
         </div>

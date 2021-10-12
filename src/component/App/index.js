@@ -6,6 +6,7 @@ import Home from '../Home';
 import Header from '../Header';
 import Footer from '../Footer';
 import Profile from '../Profile';
+import TrainingList from '../TrainingsList';
 
 
 
@@ -46,7 +47,10 @@ const App = () => {
                 <Route path="/CreerEntrainement" exact>
                     <CreateTraining />
                 </Route>
-                <Route>
+                <Route path="/MesEntrainements" exact>
+                    <TrainingList />
+                </Route>
+                <Route >
                     <Error />
                 </Route>
             </Switch>

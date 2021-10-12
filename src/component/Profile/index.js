@@ -17,6 +17,7 @@ const Profile = () => {
     const user = useSelector((state)=>state.user.user);
     const connected = useSelector((state)=>state.home.connected);
     const picture = useSelector((state)=>state.user.picture);
+    const loading = useSelector((state)=>state.home.loading);
 
 
     useEffect(()=>{
@@ -52,7 +53,9 @@ const Profile = () => {
 
             
             
-            <section className="user-profile">
+            <section 
+                className={`user-profile ${!loading && 'animate__animated animate__faster animate__backInUp'}`}   
+            >
                 <div className="user-profile-header">
                     <img className="user-profile-avatar" src={picture} alt="Avatar de l'utilisateur"/>   
                     <h3 className="user-profile-title">{user.pseudo}</h3>   
@@ -75,7 +78,8 @@ const Profile = () => {
                     
             </section>
 
-            <section className="user-profile-trainings">
+            <section className={`user-profile-trainings ${!loading && 'animate__animated animate__faster animate__backInDown'}`}
+            >
                 
                 <Slider className="user-profile-trainings-slider" {...settings}>    
                 

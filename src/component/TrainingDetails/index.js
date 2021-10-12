@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { Avatar, Button, TextField} from '@mui/material';
-import { Edit, CheckCircleOutline, HighlightOff, DeleteOutline, ArrowBack} from '@material-ui/icons';
+import { Edit, CheckCircleOutline, HighlightOff, DeleteOutline, ArrowBack, Check} from '@material-ui/icons';
 import NavButton from '../Materials/NavButton';
 import CustomLevel from '../Materials/CustomLevel';
 import EditTrainingPop from "../PopUp/EditTrainingPop";
@@ -32,7 +32,7 @@ const TrainingDetails = () => {
     const picture = useSelector((state)=>state.training.picture);
     const userPseudo = useSelector((state)=>state.training.userPseudo);
     const userTrainings = useSelector((state)=> state.user.trainings);
-    
+    const loading = useSelector((state)=> state.home.loading);
 
     useEffect(()=>{
         dispatch({type:'LOADING_ON'});
@@ -103,7 +103,9 @@ const TrainingDetails = () => {
                 
                 
 
-                <div className="training-details-group-block"> 
+                <div 
+                    className={`training-details-group-block ${!loading && 'animate__animated animate__fadeInDown'}`}
+                >   
                     
                     <div className="training-details-header">
                         <h3 className="training-details-title">{name}</h3>      
@@ -115,7 +117,7 @@ const TrainingDetails = () => {
                             handleClick={handleClickBack}
                             className='training-details-button-back navbar-button'
                         />
-                        <img  alt="Nom Prénom"
+                        <img  alt="Utilisateur"
                             src={picture}
                         />
                         {isConnected && isMineTraining(userTrainings, id) &&
@@ -183,7 +185,7 @@ const TrainingDetails = () => {
                 />
 
                 <NavButton  
-                    content={<HighlightOff /> } 
+                    content={<Check /> } 
                     handleClick={handleSubmitComment}
                     className={!commentPopState ? 'training-new-comment-button navbar-button': 'training-new-comment-button navbar-button navbar-button--open'}
                 />
@@ -193,8 +195,15 @@ const TrainingDetails = () => {
             
                
 
-                {comments.map((comment)=> (
-                    <div key={comment.id} className="training-comments-card">
+                {comments.map((comment, index)=> (
+                    <div 
+                        key={comment.id} 
+                        className={`training-comments-card ${!loading && 'animate__animated animate__fadeInLeft'}`}
+                        // style={{
+                        //     // animationDelay : `${index/8}s`,
+                        //     animationDuration : '0.2s',
+                        // }} 
+                    >
                         <Avatar />
                         <div className="training-comments-card-content">
                             <p>{comment.comment}</p>

@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -9,8 +10,9 @@ import CustomLevel from '../../Materials/CustomLevel';
 
 import '../style.scss';
 
-const CardTrainning = ({training}) => {
+const CardTrainning = ({training, index}) => {
     const history = useHistory();
+    const loading = useSelector((state)=> state.home.loading);
     
     const {picture, level, name, description, sport, published_at} = training;
     const handleCardClick = (event) => {
@@ -20,7 +22,8 @@ const CardTrainning = ({training}) => {
     return (
         <Card 
             onClick={handleCardClick}
-            className= "training-card" 
+            className = {`training-card ${!loading && 'animate__zoomIn animate__animated'}`} 
+            style={{animationDelay : `${index / 6}s` }}   
             sx={{ maxWidth: 345 }}
         >
 

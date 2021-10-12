@@ -17,7 +17,8 @@ const Trainings = () => {
     const dispatch = useDispatch();
     const pageSize = useSelector((state)=> state.trainings.pageSize);
     const currentPage = useSelector((state)=> state.trainings.currentPage);
-    
+    const loading = useSelector((state)=> state.home.loading);
+
     const handleModifyPageSize = (pageSize, currentPage) => {
         const askedPageSize = Math.floor(window.innerWidth/400);
         if (askedPageSize !== pageSize && askedPageSize < 4) {
@@ -56,7 +57,13 @@ const Trainings = () => {
                 </Typography>           
             </div>
             <div className= 'trainings'>
-                {displayedTrainingsArray.map((training, index) =>  (<CardTrainning key={index} training={training} />))}
+                {displayedTrainingsArray.map((training, index) =>  (
+                    <CardTrainning 
+                        key={index} 
+                        training={training}
+                        index={index}
+                    />
+                ))}
               
             </div>
             <Pagination />  

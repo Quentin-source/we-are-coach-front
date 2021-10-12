@@ -9,10 +9,15 @@
 
 .training-home {
     height: 12vh;
-    
+    overflow: hidden;
     li{
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+    &:hover{
+        transform: scale(1.01) !important;
+        cursor: pointer;
+
     }
    
 }

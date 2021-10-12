@@ -20,9 +20,12 @@ const Categories = () => {
     };
 
     const categoriesList = useSelector((state)=>(state.data.categories));
-       
+    const loading = useSelector((state)=> state.home.loading);
+
     return (
-        <Slider className="categories" {...settings}>    
+        <Slider 
+            className={`categories ${!loading && 'animate__animated animate__faster animate__slideInRight'}`} {...settings}
+        >    
             
             {categoriesList.map((category)=> (
                 <div key={category.id} index={(category.id)-1}>
