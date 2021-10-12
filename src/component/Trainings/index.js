@@ -20,7 +20,7 @@ const Trainings = () => {
     const loading = useSelector((state)=> state.home.loading);
 
     const handleModifyPageSize = (pageSize, currentPage) => {
-        const askedPageSize = Math.floor(window.innerWidth/400);
+        const askedPageSize = Math.floor(window.innerWidth/300);
         if (askedPageSize !== pageSize && askedPageSize < 4) {
             dispatch({
                 type : 'CHANGE_PAGE_SIZE',
