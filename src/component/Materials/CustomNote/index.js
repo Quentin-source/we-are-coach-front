@@ -1,5 +1,6 @@
 import { Favorite, FavoriteBorder } from '@material-ui/icons';
 import './style.scss';
+import PropTypes from 'prop-types';
 
 
 const CustomNote = ({note}) => {
@@ -14,6 +15,10 @@ const CustomNote = ({note}) => {
         </div > 
     );
 }
+
+CustomNote.propTypes = {
+    note: PropTypes.number.isRequired,
+};
 
 export default CustomNote;
 

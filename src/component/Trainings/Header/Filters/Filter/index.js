@@ -4,6 +4,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useSelector, useDispatch } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 // filterLevelValue: "",
 // filterCatValue: "",
 // filterSportValue: "",
@@ -49,5 +51,12 @@ const Filter = ({filterKey, label, optionsObject, optionsArray}) => {
         </div>
     );
 }
+
+Filter.propTypes = {
+    filterKey: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    optionsObject: PropTypes.object.isRequired,
+    optionsArray: PropTypes.object.isRequired,
+};
 
 export default Filter;

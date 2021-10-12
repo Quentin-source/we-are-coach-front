@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 import './style.scss';
 
 const CategoryCard = ({title,text}) => {
@@ -11,5 +11,11 @@ const CategoryCard = ({title,text}) => {
         // <div className="dot">
     )
 }
+
+CategoryCard.propTypes = {
+    
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+};
 
 export default CategoryCard;

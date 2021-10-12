@@ -1,4 +1,5 @@
 import './style.scss';
+import PropTypes from 'prop-types';
 
 
 const NavButton = ({content, className, handleClick}) => {
@@ -14,5 +15,12 @@ const NavButton = ({content, className, handleClick}) => {
     );
 
 }
+
+NavButton.propTypes = {
+    content: PropTypes.object.isRequired,
+    className: PropTypes.string.isRequired,
+    handleClick: PropTypes.func.isRequired,
+};
+  
 
 export default NavButton;

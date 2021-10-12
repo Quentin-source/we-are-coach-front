@@ -15,6 +15,7 @@ import { AddAPhotoOutlined, ChangeCircleOutlined, Edit, CheckCircleOutline} from
 
 import './style.scss';
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 
 
@@ -328,6 +329,10 @@ const EditUserPop = ({user}) => {
             </Dialog>
         </>
     );
+};
+
+EditUserPop.propTypes = {
+    user: PropTypes.string.isRequired,
 };
 
 export default EditUserPop;

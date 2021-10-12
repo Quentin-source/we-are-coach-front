@@ -1,5 +1,5 @@
 import { FlashOn } from '@material-ui/icons';
-
+import PropTypes from 'prop-types';
   
 import './style.scss';
 
@@ -16,6 +16,10 @@ const CustomLevel = ({level}) => {
         </div > 
     );
 }
+
+CustomLevel.propTypes = {
+    level: PropTypes.number.isRequired,
+};
 
 export default CustomLevel;
 

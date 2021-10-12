@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+
 import LogoBasket from '../../assets/images/svg/we are coach basket true.svg';
 import LogoWAC from '../../assets/images/svg/we are coach.svg';
 import { useSelector } from 'react-redux';
@@ -37,9 +37,6 @@ const Error = () => {
     );
 }
 
-Error.propTypes = {
-    type:PropTypes.string.isRequired,
-    message:PropTypes.string.isRequired,
-};
+
 
 export default Error;
