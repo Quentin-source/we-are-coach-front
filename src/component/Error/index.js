@@ -16,9 +16,9 @@ const Error = () => {
 
     return (
         <main className="error-content">
-            <div className="error-logo">
+            {/* <div className="error-logo">
                 <img  src={LogoWAC} alt="Logo we are coach!"/>
-            </div>
+            </div> */}
             <div className="error-group animate__animated animate__pulse">
                 <div className="error-type animate__animated animate__slideInUp">
                     <h1>{type}</h1>
@@ -30,7 +30,7 @@ const Error = () => {
                 </div>
             </div>
             <div className="error-message">
-                <h1>{message}</h1>
+                <h1 className="animate__animated animate__slideInUp">{message}</h1>
             </div>
         </main>
 

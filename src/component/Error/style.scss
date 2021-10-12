@@ -11,7 +11,7 @@
 
 }
     &-type{
-
+        animation-delay: 0.2s;
         font-size: 10em;
         font-weight: bolder;
         padding-right: 0.5em;
@@ -62,6 +62,15 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+}
+
+&-message{
+    
+    overflow: hidden;
+    h1{
+        font-size: 1.5em;
+        animation-delay: 0.5s;
+    }
 }
 
 }
