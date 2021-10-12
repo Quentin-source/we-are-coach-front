@@ -26,7 +26,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 1000);
             })
             .catch((error) => {
-                alert('Problème communication serveur');
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Problème de communication avec le serveur',
+                    severity : 'error',
+                });
             });
     };
 
@@ -41,7 +45,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 1000);
             })
             .catch((error) => {
-                alert('Problème communication serveur');
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Problème de communication avec le serveur',
+                    severity : 'error',
+                });
             });
     };
 
@@ -215,8 +223,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         
         }).then((response)=> {
             
-            alert('Utilisateur enregistré avec succès!')
-            console.log(response);
             store.dispatch({
                 type: 'ASK_LOGIN',
                 email : action.userDatas.email,
@@ -398,7 +404,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     if(action.type === 'SUBMIT_COMMENT') {
 
-        console.log('middleware creation commentaire connecté');
+        console.log('middleware creation commentaire connecté', action.workout);
         api.defaults.headers.common.Authorization = `bearer ${token}`;
         api.post('/api/comment/add', {
             comment : action.comment,

@@ -11,6 +11,11 @@ const Usermenu = () => {
 
     const handleDeconnection = () => {
         dispatch({type : 'LOGOUT'});
+        dispatch({
+            type:'OPEN_SNACK',
+            message : 'Deconnexion!',
+            severity : 'success',
+        });
     };
 
     const menuState = useSelector((state)=> state.home.userMenu)

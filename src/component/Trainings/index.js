@@ -8,6 +8,7 @@ import TrainingsHeader from './Header';
 import Pagination from './Pagination';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { memo } from 'react';
 
 
 
@@ -20,8 +21,10 @@ const Trainings = () => {
     const loading = useSelector((state)=> state.home.loading);
 
     const handleModifyPageSize = (pageSize, currentPage) => {
-        const askedPageSize = Math.floor(window.innerWidth/300);
-        if (askedPageSize !== pageSize && askedPageSize < 4) {
+        let askedPageSize = Math.floor(window.innerWidth/350);
+        console.log(askedPageSize, pageSize);
+        
+        if ((askedPageSize !== pageSize) && (askedPageSize < 4)) {
             dispatch({
                 type : 'CHANGE_PAGE_SIZE',
                 value : askedPageSize,
@@ -39,7 +42,7 @@ const Trainings = () => {
         dispatch({type:'FETCH_TRAININGS'});
         dispatch({type : 'CLEAN_MENU'});
         handleModifyPageSize(pageSize,currentPage);
-        window.addEventListener('resize', () => handleModifyPageSize(pageSize, currentPage));
+        window.addEventListener('resize', () => () => handleModifyPageSize(pageSize, currentPage));
     }, []);
 
     useEffect(()=> () => {
@@ -72,4 +75,4 @@ const Trainings = () => {
     );
 };
 
-export default Trainings;
+export default memo(Trainings);

@@ -19,11 +19,17 @@
     transform: translateY(-170%);
     left: 10%;
     padding: 0.6rem 1.5rem;
+    margin-bottom: 0.2em;
     text-align: left;
     background: rgba(0, 0, 0, 0.6);
     color: #fff;
     &-title{
         margin: 0.8rem 0 1rem 0;
+        font-weight: bold;
+        font-size: 1.2rem;
+        }
+    &-text{
+        margin-bottom: 0.4em;
     }
 }
 

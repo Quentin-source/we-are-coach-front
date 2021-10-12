@@ -88,7 +88,7 @@ const TrainingDetails = () => {
 
     }
     // console.log(userTrainings, id);
-    console.log(isMineTraining(userTrainings, id));
+    // console.log(isMineTraining(userTrainings, id));
     
     return (
         <main className="main-content">
@@ -199,15 +199,11 @@ const TrainingDetails = () => {
                     <div 
                         key={comment.id} 
                         className={`training-comments-card ${!loading && 'animate__animated animate__fadeInLeft'}`}
-                        // style={{
-                        //     // animationDelay : `${index/8}s`,
-                        //     animationDuration : '0.2s',
-                        // }} 
                     >
                         <Avatar />
                         <div className="training-comments-card-content">
                             <p>{comment.comment}</p>
-                            <div className="training-comments-card-content-date">publié le 7/09/1987</div>
+                            <div className="training-comments-card-content-date"><strong>{comment.user.pseudo}</strong> le 7/09/1987</div>
                         </div>
                     </div>)).reverse()}
                 

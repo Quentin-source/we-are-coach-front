@@ -109,10 +109,12 @@ const TrainingList = () => {
                             animationDelay : `${index/10}s`,
                             animationDuration : '0.2s',
                         }} 
-                        onClick={()=> history.push(`/Entrainement/${training.id}`)}  
                     >
                         <img  src={training.picture} alt="illustration de l'entrainement"/>
-                        <div className="training-list-card-content">
+                        <div 
+                            className="training-list-card-content"
+                            onClick={()=> history.push(`/Entrainement/${training.id}`)}  
+                        >
                             <h2>{training.name}</h2>
                             <div className="training-list-card-content-date">{training.published_at}</div>
                         </div>
