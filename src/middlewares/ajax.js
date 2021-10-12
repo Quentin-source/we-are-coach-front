@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { push } from 'react-router-redux';
 
+
 const api = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
 });
@@ -435,5 +436,4 @@ const ajaxMiddleware = (store) => (next) => (action) => {
     next(action);
 };
 export default ajaxMiddleware;
-
 

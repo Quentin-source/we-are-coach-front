@@ -23,7 +23,10 @@ const CardTrainning = ({training, index}) => {
         <Card 
             onClick={handleCardClick}
             className = {`training-card ${!loading && 'animate__zoomIn animate__animated'}`} 
-            style={{animationDelay : `${index / 6}s` }}   
+            style={{
+                animationDelay : `${index / 6}s`,
+                animationDuration : '0.3s',
+            }}   
             sx={{ maxWidth: 345 }}
         >
 

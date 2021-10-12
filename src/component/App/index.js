@@ -20,12 +20,17 @@ import CreateTraining from '../CreateTrainings';
 import { useEffect } from 'react';
 import Error from '../Error';
 
+import Contact from '../Contact';
+import AboutUs from '../AboutUs';
+import CGU from '../CGU';
+import FAQ from '../FAQ';
+
 
 const App = () => {
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch({type: 'FETCH_COMMON'});
-    },[]);
+    });
 
     return (
         <div className="app">
@@ -37,6 +42,9 @@ const App = () => {
                 </Route>
                 <Route path="/Entrainement" exact>
                     <Trainings />    
+                </Route>
+                <Route path="/Contacts" exact>
+                    <Contact />
                 </Route>
                 <Route path="/Entrainement/:slug" exact>
                     <TrainingDetails />
@@ -50,11 +58,21 @@ const App = () => {
                 <Route path="/MesEntrainements" exact>
                     <TrainingList />
                 </Route>
-                <Route >
+                <Route path="/AboutUs" exact>
+                    <AboutUs />
+                </Route>
+                <Route path="/CGU" exact>
+                    <CGU />
+                </Route>
+                <Route path="/FAQ" exact>
+                    <FAQ />
+                </Route>
+                <Route>
                     <Error />
                 </Route>
             </Switch>
             <Footer />
+              
         </div>
     );    
 }

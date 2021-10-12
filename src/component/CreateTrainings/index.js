@@ -45,7 +45,7 @@ const Form = () => {
             url : '',
             state : false,
         });
-    },[]);
+    });
 
     useEffect(()=>{
         dispatch({

@@ -31,8 +31,6 @@ const names = [
     'Karaté',
 ];
 
-
-
 const validationSchema = yup.object({
     pseudo: yup
         .string('Pseudo invalide')
