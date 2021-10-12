@@ -1,4 +1,4 @@
-import { FlashOn, FlashOnOutlined } from '@material-ui/icons';
+import { FlashOn } from '@material-ui/icons';
 
   
 import './style.scss';

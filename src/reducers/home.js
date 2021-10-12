@@ -1,3 +1,5 @@
+
+
 export const initialState = {
     loading: false,
     userMenu : false,
@@ -5,11 +7,15 @@ export const initialState = {
     connectPop : false,
     signUpPop : false,
     connected : false,
-    bestWorkout : [],
-    
+    snackBar : false,
+    snackAlert : {},
+    bestWorkout : [],    
+    redirect : false,
+    redirectTo : '/',
 };
 
 const homeReducer = (state = initialState, action = {}) => {
+
     switch (action.type) {
     case 'CLEAN_MENU':
         return(
@@ -103,6 +109,25 @@ const homeReducer = (state = initialState, action = {}) => {
                 userMenu: false,
             }
         );
+    case 'CLOSE_SNACK' :
+        return(
+            {
+                ...state,
+                snackBar : false,
+            }
+        );
+    case 'OPEN_SNACK' :
+        return(
+            {
+                ...state,
+                snackBar : true,
+                snackAlert : {
+                    severity : action.severity,
+                    message : action.message,
+                }
+            }
+        );
+    
     case 'API_CONNECTION':
         return (
             {
@@ -115,6 +140,23 @@ const homeReducer = (state = initialState, action = {}) => {
             {
                 ...state,
                 bestWorkout: action.top,  
+            }
+        );
+    case 'REDIRECT':
+        return (
+            {
+                ...state,
+                redirectTo: action.path,
+                redirect: true,  
+            }
+        );
+
+    case 'REDIRECT_OFF':
+        return (
+            {
+                ...state,
+                redirectTo: '',
+                redirect: false,  
             }
         );
     

@@ -1,14 +1,13 @@
 import axios from 'axios';
 
+
 const api = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
 });
 api.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-
 let token = "";
 
 const ajaxMiddleware = (store) => (next) => (action) => {
-
 
     // action récupération des données de la page home
     if (action.type === 'FETCH_COMMON') {
@@ -52,30 +51,38 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             username: action.email,
             password: action.password,
         });
-        const fetchUserPromise = api.get('api/user');
 
         
-        Promise.all([connectionPromise, fetchUserPromise])
-            .then((response) => {
-                const [connectionData, userData] = response;
-                const information = connectionData.data;
-                const user = userData.data.find((item) => (item.email === action.email));
-                token = information.token;     
-                console.log(user, information);
-                     
-                store.dispatch({
-                    type: 'CONNECTION',
-                    userLogged: true,
-                    userPseudo: information.data.pseudo,
-                    userPicture: information.data.picture,
-                    user: user, 
-                });
-                console.log('Connection réussie');
-                
-            })
+        connectionPromise.then((response) => {
+            const information = response.data;
+            token = information.token;     
+                    
+            store.dispatch({
+                type: 'CONNECTION',
+                userLogged: true,
+                userPseudo: information.data.pseudo,
+                userPicture: information.data.picture,
+                userId: information.data.id, 
+            });
+            console.log('Connection réussie');
+            store.dispatch({
+                type:'FETCH_USER',
+                id: information.data.id,
+
+            });
+            store.dispatch({
+                type:'OPEN_SNACK',
+                message : 'connexion réussie!',
+                severity : 'success',
+            });
+            
+        })
             .catch((error) => {
-                console.error('pb identification', error);
-                alert('Utilisateur non reconnu');
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Echec identification',
+                    severity : 'error',
+                });
             });
     }; 
     
@@ -116,6 +123,39 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             store.dispatch({
                 type : 'SAVE_TRAINING_DETAILS',
                 datas : response.data,
+            });
+            store.dispatch({
+                type : 'UPLOAD_IMAGE_OK',
+                url : response.data.picture,
+                target : 'training',
+                state : false,
+            });
+            setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
+        })
+            .catch((error) => (console.error(error)));
+
+    };
+
+    if(action.type === 'FETCH_TRAINING_COMMENTS')  {
+
+        api.get(`/api/workout/${action.slug}`).then((response)=> {
+            store.dispatch({
+                type : 'SAVE_TRAINING_COMMENTS',
+                comments : response.data.comment,
+            })
+            setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
+        })
+            .catch((error) => (console.error(error)));
+
+    };
+
+
+    if(action.type === 'FETCH_USER')  {
+
+        api.get(`/api/user/${action.id}`).then((response)=> {
+            store.dispatch({
+                type : 'SAVE_USER',
+                datas : response.data,
             })
             setTimeout(()=>(store.dispatch({type: 'LOADING_OFF'})), 2000);
         })
@@ -140,7 +180,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             
             alert('Utilisateur enregistré avec succès!')
             console.log(response);
-            console.log(action.userDatas.email, action.userDatas.password);
             store.dispatch({
                 type: 'ASK_LOGIN',
                 email : action.userDatas.email,
@@ -150,23 +189,140 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             store.dispatch({
                 type : 'CLEAN_MENU'
             });
-        }).catch((error) => (console.error(error)));
+            store.dispatch({
+                type:'OPEN_SNACK',
+                message : 'Inscription réussie!',
+                severity : 'success',
+            });
+        }).catch((error) => {
+            console.error(error)
+            store.dispatch({
+                type:'OPEN_SNACK',
+                message : 'Echec Inscription!',
+                severity : 'error',
+            });
+        });
 
     }
 
+    if (action.type === 'ASK_MODIFY_USER'){
+        api.defaults.headers.common.Authorization = `bearer ${token}`;
+        const dataToSend = {
+            pseudo : action.userDatas.pseudo,
+            firstname : action.userDatas.firstName,
+            lastname :  action.userDatas.lastName,
+            email :  action.userDatas.email,
+            city :  action.userDatas.city,
+            age : parseInt(action.userDatas.age),
+            sport1 :  action.userDatas.sports[0],
+            sport2 : action.userDatas.sports[1],
+            sport3 :  action.userDatas.sports[2],
+        };
+        if(action.userDatas.passwordRequest) Object.defineProperty(dataToSend,'password', {
+            value : action.userDatas.password,
+        });
+        console.log(dataToSend);
+        api.patch(`/api/user/${action.id}`, dataToSend)
+            .then((response)=>{
+                console.log(response);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Modification Utilisateur réussie!',
+                    severity : 'success',
+                });
+                store.dispatch({
+                    type: 'FETCH_USER',
+                    id: store.getState().user.id,
+                });
+                store.dispatch({type: 'TOGGLE_EDIT_USER'});
+            })
+            .catch((error)=>{
+                console.error(error);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Echec modification utilisateur!',
+                    severity : 'error',
+                });   
+            });
+    }
+
+    
 
     if (action.type === 'ASK_CREATE_TRAINING') {
 
         console.log('middleware create training connecté');
         api.defaults.headers.common.Authorization = `bearer ${token}`;
+        console.table(action);
         api.post('/api/workout/add', {
             name: action.values.name,
             description: action.values.description,
             picture : action.picture,
             level: action.values.level,
             sport: action.values.sport,
-            user: store.getState().user.user.id,
-        }).then((response) => (console.log(response)))
+            user: store.getState().user.id,
+        })
+            .then((response) => {
+                console.log(response);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Crétaion de l\'entrainement  réussie!',
+                    severity : 'success',
+                });
+                store.dispatch({
+                    type:'REDIRECT',
+                    path : `/Entrainement/${response.data.id}`,
+                });
+                
+            }).catch((error)=>{
+                console.error(error);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Echec création Entrainement! ',
+                    severity : 'error',
+                });
+            });
+    }
+
+    if (action.type === 'ASK_MODIFY_TRAINING') {
+
+        console.log('middleware modifier training connecté');
+        api.defaults.headers.common.Authorization = `bearer ${token}`;
+        console.table(action.trainingDatas);
+        console.log(action.sportId);
+        console.log(action.picture);
+        
+
+        
+        
+        api.put('/api/workout/update', {
+            name: action.trainingDatas.name,
+            description: action.trainingDatas.description,
+            picture : action.picture,
+            level: action.trainingDatas.level,
+            sport: action.trainingDatas.sport,
+            user: store.getState().user.id,
+            id: action.id,
+        })
+            .then((response) => {
+                console.log(response);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Modification de l\'entrainement  réussie!',
+                    severity : 'success',
+                });
+                store.dispatch({
+                    type: 'FETCH_TRAINING_DETAILS',
+                    slug: store.getState().training.id,
+                });
+                store.dispatch({type: 'TOGGLE_EDIT_TRAINING'});
+            }).catch((error)=>{
+                console.error(error);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Echec création Entrainement! ',
+                    severity : 'error',
+                });
+            });
     }
 
     if(action.type === 'SUBMIT_COMMENT') {
@@ -178,11 +334,35 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             workout : action.workout,
             user : store.getState().user.user.id,
             published_at : '2021-09-22 10:46:02'
-        }).then((response)=>(console.log(response))).catch((error)=>(console.error(error)));
+        }).then((response)=> {
+            console.log(response);
+            store.dispatch({
+                type:'FETCH_TRAINING_COMMENTS',
+                slug:action.workout,
+            });
+
+            store.dispatch({
+                type:'CLEAN_COMMENT',
+            });
+            
+            store.dispatch({
+                type:'OPEN_SNACK',
+                message : 'commentaire envoyé!',
+                severity : 'success',
+            });
+
+        })
+            .catch((error) => {
+                console.error(error);
+                store.dispatch({
+                    type:'OPEN_SNACK',
+                    message : 'Echec commentaire!',
+                    severity : 'error',
+                });
+            });
     
     }
     next(action);
 };
 export default ajaxMiddleware;
-
 

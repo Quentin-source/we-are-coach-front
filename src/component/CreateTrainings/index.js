@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik} from 'formik';
 import * as yup from 'yup';
 
-import { TextField, Button, Avatar, Typography, FormControl, InputLabel, Select, MenuItem,} from '@mui/material';
+import { TextField, Button, Avatar, FormControl, InputLabel, Select, MenuItem,} from '@mui/material';
 import { AddAPhotoOutlined, ChangeCircleOutlined } from "@mui/icons-material";
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 import './style.scss';
@@ -43,7 +43,7 @@ const Form = () => {
         dispatch({
             type :'UNMOUNT_TRAINING_PICTURE',
         });
-    },[]);
+    });
 
     const handleUploadFile = (event) => {
         const file = event.target.files[0];

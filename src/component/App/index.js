@@ -17,12 +17,17 @@ import './style.scss';
 import CreateTraining from '../CreateTrainings';
 import { useEffect } from 'react';
 
+import Contact from '../Contact';
+import AboutUs from '../AboutUs';
+import CGU from '../CGU';
+import FAQ from '../FAQ';
+
 
 const App = () => {
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch({type: 'FETCH_COMMON'});
-    },[]);
+    });
 
     return (
         <div className="app">
@@ -35,17 +40,30 @@ const App = () => {
                 <Route path="/Entrainement" exact>
                     <Trainings />    
                 </Route>
+                <Route path="/Contacts" exact>
+                    <Contact />
+                </Route>
                 <Route path="/Entrainement/:slug" exact>
                     <TrainingDetails />
                 </Route>
                 <Route path="/CreerEntrainement" exact>
                     <CreateTraining />
                 </Route>
+                <Route path="/AboutUs" exact>
+                    <AboutUs />
+                </Route>
+                <Route path="/CGU" exact>
+                    <CGU />
+                </Route>
+                <Route path="/FAQ" exact>
+                    <FAQ />
+                </Route>
                 <Route>
                     <Home />
                 </Route>
             </Switch>
             <Footer />
+              
         </div>
     );    
 }
