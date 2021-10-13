@@ -35,7 +35,7 @@ const AboutUs = () => {
                     <Typography color="primary" variant="h5" style={{maxWidth:310, margin:"0 auto", padding:"20px 5px"}}>
                 Product Owner
                     ----
-                Developeur Back-End
+                Developpeur Back-End
                     </Typography>
                 </Card>
                 <Card>
@@ -51,7 +51,7 @@ const AboutUs = () => {
                     <Typography color="primary" variant="h5" style={{maxWidth:310, margin:"0 auto", padding:"20px 5px"}}>
                 Lead Dev Back
                     ----
-                Developeur Back-End
+                Developpeur Back-End
                     </Typography>
                 </Card>
                 <Card>
@@ -67,7 +67,7 @@ const AboutUs = () => {
                     <Typography color="primary" variant="h5" style={{maxWidth:310, margin:"0 auto", padding:"20px 5px"}}>
                 Lead Dev Front
                     ----
-                Developeur Front-End
+                Developpeur Front-End
                     </Typography>
                 </Card>
                 <Card>
@@ -83,7 +83,7 @@ const AboutUs = () => {
                     <Typography color="primary" variant="h5" style={{maxWidth:310, margin:"0 auto", padding:"20px 5px"}}>
                 Git Master
                     ---------
-                Developeuse Front-End
+                Developpeuse Front-End
                     </Typography>
                 </Card>
                 <Card>
@@ -99,7 +99,7 @@ const AboutUs = () => {
                     <Typography color="primary" variant="h5" style={{maxWidth:310, margin:"0 auto", padding:"20px 5px"}}>
                 Scrum Master
                     ----
-                Developeur Front-End
+                Developpeur Front-End
                     </Typography>
                 </Card>
             </Stack>

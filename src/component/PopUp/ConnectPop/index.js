@@ -57,10 +57,10 @@ const Connectpop = () =>  {
                 handleClick= {handleClickOpen}           
             />
             <Dialog color="primary" open={connectPopState} onClose={handleClose}>
-                <DialogTitle>Connection</DialogTitle>
+                <DialogTitle>Connexion</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                Veuillez entrer vos informations de connection...
+                Veuillez entrer vos informations de connexion...
                     </DialogContentText>
                     <TextField
                         autoFocus
@@ -88,7 +88,7 @@ const Connectpop = () =>  {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Annuler</Button>
-                    <Button onClick={handleConnection}>Connection</Button>
+                    <Button onClick={handleConnection}>Connexion</Button>
                 </DialogActions>
             </Dialog>
         </div>

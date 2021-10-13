@@ -42,7 +42,7 @@ const Trainings = () => {
         dispatch({type:'FETCH_TRAININGS'});
         dispatch({type : 'CLEAN_MENU'});
         handleModifyPageSize(pageSize,currentPage);
-        window.addEventListener('resize', () => () => handleModifyPageSize(pageSize, currentPage));
+        window.addEventListener('resize', () => handleModifyPageSize(pageSize, currentPage));
     }, []);
 
     useEffect(()=> () => {

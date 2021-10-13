@@ -105,6 +105,10 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                     trainings : response.data.workouts,
                 });
                 store.dispatch({
+                    type:'CHANGE_PAGE',
+                    value : 1,
+                });
+                store.dispatch({
                     type:'OPEN_SNACK',
                     message : 'Recherche réussie!',
                     severity : 'success',

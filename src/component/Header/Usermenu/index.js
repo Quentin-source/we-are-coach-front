@@ -24,7 +24,7 @@ const Usermenu = () => {
             <Link to="/Utilisateur"> Mon profil</Link>
             <Link to="/MesEntrainements"> Mes entrainements</Link>
             <Link to="/CreerEntrainement"> Créer un entrainenemt</Link>
-            <Button color="primary" variant="outlined" onClick={handleDeconnection} className="navbar-deconnect-button"> Deconnection </Button>
+            <Button color="primary" variant="outlined" onClick={handleDeconnection} className="navbar-deconnect-button"> Deconnexion </Button>
         </div>
     );
 } 
