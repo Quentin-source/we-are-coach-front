@@ -8,10 +8,7 @@
  * @return {Object} - Le training trouvée
  */
 export function isMineTraining(trainings, searchedId) {
-    console.table(trainings);
-    console.log(searchedId);
     const training = trainings.find((testedTraining) => (testedTraining.id === searchedId));
-    console.log(training);
     
     if (training !== undefined) return true;
     return false;

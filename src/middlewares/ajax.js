@@ -73,11 +73,14 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 userPicture: information.data.picture,
                 userId: information.data.id, 
             });
-            console.log('Connection réussie');
             store.dispatch({
                 type:'FETCH_USER',
                 id: information.data.id,
 
+            });
+            store.dispatch({
+                type : 'REDIRECT',
+                path : '/Utilisateur'
             });
             store.dispatch({
                 type:'OPEN_SNACK',
@@ -300,7 +303,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
         console.log('middleware create training connecté');
         api.defaults.headers.common.Authorization = `bearer ${token}`;
-        console.table(action);
         api.post('/api/workout/add', {
             name: action.values.name,
             description: action.values.description,
@@ -340,10 +342,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
         console.log('middleware modifier training connecté');
         api.defaults.headers.common.Authorization = `bearer ${token}`;
-        console.table(action.trainingDatas);
-        console.log(action.sportId);
-        console.log(action.picture);
-        
+       
 
         
         
@@ -431,7 +430,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                 message : 'commentaire envoyé!',
                 severity : 'success',
             });
-
         })
             .catch((error) => {
                 console.error(error);

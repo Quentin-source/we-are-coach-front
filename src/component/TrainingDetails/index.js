@@ -83,12 +83,7 @@ const TrainingDetails = () => {
             comment : commentInput,
             workout : id,
         });
-        dispatch({type:'TOGGLE_COMMENT'});
-       
-
     }
-    // console.log(userTrainings, id);
-    // console.log(isMineTraining(userTrainings, id));
     
     return (
         <main className="main-content">
@@ -158,7 +153,7 @@ const TrainingDetails = () => {
                     </div>                  
                     {isConnected && <div className="training-details-group-button">
                         <Button 
-                            classNames={commentPopState?'training-details-button training-details-button--open': 'training-details-button'} 
+                            className={commentPopState?'training-details-button training-details-button--open animate_animated animate__pulse': 'training-details-button'} 
                             color={commentPopState ? 'secondary' : 'primary'}
                             onClick={handleToggleComment}>
                             {commentPopState? 'FERMER': 'COMMENTER'}
@@ -178,7 +173,6 @@ const TrainingDetails = () => {
                     color="secondary"
                     value={commentInput}
                     onChange={handleChangeComment}
-                    onBlur={handleToggleComment}
                     variant="standard"
                     multiline
                     rows={2}

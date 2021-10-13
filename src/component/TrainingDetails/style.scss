@@ -85,12 +85,7 @@
 }
 
 &-button{
-    transition :transform  0.5s;
-    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-    color:black;
-&--open{
-    transform: scale(1.5) !important ;
-    }
+   animation-iteration-count: infinite;
 }
 &-description{
     // border : vars.$optionColor 1px solid;
